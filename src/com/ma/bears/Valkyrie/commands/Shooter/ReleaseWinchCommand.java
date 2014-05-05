@@ -16,7 +16,6 @@ public class ReleaseWinchCommand extends Command{
 	
 	Timer t = new Timer();
 
-	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		t.reset();
@@ -24,24 +23,20 @@ public class ReleaseWinchCommand extends Command{
 		Valkyrie.WinchPist.set(false);
 	}
 
-	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	protected void execute() {
 		Valkyrie.WinchPist.set(true);		
 	}
-
-	@Override
+	
 	protected void interrupted() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		return t.get() > RobotValues.ShooterWait;

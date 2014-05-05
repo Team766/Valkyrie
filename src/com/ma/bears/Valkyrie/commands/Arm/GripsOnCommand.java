@@ -12,23 +12,18 @@ public class GripsOnCommand extends Command{
 	
 	//turns grips on
 
-	@Override
 	protected void end() {
 		Valkyrie.BallGuard.set(false);
 	}
 
-	@Override
 	protected void execute() {
 		Valkyrie.BallGuard.set(true);
 	}
 
-	@Override
 	protected void initialize() {}
 
-	@Override
 	protected void interrupted() {}
 
-	@Override
 	protected boolean isFinished() {
 		return false;
 	}
