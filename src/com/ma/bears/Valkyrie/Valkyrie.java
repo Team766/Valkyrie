@@ -196,7 +196,7 @@ public class Valkyrie extends IterativeRobot {
          * commented out at the moment for testing later
          * 
         */
-        buttonShoot.whenPressed(new ShootCommand());
+/*        buttonShoot.whenPressed(new ShootCommand());
         //buttonCancel.cancelWhenPressed(new ShootSeqCommand());  //not really sure how this works?
 
         buttonRollerIn.whileHeld(new RollerInCommand());
@@ -206,7 +206,7 @@ public class Valkyrie extends IterativeRobot {
         
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
-        buttonInbound.whileHeld(new InboundCommand());
+        buttonInbound.whileHeld(new InboundCommand()); */
         
         
         //compressor
