@@ -21,6 +21,13 @@ package com.ma.bears.Valkyrie;
  * for now. This means the shooter is
  * manually pulled back by a button.
  */
+import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
+import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
+import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
+import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
+import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
+import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
+import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -72,6 +79,7 @@ public class Valkyrie extends IterativeRobot {
     //declare joystick buttons as Buttons instead of reading them raw
     //not always used yet - useful for running things with commands
     public static final Button  
+    //button name = new JoystickButton(joystick, button number),        
     buttonShifter = new JoystickButton(jLeft, Buttons.Shifter),
     buttonReverse = new JoystickButton(jRight, Buttons.Reverse),
     buttonDriverPickup = new JoystickButton(jRight, Buttons.DriverPickup),
@@ -133,7 +141,7 @@ public class Valkyrie extends IterativeRobot {
         boolean ShooterWinchOnC = jBox.getRawButton(Buttons.WinchOn);
         boolean ShooterLaunchC = (jBox.getRawButton(Buttons.Shoot) || jRight.getRawButton(Buttons.DriverShoot));
         
-        boolean ShooterLoaded = LauncherBotm.get();
+        boolean ShooterLoaded = !LauncherBotm.get();
         
         double WinchC = (!ShooterLoaded && !ShooterLaunchC && ShooterWinchOnC)? RobotValues.WinchSpeed : 0;
         
@@ -187,10 +195,10 @@ public class Valkyrie extends IterativeRobot {
          * attempts at automatic commands here
          * commented out at the moment for testing later
          * 
-
+        */
         buttonShoot.whenPressed(new ShootCommand());
-//        buttonCancel.cancelWhenPressed(new ShootSeqCommand());  //not really sure how this works?
-        
+        //buttonCancel.cancelWhenPressed(new ShootSeqCommand());  //not really sure how this works?
+
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
         buttonArmDown.whileHeld(new ArmDownCommand());
@@ -198,7 +206,7 @@ public class Valkyrie extends IterativeRobot {
         
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
-        buttonInbound.whileHeld(new InboundCommand()); */
+        buttonInbound.whileHeld(new InboundCommand());
         
         
         //compressor
