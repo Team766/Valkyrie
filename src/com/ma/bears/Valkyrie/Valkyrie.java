@@ -29,6 +29,7 @@ import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 
+import com.ma.bears.Valkyrie.CheesyVisionServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -53,6 +54,9 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  */
 
 public class Valkyrie extends IterativeRobot {
+    
+    CheesyVisionServer server = CheesyVisionServer.getInstance();
+    public final int listenPort = 1180;
     
     public static Joystick jLeft = new Joystick(1);
     public static Joystick jRight = new Joystick(2);
@@ -96,18 +100,48 @@ public class Valkyrie extends IterativeRobot {
     buttonAutoShoot = new JoystickButton(jBox, Buttons.AutoShoot),
     buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel);
     
-    public void robotTnit(){
+    public void robotInit(){
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
     	DriverStationLCD lcd = DriverStationLCD.getInstance();
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "test");
+        server.setPort(listenPort);
+        server.start();
+    }
+    public void autonomousInit() {
+        server.reset();
+        server.startSamplingCounts();
+    }
+    
+    public void disabledInit() {
+        server.stopSamplingCounts();
+    }
+    
+    public void autonomousPeriodic() {
+        System.out.println("Current left: " + server.getLeftStatus() + ", current right: " + server.getRightStatus());
+        System.out.println("Left count: " + server.getLeftCount() + ", right count: " + server.getRightCount() + ", total: " + server.getTotalCount() + "\n");
     }
     
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
     public void autonomous() {
-        
+        while(isAutonomous() && isEnabled()){
+            if(server.getLeftCount() > 5){
+                System.out.println("Left Hand Auton");
+            }
+            else if(server.getRightCount() > 5){
+                System.out.println("Right Hand Auton");
+            }   
+            //Goalie Pole Stuff
+            /*if(server.getLeftStatus()){
+                //Move Backwards
+            } 
+            if(server.getRightStatus()){
+                //Move Forwards
+            }
+            */
+        }
     }
 
     /**
