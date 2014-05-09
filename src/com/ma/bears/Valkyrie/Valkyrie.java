@@ -235,7 +235,6 @@ public class Valkyrie extends IterativeRobot {
         
         //CheesyDrive - from Team 254
         
-        
 /*      
         new CheesyDriveCommand();
         buttonShoot.whenPressed(new ShootCommand());

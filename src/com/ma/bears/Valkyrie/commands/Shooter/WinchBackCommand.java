@@ -23,7 +23,7 @@ public class WinchBackCommand extends Command{
 	}
 
 	protected void execute() {
-		Valkyrie.WinchPist.set(true);
+		Valkyrie.WinchPist.set(false);
 		Valkyrie.Winch.set(RobotValues.WinchSpeed);
 		
 	}

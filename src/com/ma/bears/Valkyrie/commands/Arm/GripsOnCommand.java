@@ -6,7 +6,7 @@ import com.ma.bears.Valkyrie.Valkyrie;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * turns grips on
+ * Turns grips on.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  */
