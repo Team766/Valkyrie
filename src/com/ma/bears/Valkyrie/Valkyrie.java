@@ -30,9 +30,10 @@ import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
 import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
+import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
-
 import com.ma.bears.Valkyrie.CheesyVisionServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -92,6 +93,7 @@ public class Valkyrie extends IterativeRobot {
     public static final Button  
     //button name = new JoystickButton(joystick, button number),        
     buttonShifter = new JoystickButton(jLeft, Buttons.Shifter),
+    buttonQuickTurn = new JoystickButton(jRight, Buttons.QuickTurn),
     buttonReverse = new JoystickButton(jRight, Buttons.Reverse),
     buttonDriverPickup = new JoystickButton(jRight, Buttons.DriverPickup),
     buttonDriverShoot = new JoystickButton(jRight, Buttons.DriverShoot),
@@ -238,8 +240,14 @@ public class Valkyrie extends IterativeRobot {
          * commented out at the moment for testing later
          * 
         */
-/*        buttonShoot.whenPressed(new ShootCommand());
-        //buttonCancel.cancelWhenPressed(new ShootSeqCommand());  //not really sure how this works?
+        
+        //CheesyDrive - from Team 254
+        
+        
+/*      
+        new CheesyDriveCommand();
+        buttonShoot.whenPressed(new ShootCommand());
+        //buttonCancel.cancelWhenPressed(new ShootCommand());  //not really sure how this works?
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
