@@ -19,8 +19,8 @@ public class OneBallStay extends CommandGroup {
     public OneBallStay() {
        addParallel(new WinchBackCommand());
        addParallel(new DriveForwardCommand(0));  //Fix, Add PID Control
-       if(DriveForwardCommand.done){
+//       if(DriveForwardCommand.done){
            addSequential(new ShootCommand());
-       }
+//       }
     }
 }

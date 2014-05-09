@@ -25,7 +25,7 @@ public class ArmDownCommand extends Command{
 	protected void interrupted() {}
 
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 }

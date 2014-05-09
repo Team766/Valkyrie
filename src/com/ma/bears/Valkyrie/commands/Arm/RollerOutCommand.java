@@ -28,7 +28,7 @@ public class RollerOutCommand extends Command{
 	}
 
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 }

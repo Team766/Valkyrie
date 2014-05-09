@@ -28,7 +28,7 @@ public class RollerInCommand extends Command{
 	}
 
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 }
