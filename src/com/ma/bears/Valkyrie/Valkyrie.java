@@ -46,6 +46,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.Encoder;
 
 
 /**
@@ -74,6 +75,9 @@ public class Valkyrie extends IterativeRobot {
     
     public static final DigitalInput Pressure = new DigitalInput(Ports.DIO_Pressure);
     public static final DigitalInput LauncherBotm = new DigitalInput(Ports.DIO_LauncherBotm);
+    
+    public static final Encoder LDriveEnc = new Encoder(1, 2);
+    public static final Encoder RDriveEnc = new Encoder(14, 13);
     
     public static final Solenoid 
     Shifter = new Solenoid(Ports.Sol_Shifter),

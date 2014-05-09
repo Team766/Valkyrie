@@ -25,7 +25,7 @@ public class GripsOnCommand extends Command{
 	protected void interrupted() {}
 
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 }

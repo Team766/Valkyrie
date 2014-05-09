@@ -13,23 +13,25 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ReleaseWinchCommand extends Command{
 	
 	//releases winch piston for RobotValues.ShooterWait seconds (default is .75)
-	
+	//Fire
+        //Wait
+        //Rewinch
 	Timer t = new Timer();
-
+        
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		t.reset();
 		t.start();
-		Valkyrie.WinchPist.set(false);
 	}
 
 	protected void end() {
-		// TODO Auto-generated method stub
+            //After Fire Rewinch
+            Valkyrie.WinchPist.set(true);
 		
 	}
 
 	protected void execute() {
-		Valkyrie.WinchPist.set(true);		
+		Valkyrie.WinchPist.set(false);		
 	}
 	
 	protected void interrupted() {
