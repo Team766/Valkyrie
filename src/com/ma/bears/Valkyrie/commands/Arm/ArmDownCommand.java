@@ -1,14 +1,14 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
-/**
- * @author Nicky Ivy nickivyca@gmail.com
- * 
- * Puts arm down
- */
-
 import com.ma.bears.Valkyrie.Valkyrie;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ * Puts arm down.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ */
 
 public class ArmDownCommand extends Command{
 

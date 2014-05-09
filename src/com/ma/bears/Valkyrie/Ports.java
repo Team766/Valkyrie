@@ -7,10 +7,11 @@
 package com.ma.bears.Valkyrie;
 
 /**
- * @author Nicky Ivy nickivyca@gmail.com
- * 
  * Declare port numbers in a convenient place that allows us to change them
  * quickly without sorting through code.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ * 
  */
 public class Ports {
     public static final int PWM_Left_Drive = 9;

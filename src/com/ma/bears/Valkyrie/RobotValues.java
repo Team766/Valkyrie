@@ -1,12 +1,11 @@
 package com.ma.bears.Valkyrie;
 
 /**
- * 
- * @author Nicky Ivy nickivyca@gmail.com
- *
  * Declare robot values, such as default speed of a motor,
  * in a convenient place that allows us to change them
  * quickly without sorting through code.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
  */
 public class RobotValues {
     public static final double ArmWheels_In = 1;

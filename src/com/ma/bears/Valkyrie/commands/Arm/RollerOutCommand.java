@@ -1,6 +1,8 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
 /**
+ * Roller out.
+ * 
  * @author Nicky Ivy nickivyca@gmail.com
  */
 
@@ -10,8 +12,6 @@ import com.ma.bears.Valkyrie.Valkyrie;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class RollerOutCommand extends Command{
-	
-	//roller out
 
 	protected void end() {
 		Valkyrie.ArmWheels.set(0);

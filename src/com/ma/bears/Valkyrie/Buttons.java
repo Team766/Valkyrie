@@ -1,10 +1,10 @@
 package com.ma.bears.Valkyrie;
 
 /**
- * @author Nicky Ivy nickivyca@gmail.com
- *
  * Declare button numbers in a convenient place that allows us to change them
  * quickly without sorting through code.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
  */
 
 //If the buttons are not labeled on the joysticks themselves, 

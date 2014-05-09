@@ -1,8 +1,5 @@
 package com.ma.bears.Valkyrie.commands.Shooter;
 
-/**
- * @author Nicky Ivy nickivyca@gmail.com
- */
 
 import com.ma.bears.Valkyrie.Buttons;
 import com.ma.bears.Valkyrie.RobotValues;
@@ -10,9 +7,16 @@ import com.ma.bears.Valkyrie.Valkyrie;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+
+/**
+ * Winches back shooter until 
+ * limit is hit or cancel button
+ * on OI is hit.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+*/
+
 public class WinchBackCommand extends Command{
-	
-	//winches back shooter unless cancel pressed or limit is hit
 
 	protected void end() {
 		Valkyrie.Winch.set(0);

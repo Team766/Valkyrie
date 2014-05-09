@@ -1,26 +1,23 @@
 package com.ma.bears.Valkyrie.commands.Shooter;
 
-/**
- * @author Nicky Ivy nickivyca@gmail.com
- */
-
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * Subcommand of the shoot command. 
+ * This part releases the winch
+ * and waits.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ */
+
 public class ReleaseShooterCommand extends Command{
-	
-	//releases winch piston for RobotValues.ShooterWait seconds (default is .75)
-	//also releases grippers
-    //Wait
-	//in other commands:
-    //Rewinch
 	Timer t = new Timer();
         
 	protected void initialize() {
-		// TODO Auto-generated method stub
 		t.reset();
 		t.start();
 	}

@@ -1,14 +1,15 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
-/**
- * @author Nicky Ivy nickivyca@gmail.com
- * 
- * turns grips off
- */
-
 import com.ma.bears.Valkyrie.Valkyrie;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ * Turns grips off.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ * 
+ */
 
 public class GripsOffCommand extends Command{
 

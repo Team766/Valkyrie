@@ -8,7 +8,6 @@
 package com.ma.bears.Valkyrie;
 
 /**
- * @author Nicky Ivy nickivyca@gmail.com
  * 
  * Java code for 2014 robot. Mainly a test
  * and proof of concept to see how well Java
@@ -21,8 +20,10 @@ package com.ma.bears.Valkyrie;
  * for now. This means the shooter is
  * manually pulled back by a button.
  * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ * 
  * TODO:
- * Cheesy Drive
+ * Subsystems
  */
 import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
 import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
@@ -48,15 +49,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
-
-
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the SimpleRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 
 public class Valkyrie extends IterativeRobot {
     
