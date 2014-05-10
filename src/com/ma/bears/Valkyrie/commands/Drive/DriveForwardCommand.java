@@ -6,6 +6,7 @@
 package com.ma.bears.Valkyrie.commands.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
@@ -14,13 +15,29 @@ import com.ma.bears.Valkyrie.Valkyrie;
  *
  * @author Blevenson
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
 public abstract class DriveForwardCommand extends Command {
+    public boolean done = false; 
+=======
+public class DriveForwardCommand extends Command {
     private boolean done = false; 
+    private double kDriveDistance;
+>>>>>>> FETCH_HEAD
+=======
+public class DriveForwardCommand extends Command {
+    private boolean done = false; 
+    private double kDriveDistance;
+>>>>>>> FETCH_HEAD
     Drive drive = new Drive();
     
     public DriveForwardCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    }
+    
+    public DriveForwardCommand(double distance){
+    	kDriveDistance = distance;
     }
 
     // Called just before this Command runs the first time
@@ -29,10 +46,9 @@ public abstract class DriveForwardCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    public void execute(float kDriveDistance) {
+    public void execute() {
         //Reseting Encoders
-	Drive.LDriveEnc.reset();
-	Drive.RDriveEnc.reset();
+	Valkyrie.Drive.resetEncoders();
 	//Move forward 24 inches
 	//const double kDriveDistance = dash->GetNumber("DriveDistance1Ball");
 	//const double Kp = 10.0; //proportional constant  Real Number in robotvalues
@@ -40,12 +56,17 @@ public abstract class DriveForwardCommand extends Command {
 	double last_error = 0.0;
 	// Kp, Kd from RobotValues.h
 	while (!done) {
-            final double error = kDriveDistance - (drive.left_distance() + drive.right_distance()) / 2.0;
+            final double error = kDriveDistance - (drive.getLeftDistance() + drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
             Valkyrie.leftDrive.set(-drive_power);
             Valkyrie.rightDrive.set(drive_power);
-            wait(0.02);
-            System.out.println("error " + error + " drive_power " + drive_power + " ld " + drive.left_distance() + " rd " + drive.right_distance() + "\n");
+            try {
+            	wait((long) 0.02);
+            } catch (InterruptedException e) {
+            	System.out.println("Drive forward interrupted");
+            	done = true;
+            }
+            System.out.println("error " + error + " drive_power " + drive_power + " ld " + drive.getLeftDistance() + " rd " + drive.getRightDistance() + "\n");
             last_error = error;
             // If at 0 +- tolerance, stop driving
             if (Math.abs(error) <= (0 + RobotValues.driveTolerance)){

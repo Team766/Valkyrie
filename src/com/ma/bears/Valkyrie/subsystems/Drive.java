@@ -6,8 +6,10 @@
 package com.ma.bears.Valkyrie.subsystems;
 
 import com.ma.bears.Valkyrie.Ports;
-import edu.wpi.first.wpilibj.Encoder;
+import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,28 +24,43 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drive extends Subsystem{
 	
 	final private Talon leftDrive = new Talon(Ports.PWM_Left_Drive);
-        final private Talon rightDrive = new Talon(Ports.PWM_Right_Drive);
+	final private Talon rightDrive = new Talon(Ports.PWM_Right_Drive);
         
-	public static Encoder LDriveEnc = new Encoder(Ports.DIO_LDriveEncA, Ports.DIO_LDriveEncB);
-        public static Encoder RDriveEnc = new Encoder(Ports.DIO_RDriveEncA, Ports.DIO_RDriveEncB);
-	
+	private Encoder LDriveEnc = new Encoder(Ports.DIO_LDriveEncA, Ports.DIO_LDriveEncB);
+	private Encoder RDriveEnc = new Encoder(Ports.DIO_RDriveEncA, Ports.DIO_RDriveEncB);
+    
+    private final Solenoid Shifter = new Solenoid(Ports.Sol_Shifter);
+    
 	protected void initDefaultCommand() {
+		//setDefaultCommand(new CheesyDriveCommand());
 	}
 	
-	public void Forward(double speed){
+	public void drive(double speed){
 		leftDrive.set(-speed);
-                rightDrive.set(speed);
+		rightDrive.set(speed);
 	}
-        public float translateDrive(float trans){
+	
+	public void setLeftSpeed(double speed){
+		leftDrive.set(speed);
+	}
+	public void setRightSpeed(double speed){
+		rightDrive.set(speed);
+	}
+	
+    public float translateDrive(float trans){
 		double wheel_d = 0.0899;
 		double counts = 256 * 4.0;
-		return (trans / counts) * (atan(1) * 4) * wheel_d;
+		return (float) ((trans / counts) * (Math.atan(1) * 4) * wheel_d);
 	}
-        public float left_distance() {
+    public float getLeftDistance() {
 		return translateDrive(LDriveEnc.getRaw());
 	}
-	public float right_distance() {
+	public float getRightDistance() {
 		return translateDrive(RDriveEnc.getRaw());
+	}
+	public void resetEncoders(){
+		LDriveEnc.reset();
+		RDriveEnc.reset();
 	}
 	
 }
