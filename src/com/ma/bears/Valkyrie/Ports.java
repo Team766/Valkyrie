@@ -20,13 +20,14 @@ public class Ports {
     
     public static final int Relay_Compr = 1;
     
-    public static final int DIO_Pressure = 1;
+    public static final int DIO_Pressure = 5;
     public static final int DIO_LauncherBotm = 12;
     
-    public static final int DIO_REncA = 14;
-    public static final int DIO_REncB = 13;
-    public static final int DIO_LEncA = 1;
-    public static final int DIOLEncB = 2;
+    public static final int DIO_LDriveEncA = 1;
+    public static final int DIO_LDriveEncB = 2;
+    public static final int DIO_RDriveEncA = 14;
+    public static final int DIO_RDriveEncB = 13;
+    
     public static int Sol_Shifter = 1;
     public static int Sol_WinchPist = 2;
     public static int Sol_Arm = 3;
