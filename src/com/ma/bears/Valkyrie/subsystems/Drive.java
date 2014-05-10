@@ -6,7 +6,6 @@
 package com.ma.bears.Valkyrie.subsystems;
 
 import com.ma.bears.Valkyrie.Ports;
-import com.ma.bears.Valkyrie.RobotValues;
 import edu.wpi.first.wpilibj.Encoder;
 
 import edu.wpi.first.wpilibj.Talon;
@@ -38,7 +37,7 @@ public class Drive extends Subsystem{
         public float translateDrive(float trans){
 		double wheel_d = 0.0899;
 		double counts = 256 * 4.0;
-		//return (trans / counts) * (Math.atan(1) * 4) * wheel_d;
+		return (trans / counts) * (atan(1) * 4) * wheel_d;
 	}
         public float left_distance() {
 		return translateDrive(LDriveEnc.getRaw());
