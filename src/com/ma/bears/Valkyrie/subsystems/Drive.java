@@ -50,7 +50,7 @@ public class Drive extends Subsystem{
     public float translateDrive(float trans){
 		double wheel_d = 0.0899;
 		double counts = 256 * 4.0;
-		return (float) ((trans / counts) * (Math.atan(1) * 4) * wheel_d);
+		return (float) ((trans / counts) * (Math.PI) * wheel_d);
 	}
     public float getLeftDistance() {
 		return translateDrive(LDriveEnc.getRaw());
