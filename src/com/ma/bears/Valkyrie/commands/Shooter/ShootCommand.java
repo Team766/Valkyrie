@@ -15,8 +15,7 @@ public class ShootCommand extends CommandGroup {
 	//winches back
 	
 	public ShootCommand(){
-		addParallel(new GripsOffCommand());
-		addSequential(new ReleaseWinchCommand());
+		addSequential(new ReleaseShooterCommand());
 		addSequential(new WinchBackCommand());
 	}
 }

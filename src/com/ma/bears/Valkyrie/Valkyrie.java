@@ -193,9 +193,10 @@ public class Valkyrie extends IterativeRobot {
         //this way on, off works properly by commands with true, false
         //but we want them default on to hold ball more reliably
         boolean BallGuardC = true;
-        if (jBox.getRawAxis(4) < 0 && !ShooterLaunchC){
+        
+        /*if (jBox.getRawAxis(4) < 0 && !ShooterLaunchC){
         	BallGuardC = false;
-        }
+        }*/
         
         
         boolean EjectorC = jBox.getRawButton(Buttons.Ejector);
