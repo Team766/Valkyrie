@@ -17,8 +17,14 @@ import com.ma.bears.Valkyrie.Valkyrie;
  */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 public abstract class DriveForwardCommand extends Command {
     public boolean done = false; 
+=======
+public class DriveForwardCommand extends Command {
+    private boolean done = false; 
+    private double kDriveDistance;
+>>>>>>> FETCH_HEAD
 =======
 public class DriveForwardCommand extends Command {
     private boolean done = false; 
