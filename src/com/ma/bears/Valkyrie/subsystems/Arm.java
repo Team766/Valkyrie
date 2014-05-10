@@ -50,6 +50,4 @@ public class Arm extends Subsystem{
 	public void setEjector(boolean on){
 		Ejector.set(on);
 	}
-	
-
 }

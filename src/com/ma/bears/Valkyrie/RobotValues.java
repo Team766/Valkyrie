@@ -16,4 +16,9 @@ public class RobotValues {
     //cheesy drive
     public static final double sensitivityHigh = .85;
     public static final double sensitivityLow = .75;
+    
+    //drive
+    public static final double Kp = 10.0;
+    public static final double Kd = 0.8;
+    public static final double driveTolerance = .01;
 }

@@ -6,16 +6,19 @@
 package com.ma.bears.Valkyrie.commands.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
+import com.ma.bears.Valkyrie.subsystems.Drive;
+import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
 /**
  * Brett put a description here
  *
  * @author Blevenson
  */
-public class DriveForwardCommand extends Command {
-    public static boolean done = true; 
+public abstract class DriveForwardCommand extends Command {
+    private boolean done = false; 
+    Drive drive = new Drive();
     
-    public DriveForwardCommand(int distance) {
+    public DriveForwardCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,34 +29,34 @@ public class DriveForwardCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        /*
+    public void execute(float kDriveDistance) {
         //Reseting Encoders
-	Valkyrie.LDriveEnc.reset();
-	Valkyrie.RDriveEnc.reset();
+	Drive.LDriveEnc.reset();
+	Drive.RDriveEnc.reset();
 	//Move forward 24 inches
 	//const double kDriveDistance = dash->GetNumber("DriveDistance1Ball");
 	//const double Kp = 10.0; //proportional constant  Real Number in robotvalues
 	//const double Kd = 0.8;  //derivative constant           "   "
 	double last_error = 0.0;
 	// Kp, Kd from RobotValues.h
-	while (IsAutonomous() && isEnabled()) {
-            const double error = kDriveDistance - (left_distance() + right_distance()) / 2.0;
-            const double drive_power = Kp * error + Kd * (error - last_error) * 100.0;
-            LeftDrive.SetSpeed(-drive_power);
-            RightDrive.SetSpeed(drive_power);
-            Wait(0.02);
-            System.out.println("error %f drive_power %f ld %f rd %f\n", error, drive_power, left_distance(), right_distance());
+	while (!done) {
+            final double error = kDriveDistance - (drive.left_distance() + drive.right_distance()) / 2.0;
+            final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
+            Valkyrie.leftDrive.set(-drive_power);
+            Valkyrie.rightDrive.set(drive_power);
+            wait(0.02);
+            System.out.println("error " + error + " drive_power " + drive_power + " ld " + drive.left_distance() + " rd " + drive.right_distance() + "\n");
             last_error = error;
             // If at 0 +- tolerance, stop driving
-            if (fabs(error) <= (0 + driveTolerance)){
-                printf("Break Drive To Distance \n");
-                LeftDrive.SetSpeed(0);
-                RightDrive.SetSpeed(0);
+            if (Math.abs(error) <= (0 + RobotValues.driveTolerance)){
+                System.out.println("Break Drive To Distance \n");
+                Valkyrie.leftDrive.set(0.0);  //use function in drive subsystem
+                Valkyrie.rightDrive.set(0.0); //       "           "
+                done = true;
                 break;  //if in right spot, go to firing
             }
         }
-    */
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()

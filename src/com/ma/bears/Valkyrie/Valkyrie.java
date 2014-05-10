@@ -69,9 +69,6 @@ public class Valkyrie extends IterativeRobot {
     public static final DigitalInput Pressure = new DigitalInput(Ports.DIO_Pressure);
     public static final DigitalInput LauncherBotm = new DigitalInput(Ports.DIO_LauncherBotm);
     
-    public static final Encoder LDriveEnc = new Encoder(Ports.DIO_LDriveEncA, Ports.DIO_LDriveEncB);
-    public static final Encoder RDriveEnc = new Encoder(Ports.DIO_RDriveEncA, Ports.DIO_RDriveEncB);
-    
     public static final Solenoid 
     Shifter = new Solenoid(Ports.Sol_Shifter),
     WinchPist = new Solenoid(Ports.Sol_WinchPist),
