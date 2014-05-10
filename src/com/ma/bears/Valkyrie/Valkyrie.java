@@ -7,24 +7,6 @@
 
 package com.ma.bears.Valkyrie;
 
-/**
- * 
- * Java code for 2014 robot. Mainly a test
- * and proof of concept to see how well Java
- * works for programming the robot.
- * 
- * Currently drives with a tank system.
- * CheesyDrive may be implemented later.
- * 
- * Command-based things are commented out
- * for now. This means the shooter is
- * manually pulled back by a button.
- * 
- * @author Nicky Ivy nickivyca@gmail.com
- * 
- * TODO:
- * Subsystems
- */
 import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
 import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
 import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
@@ -33,6 +15,10 @@ import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
+import com.ma.bears.Valkyrie.subsystems.Pickup;
+import com.ma.bears.Valkyrie.subsystems.Compressor;
+import com.ma.bears.Valkyrie.subsystems.Drive;
+import com.ma.bears.Valkyrie.subsystems.Shooter;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -50,6 +36,25 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 
+/**
+ * Java code for 2014 robot. Mainly a test
+ * and proof of concept to see how well Java
+ * works for programming the robot.
+ * 
+ * Currently drives with a tank system.
+ * CheesyDrive may be implemented later.
+ * 
+ * Command-based things are commented out
+ * for now. This means the shooter is
+ * manually pulled back by a button.
+ * 
+ * TODO:
+ * Subsystems - full implementation
+ * Auton stuff - including CheesyVision
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
+ */
 public class Valkyrie extends IterativeRobot {
     
     CheesyVisionServer server = CheesyVisionServer.getInstance();
@@ -97,6 +102,11 @@ public class Valkyrie extends IterativeRobot {
     		
     buttonAutoShoot = new JoystickButton(jBox, Buttons.AutoShoot),
     buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel);
+    
+    public static Pickup Pickup = new Pickup();
+    public static Compressor Compressor = new Compressor();
+    public static Drive Drive = new Drive();
+    public static Shooter Shooter = new Shooter();
     
     public void robotInit(){
     	//just testing out some SmartDash, DriverLCD stuff

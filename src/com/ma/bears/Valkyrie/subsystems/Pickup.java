@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 
-public class Arm extends Subsystem{
+public class Pickup extends Subsystem{
 	
 	private Talon Roller = new Talon(Ports.PWM_ArmWheels);
 	
