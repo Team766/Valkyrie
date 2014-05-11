@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GripsOnCommand extends Command{
 
 	protected void end() {
-		Valkyrie.BallGuard.set(false);
+		Valkyrie.Pickup.setGrippers(false);
 	}
 
 	protected void execute() {
-		Valkyrie.BallGuard.set(true);
+		Valkyrie.Pickup.setGrippers(true);
 	}
 
 	protected void initialize() {}

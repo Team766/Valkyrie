@@ -49,8 +49,8 @@ public class DriveForwardCommand extends Command {
 	if(!done) {
             final double error = kDriveDistance - (Valkyrie.Drive.getLeftDistance() + Valkyrie.Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
-            Valkyrie.leftDrive.set(-drive_power);
-            Valkyrie.rightDrive.set(drive_power);
+            Valkyrie.Drive.setLeftSpeed(-drive_power);
+            Valkyrie.Drive.setRightSpeed(drive_power);
             new WaitCommand(0.02).start();
             System.out.println("error " + error + " drive_power " + drive_power + " ld " + Valkyrie.Drive.getLeftDistance() + " rd " + Valkyrie.Drive.getRightDistance() + "\n");
             last_error = error;
@@ -70,8 +70,8 @@ public class DriveForwardCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Valkyrie.leftDrive.set(0.0);  //use function in drive subsystem
-        Valkyrie.rightDrive.set(0.0);
+        Valkyrie.Drive.setLeftSpeed(0.0);  //use function in drive subsystem
+        Valkyrie.Drive.setRightSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

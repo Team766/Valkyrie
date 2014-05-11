@@ -13,12 +13,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class EjectorOutCommand extends Command{
 	
+	public EjectorOutCommand(){
+	}
+	
 	protected void end() {
-		Valkyrie.Ejector.set(false);
+		Valkyrie.Pickup.setEjector(false);
 	}
 
 	protected void execute() {
-		Valkyrie.Ejector.set(true);
+		Valkyrie.Pickup.setEjector(true);
 	}
 
 	protected void initialize() {}

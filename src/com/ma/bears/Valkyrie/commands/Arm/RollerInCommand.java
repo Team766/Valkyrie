@@ -27,11 +27,11 @@ public class RollerInCommand extends Command{
 	}	
 	
 	protected void end() {
-		Valkyrie.ArmWheels.set(0);
+		Valkyrie.Pickup.setRollers(0);;
 	}
 
 	protected void execute() {
-		Valkyrie.ArmWheels.set(RobotValues.ArmWheels_In);
+		Valkyrie.Pickup.setRollers(RobotValues.ArmWheels_In);
 	}
 
 	protected void initialize() {

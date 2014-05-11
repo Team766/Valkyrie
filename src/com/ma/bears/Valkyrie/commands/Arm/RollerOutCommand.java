@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RollerOutCommand extends Command{
 
 	protected void end() {
-		Valkyrie.ArmWheels.set(0);
+		Valkyrie.Pickup.setRollers(0);
 	}
 
 	protected void execute() {
-		Valkyrie.ArmWheels.set(RobotValues.ArmWheels_Out);
+		Valkyrie.Pickup.setRollers(RobotValues.ArmWheels_Out);
 	}
 
 	protected void initialize() {

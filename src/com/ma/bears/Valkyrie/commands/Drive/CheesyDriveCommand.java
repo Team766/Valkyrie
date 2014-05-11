@@ -18,6 +18,7 @@ public class CheesyDriveCommand extends Command {
   private double wheelDeadband = 0.02;
 
   public CheesyDriveCommand() {
+	  requires(Valkyrie.Drive);
   }
 
   protected void initialize() {
@@ -143,9 +144,9 @@ public class CheesyDriveCommand extends Command {
     }
 
     //drive.setLeftRightPower(leftPwm, rightPwm);
-    Valkyrie.leftDrive.set(leftPwm);
-    Valkyrie.rightDrive.set(rightPwm);
-    Valkyrie.Shifter.set(!isHighGear);
+    Valkyrie.Drive.setLeftSpeed(leftPwm);
+    Valkyrie.Drive.setRightSpeed(rightPwm);
+    Valkyrie.Drive.setShifter(isHighGear);
   }
 
   protected boolean isFinished() {

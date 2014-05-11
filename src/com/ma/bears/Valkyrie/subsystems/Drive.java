@@ -46,6 +46,9 @@ public class Drive extends Subsystem{
 	public void setRightSpeed(double speed){
 		rightDrive.set(speed);
 	}
+	public void setShifter(boolean highGear){
+		Shifter.set(!highGear);
+	}
 	
     public float translateDrive(float trans){
 		double wheel_d = 0.0899;

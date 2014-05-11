@@ -27,11 +27,11 @@ public class GripsOffCommand extends Command{
 	}	
 
 	protected void end() {
-		Valkyrie.BallGuard.set(true);
+		Valkyrie.Pickup.setGrippers(true);
 	}
 
 	protected void execute() {
-		Valkyrie.BallGuard.set(false);
+		Valkyrie.Pickup.setGrippers(false);
 	}
 	
 	protected void initialize() {

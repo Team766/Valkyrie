@@ -26,11 +26,11 @@ public class ArmDownCommand extends Command{
 	}	
 
 	protected void end() {
-		Valkyrie.Arm.set(false);
+		Valkyrie.Pickup.setArmDown(false);
 	}
 	
 	protected void execute() {
-		Valkyrie.Arm.set(true);
+		Valkyrie.Pickup.setArmDown(true);
 	}
 
 	protected void initialize() {

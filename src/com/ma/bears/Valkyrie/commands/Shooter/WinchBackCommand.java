@@ -17,30 +17,30 @@ import edu.wpi.first.wpilibj.command.Command;
 */
 
 public class WinchBackCommand extends Command{
+	
+	public WinchBackCommand(){
+		requires(Valkyrie.Shooter);
+	}
 
 	protected void end() {
-		Valkyrie.Winch.set(0);
+		Valkyrie.Shooter.setWinch(0);
 	}
 
 	protected void execute() {
-		Valkyrie.WinchPist.set(false);
-		Valkyrie.Winch.set(RobotValues.WinchSpeed);
-		
+		Valkyrie.Shooter.setWinchPist(false);
+		Valkyrie.Shooter.setWinch(RobotValues.WinchSpeed);
 	}
 
 	protected void initialize() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	protected void interrupted() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return !Valkyrie.LauncherBotm.get() || Valkyrie.jBox.getRawButton(Buttons.ShootCancel);
+		return !Valkyrie.Shooter.getShooterDown() || Valkyrie.buttonCancel.get();
 	}
 
 }

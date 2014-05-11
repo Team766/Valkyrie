@@ -23,14 +23,13 @@ public class ReleaseShooterCommand extends Command{
 	}
 
 	protected void end() {
-            //After Fire Rewinch
-            Valkyrie.WinchPist.set(false);
-            Valkyrie.BallGuard.set(true);
+		Valkyrie.Shooter.setWinchPist(false);
+		Valkyrie.Pickup.setGrippers(true);
 	}
 
 	protected void execute() {
-		Valkyrie.WinchPist.set(true);		
-		Valkyrie.BallGuard.set(false);
+		Valkyrie.Shooter.setWinchPist(true);		
+		Valkyrie.Pickup.setGrippers(false);
 	}
 	
 	protected void interrupted() {

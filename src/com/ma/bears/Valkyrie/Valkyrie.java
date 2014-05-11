@@ -60,11 +60,7 @@ public class Valkyrie extends IterativeRobot {
     CheesyVisionServer server = CheesyVisionServer.getInstance();
     public final int listenPort = 1180;
     
-    public static Joystick jLeft = new Joystick(1);
-    public static Joystick jRight = new Joystick(2);
-    public static Joystick jBox = new Joystick(3);
-    
-    public static final Talon leftDrive = new Talon(Ports.PWM_Left_Drive);
+  /*  public static final Talon leftDrive = new Talon(Ports.PWM_Left_Drive);
     public static final Talon rightDrive = new Talon(Ports.PWM_Right_Drive);
     public static final Jaguar Winch = new Jaguar(Ports.PWM_Winch);
     public static final Talon ArmWheels = new Talon(Ports.PWM_ArmWheels);
@@ -72,18 +68,23 @@ public class Valkyrie extends IterativeRobot {
     public static final Relay Compr = new Relay(Ports.Relay_Compr);
     
     public static final DigitalInput Pressure = new DigitalInput(Ports.DIO_Pressure);
-    public static final DigitalInput LauncherBotm = new DigitalInput(Ports.DIO_LauncherBotm);
+    public static final DigitalInput LauncherBotm = new DigitalInput(Ports.DIO_LauncherBotm); 
     
     public static final Solenoid 
     Shifter = new Solenoid(Ports.Sol_Shifter),
     WinchPist = new Solenoid(Ports.Sol_WinchPist),
     Arm = new Solenoid(Ports.Sol_Arm),
     BallGuard = new Solenoid(Ports.Sol_BallGuard),
-    Ejector = new Solenoid(Ports.Sol_Ejector);
+    Ejector = new Solenoid(Ports.Sol_Ejector);  */
     
     
-    //declare joystick buttons as Buttons instead of reading them raw
-    //not always used yet - useful for running things with commands
+   
+    //make all OI components public
+    public static final Joystick
+    jLeft = new Joystick(1),
+    jRight = new Joystick(2),
+    jBox = new Joystick(3);
+    
     public static final Button  
     //button name = new JoystickButton(joystick, button number),        
     buttonShifter = new JoystickButton(jLeft, Buttons.Shifter),
@@ -167,7 +168,7 @@ public class Valkyrie extends IterativeRobot {
     public void teleopPeriodic(){
         
         //Tank drive input
-        double LeftDriveC = -jLeft.getRawAxis(2);
+      /*  double LeftDriveC = -jLeft.getRawAxis(2);
         double RightDriveC = jRight.getRawAxis(2);
         
         boolean ShifterC = (jLeft.getRawButton(Buttons.Shifter));
@@ -181,12 +182,12 @@ public class Valkyrie extends IterativeRobot {
         }
         leftDrive.set(LeftDriveC);
         rightDrive.set(RightDriveC);
-        Shifter.set(!ShifterC);
+        Shifter.set(!ShifterC);*/
 			
         //Winch
         //Press button to pull down winch on shooter
         //Press separate button to launch
-        boolean ShooterWinchOnC = jBox.getRawButton(Buttons.WinchOn);
+        /*boolean ShooterWinchOnC = jBox.getRawButton(Buttons.WinchOn);
         boolean ShooterLaunchC = (jBox.getRawButton(Buttons.Shoot) || jRight.getRawButton(Buttons.DriverShoot));
         
         boolean ShooterLoaded = !LauncherBotm.get();
@@ -199,14 +200,14 @@ public class Valkyrie extends IterativeRobot {
         //ball grippers default to on, but by code
         //this way on, off works properly by commands with true, false
         //but we want them default on to hold ball more reliably
-        boolean BallGuardC = true;
+        boolean BallGuardC = true;*/
         
         /*if (jBox.getRawAxis(4) < 0 && !ShooterLaunchC){
         	BallGuardC = false;
         }*/
         
         
-        boolean EjectorC = jBox.getRawButton(Buttons.Ejector);
+       /* boolean EjectorC = jBox.getRawButton(Buttons.Ejector);
         boolean ArmC = jBox.getRawButton(Buttons.Arm);
         boolean PickupC = (jBox.getRawButton(Buttons.Pickup) || jRight.getRawButton(Buttons.DriverPickup));
         boolean InboundC = jBox.getRawButton(Buttons.Inbound);
@@ -238,18 +239,14 @@ public class Valkyrie extends IterativeRobot {
         Arm.set(ArmC);
         ArmWheels.set(ArmWheelsC);
         BallGuard.set(BallGuardC);
-        Ejector.set(EjectorC);
+        Ejector.set(EjectorC); */
         
-        /*
-         * attempts at automatic commands here
-         * commented out at the moment for testing later
-         * 
-        */
-        
-        //CheesyDrive - from Team 254
-        
-/*      
-        new CheesyDriveCommand();
+        /*//compressor
+        Compr.set(Pressure.get()? Relay.Value.kOff : Relay.Value.kForward);*/
+    	
+    	//Command stuff here:
+    	
+        new CheesyDriveCommand().start(); //from Team 254
         buttonShoot.whenPressed(new ShootCommand());
         //buttonCancel.cancelWhenPressed(new ShootCommand());  //not really sure how this works?
 
@@ -260,10 +257,9 @@ public class Valkyrie extends IterativeRobot {
         
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
-        buttonInbound.whileHeld(new InboundCommand()); */
+        buttonInbound.whileHeld(new InboundCommand()); 
         
-        //compressor
-        Compr.set(Pressure.get()? Relay.Value.kOff : Relay.Value.kForward);
+        Compressor.update();
 
         Scheduler.getInstance().run(); //update commands
         Watchdog.getInstance().feed(); //very hungry
