@@ -19,10 +19,13 @@ import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
  */
 public class OneBallStay extends CommandGroup {
     
-    public OneBallStay(double distance) {
+    public OneBallStay(double distance, boolean cross) {
     	addParallel(new GripsOffCommand());
     	addParallel(new WinchBackCommand());
     	addSequential(new DriveForwardCommand(distance));  //Fix, Add PID Control
     	addSequential(new ShootCommand());
+        if (cross){
+            addSequential(new DriveForwardCommand(-2.0));
+        }
     }
 }

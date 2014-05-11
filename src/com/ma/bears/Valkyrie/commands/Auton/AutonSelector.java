@@ -4,7 +4,6 @@ import com.ma.bears.Valkyrie.Valkyrie;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import com.ma.bears.Valkyrie.Buttons;
-import com.ma.bears.Valkyrie.commands.Auton.OneBallStay;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 
 /**
@@ -19,7 +18,7 @@ public class AutonSelector extends CommandGroup {
 		if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Horizontal) < 0){
 			//One Ball Stay Auton
 			System.out.println("One Ball Stay Auton");
-			new OneBallStay(0.0);
+                        addSequential(new OneBallStay(0.0, true));
 		}
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Verticle) > 0){
 			//Two Ball Auton
@@ -28,12 +27,12 @@ public class AutonSelector extends CommandGroup {
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Horizontal) > 0){
 			//Drive Forward Auton
 			System.out.println("Drive Forward Auton");
-			new DriveForwardCommand(-2.0);
+			addSequential(new DriveForwardCommand(-2.0));
 		}
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Verticle) < 0){
 			//One Ball Move Auton
 			System.out.println("One Ball Move Auton");
-			new OneBallStay(-2.6);
+			addSequential(new OneBallStay(-2.6, false));
 		}
 	}
 }

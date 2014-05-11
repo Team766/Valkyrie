@@ -137,7 +137,7 @@ public class Valkyrie extends IterativeRobot {
     public void autonomous() {
         while(isAutonomous() && isEnabled()){
             if(jBox.getRawButton(Buttons.AutonSwitch)){
-            	new AutonSelector();
+            	new AutonSelector().start();
             	/*
             	if(server.getLeftCount() > 5){
             		System.out.println("Left Hand Auton");

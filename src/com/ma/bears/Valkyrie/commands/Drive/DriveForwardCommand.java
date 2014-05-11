@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 /**
  * Command to move forward a preset distance.
  *
@@ -49,12 +50,7 @@ public class DriveForwardCommand extends Command {
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
             Valkyrie.leftDrive.set(-drive_power);
             Valkyrie.rightDrive.set(drive_power);
-            try {
-            	wait((long) 0.02);
-            } catch (InterruptedException e) {
-            	System.out.println("Drive forward interrupted");
-            	done = true;
-            }
+            new WaitCommand(0.02).start();
             System.out.println("error " + error + " drive_power " + drive_power + " ld " + drive.getLeftDistance() + " rd " + drive.getRightDistance() + "\n");
             last_error = error;
             // If at 0 +- tolerance, stop driving
