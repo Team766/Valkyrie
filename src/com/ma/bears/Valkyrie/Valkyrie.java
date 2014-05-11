@@ -20,6 +20,7 @@ import com.ma.bears.Valkyrie.subsystems.Compressor;
 import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.subsystems.Shooter;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
+import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -34,7 +35,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
-import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Java code for 2014 robot. Mainly a test
@@ -53,7 +53,7 @@ import edu.wpi.first.wpilibj.Encoder;
  * Auton stuff - including CheesyVision
  * 
  * @author Nicky Ivy nickivyca@gmail.com
- * @author Brett Levenson
+ * @author Brett Levenson blevenson68@gmail.com
  */
 public class Valkyrie extends IterativeRobot {
     
@@ -101,7 +101,8 @@ public class Valkyrie extends IterativeRobot {
     buttonArmDown = new JoystickButton(jBox, Buttons.Arm),
     		
     buttonAutoShoot = new JoystickButton(jBox, Buttons.AutoShoot),
-    buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel);
+    buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel),
+    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch);
     
     public static Pickup Pickup = new Pickup();
     public static Compressor Compressor = new Compressor();
@@ -135,20 +136,25 @@ public class Valkyrie extends IterativeRobot {
      */
     public void autonomous() {
         while(isAutonomous() && isEnabled()){
-            if(server.getLeftCount() > 5){
-                System.out.println("Left Hand Auton");
+            if(jBox.getRawButton(Buttons.AutonSwitch)){
+            	new AutonSelector();
+            	/*
+            	if(server.getLeftCount() > 5){
+            		System.out.println("Left Hand Auton");
+            	}
+            	else if(server.getRightCount() > 5){
+            		System.out.println("Right Hand Auton");
+            	}
+            	//new OneBallStay(0.0);
+            	//Goalie Pole Stuff
+            	if(server.getLeftStatus()){
+                	//Move Backwards
+            	} 
+            	if(server.getRightStatus()){
+                	//Move Forwards
+            	}
+            	*/
             }
-            else if(server.getRightCount() > 5){
-                System.out.println("Right Hand Auton");
-            }   
-            //Goalie Pole Stuff
-            /*if(server.getLeftStatus()){
-                //Move Backwards
-            } 
-            if(server.getRightStatus()){
-                //Move Forwards
-            }
-            */
         }
     }
 

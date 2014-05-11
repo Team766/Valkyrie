@@ -11,7 +11,7 @@ import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
 /**
- * Brett put a description here
+ * Command to move forward a preset distance.
  *
  * @author Blevenson
  */

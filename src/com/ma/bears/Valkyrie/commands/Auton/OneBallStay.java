@@ -8,7 +8,7 @@ package com.ma.bears.Valkyrie.commands.Auton;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
-import com.ma.bears.Valkyrie.commands.Arm.GripsOnCommand;
+import com.ma.bears.Valkyrie.commands.Arm.GripsOffCommand;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 
@@ -20,6 +20,7 @@ import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 public class OneBallStay extends CommandGroup {
     
     public OneBallStay(double distance) {
+    	addParallel(new GripsOffCommand());
     	addParallel(new WinchBackCommand());
     	addSequential(new DriveForwardCommand(distance));  //Fix, Add PID Control
     	addSequential(new ShootCommand());
