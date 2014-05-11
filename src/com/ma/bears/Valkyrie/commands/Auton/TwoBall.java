@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
-import com.ma.bears.Valkyrie.commands.Arm.GripsOnCommand;
-import com.ma.bears.Valkyrie.commands.Arm.GripsOffCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
 
 /**
@@ -19,16 +17,14 @@ import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
  */
 public class TwoBall extends CommandGroup {
     
-    public TwoBall() {
-        addParallel(new WinchBackCommand());
-        addParallel(new GripsOffCommand());
+    public TwoBall(double pickuptime, double drivedistance, double waitforshoot) {
+        addSequential(new WinchBackCommand());
         addSequential(new ShootCommand());
         addSequential(new WaitCommand(0.05));
-        addSequential(new PickupCommand());
-        addParallel(new GripsOnCommand());
-        addSequential(new DriveForwardCommand(-1.2));
-        addParallel(new GripsOffCommand());
-        addSequential(new WaitCommand(2.0));
+        addSequential(new PickupCommand(pickuptime));
+        addSequential(new DriveForwardCommand(-drivedistance));
+        addSequential(new WaitCommand(waitforshoot));
         addSequential(new ShootCommand());
+        
     }
 }

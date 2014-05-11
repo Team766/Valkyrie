@@ -15,4 +15,9 @@ public class PickupCommand extends CommandGroup{
 		addParallel(new ArmDownCommand());
 		addParallel(new GripsOffCommand());
 	}
+	public PickupCommand(double time){ 
+		addParallel(new RollerInCommand(time));
+		addParallel(new ArmDownCommand(time));
+		addParallel(new GripsOffCommand(time));
+	}
 }

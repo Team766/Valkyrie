@@ -23,6 +23,7 @@ public class AutonSelector extends CommandGroup {
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Vertical) > 0){
 			//Two Ball Auton
 			System.out.println("Two Ball Auton");
+			addSequential(new TwoBall(1.0, 1.2, 2.0));
 		}
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Horizontal) > 0){
 			//Drive Forward Auton
