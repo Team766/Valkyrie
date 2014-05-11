@@ -20,7 +20,7 @@ public class AutonSelector extends CommandGroup {
 			System.out.println("One Ball Stay Auton");
                         addSequential(new OneBallStay(0.0, true));
 		}
-		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Verticle) > 0){
+		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Vertical) > 0){
 			//Two Ball Auton
 			System.out.println("Two Ball Auton");
 		}
@@ -29,7 +29,7 @@ public class AutonSelector extends CommandGroup {
 			System.out.println("Drive Forward Auton");
 			addSequential(new DriveForwardCommand(-2.0));
 		}
-		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Verticle) < 0){
+		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Vertical) < 0){
 			//One Ball Move Auton
 			System.out.println("One Ball Move Auton");
 			addSequential(new OneBallStay(-2.6, false));
