@@ -7,7 +7,6 @@ package com.ma.bears.Valkyrie.commands.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
