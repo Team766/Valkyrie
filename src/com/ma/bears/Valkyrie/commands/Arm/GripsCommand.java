@@ -12,26 +12,18 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 
 public class GripsCommand extends Command{
-	private static boolean isOn;
-	private static boolean wantOn;
-	public GripsCommand(boolean status, boolean turnOn){
-		isOn = status;
-		wantOn = turnOn;
+	private boolean whileRunning;
+	private boolean afterRun;
+	public GripsCommand(boolean during, boolean after){
+		whileRunning = during;
+		afterRun = after;
 	}	
 	protected void end() {
-		if(isOn){
-			Valkyrie.Pickup.setGrippers(false);
-		}else if(!isOn && wantOn){  //wantOn so they arn't left on all the time
-			Valkyrie.Pickup.setGrippers(true);
-		}
+		Valkyrie.Pickup.setArmDown(afterRun);
 	}
 
 	protected void execute() {
-		if(isOn){
-			Valkyrie.Pickup.setGrippers(true);
-		}else if(!isOn){
-			Valkyrie.Pickup.setGrippers(false);
-		}
+		Valkyrie.Pickup.setGrippers(whileRunning);
 	}
 
 	protected void initialize() {}

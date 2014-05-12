@@ -15,6 +15,6 @@ public class EjectCommand extends CommandGroup{
 	public EjectCommand(){
 		addParallel(new RollerOutCommand());
 		addParallel(new EjectorOutCommand());
-		addParallel(new GripsCommand(false, false));
+		addParallel(new GripsCommand(false, true));
 	}
 }

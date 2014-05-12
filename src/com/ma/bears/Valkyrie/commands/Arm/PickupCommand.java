@@ -13,7 +13,7 @@ public class PickupCommand extends CommandGroup{
 	public PickupCommand(){
 		addParallel(new RollerInCommand());
 		addParallel(new ArmDownCommand());
-		addParallel(new GripsCommand(false, false));
+		addParallel(new GripsCommand(false, true));
 	}
 	public PickupCommand(double time){ 
 		addParallel(new RollerInCommand(time));
