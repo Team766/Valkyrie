@@ -9,19 +9,19 @@ import edu.wpi.first.wpilibj.command.Command;
  * Turns grips off.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
- * 
+ * @author Brett Levenson
  */
 
-public class GripsOffCommand extends Command{
+public class GripsTimedOffCommand extends Command{
 
 	private double timeout = 0.0;
 	private boolean timed = false;
 	private Timer t;
 	
-	public GripsOffCommand(){
+	public GripsTimedOffCommand(){
 	}
 	
-	public GripsOffCommand(double time){
+	public GripsTimedOffCommand(double time){
 		timeout = time;
 		timed = true;
 	}	

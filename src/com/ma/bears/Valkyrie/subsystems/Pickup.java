@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * and hold ball.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
  *
  */
 

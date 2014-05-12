@@ -13,6 +13,6 @@ public class InboundCommand extends CommandGroup{
 	public InboundCommand(){
 		addParallel(new RollerOutCommand());
 		addParallel(new ArmDownCommand());
-		addParallel(new GripsOffCommand());
+		addParallel(new GripsCommand(false, false));
 	}
 }
