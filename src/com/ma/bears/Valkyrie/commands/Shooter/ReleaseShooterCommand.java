@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * and waits.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Blevenson
  */
 
 public class ReleaseShooterCommand extends Command{
@@ -28,8 +29,8 @@ public class ReleaseShooterCommand extends Command{
 	}
 
 	protected void execute() {
-		Valkyrie.Shooter.setWinchPist(true);		
 		Valkyrie.Pickup.setGrippers(false);
+		Valkyrie.Shooter.setWinchPist(true);		
 	}
 	
 	protected void interrupted() {

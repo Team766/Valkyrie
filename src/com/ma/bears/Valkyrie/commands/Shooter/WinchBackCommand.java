@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * on OI is hit.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Blevenson
 */
 
 public class WinchBackCommand extends Command{
@@ -40,7 +41,9 @@ public class WinchBackCommand extends Command{
 	}
 
 	protected boolean isFinished() {
-		return !Valkyrie.Shooter.getShooterDown() || Valkyrie.buttonCancel.get();
+		return Valkyrie.Shooter.getShooterDown() || Valkyrie.buttonCancel.get();
+		//  Not inverting the limit switch here because it is already done when the
+		//  getShooterDown function is initialize
 	}
 
 }
