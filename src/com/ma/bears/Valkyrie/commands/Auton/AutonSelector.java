@@ -18,7 +18,7 @@ public class AutonSelector extends CommandGroup {
 		if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Horizontal) < 0){
 			//One Ball Stay Auton
 			System.out.println("One Ball Stay Auton");
-                        addSequential(new OneBallStay(0.0, true));
+            addSequential(new OneBallStay(0.0, true));
 		}
 		else if(Valkyrie.jBox.getRawAxis(Buttons.Axis_Vertical) > 0){
 			//Two Ball Auton

@@ -8,6 +8,7 @@ package com.ma.bears.Valkyrie.commands.Shooter;
  */
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 
 public class ShootCommand extends CommandGroup {
 
@@ -17,6 +18,7 @@ public class ShootCommand extends CommandGroup {
 	
 	public ShootCommand(){
 		addSequential(new ReleaseShooterCommand());
+		addSequential(new WaitCommand(0.75));
 		addSequential(new WinchBackCommand());
 	}
 }

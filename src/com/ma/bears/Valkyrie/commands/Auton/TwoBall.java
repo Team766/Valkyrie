@@ -12,7 +12,9 @@ import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
 
 /**
- *
+ * This is the two ball auton command.  Unlike the Kevin, team 766 has a working two
+ * ball auton, not just one.
+ * 
  * @author Blevenson
  */
 public class TwoBall extends CommandGroup {

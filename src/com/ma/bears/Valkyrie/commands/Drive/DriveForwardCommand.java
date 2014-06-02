@@ -43,7 +43,7 @@ public class DriveForwardCommand extends Command {
 	//Move forward 24 inches
 	//const double kDriveDistance = dash->GetNumber("DriveDistance1Ball");
 	//const double Kp = 10.0; //proportional constant  Real Number in robotvalues
-	//const double Kd = 0.8;  //derivative constant           "   "
+	//const double Kd = 0.8;  //derivative constant    Real Number in robotvalues
 	// Kp, Kd from RobotValues.h
 	if(!done) {
             final double error = kDriveDistance - (Valkyrie.Drive.getLeftDistance() + Valkyrie.Drive.getRightDistance()) / 2.0;

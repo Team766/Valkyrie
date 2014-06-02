@@ -6,8 +6,12 @@ package com.ma.bears.Valkyrie;
  * quickly without sorting through code.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Blevenson
  */
 public class RobotValues {
+	
+	//Make all distances forward negative and backwards positive
+	
     public static final double ArmWheels_In = 1;
     public static final double ArmWheels_Out = -1;
     public static final double WinchSpeed = -0.9;
@@ -21,4 +25,7 @@ public class RobotValues {
     public static final double Kp = 10.0;
     public static final double Kd = 0.8;
     public static final double driveTolerance = .01;
+    
+    //Auton
+    public static final double crossDistance = -2.0;
 }

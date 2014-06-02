@@ -11,6 +11,7 @@ import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
+import com.ma.bears.Valkyrie.RobotValues;
 
 /**
  * Brett put a description here
@@ -22,10 +23,10 @@ public class OneBallStay extends CommandGroup {
     public OneBallStay(double distance, boolean cross) {
     	addParallel(new GripsTimedOffCommand(0.01)); //to switch on the grips at the beginning of auton
     	addSequential(new WinchBackCommand());
-    	addSequential(new DriveForwardCommand(distance));  //Fix, Add PID Control
+    	addSequential(new DriveForwardCommand(distance));
     	addSequential(new ShootCommand());
         if (cross){
-            addSequential(new DriveForwardCommand(-2.0));  //make this parameter?
+            addSequential(new DriveForwardCommand(RobotValues.crossDistance));
         }
     }
 }

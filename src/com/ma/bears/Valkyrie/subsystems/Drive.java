@@ -6,7 +6,6 @@
 package com.ma.bears.Valkyrie.subsystems;
 
 import com.ma.bears.Valkyrie.Ports;
-import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -39,7 +38,6 @@ public class Drive extends Subsystem{
 		leftDrive.set(-speed);
 		rightDrive.set(speed);
 	}
-	
 	public void setLeftSpeed(double speed){
 		leftDrive.set(speed);
 	}

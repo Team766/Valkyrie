@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * is full, turn it off.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
- *
+ * @author Blevenson
+ *x
  */
 
 public class Compressor extends Subsystem{

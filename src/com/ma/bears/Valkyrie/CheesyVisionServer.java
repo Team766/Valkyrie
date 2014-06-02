@@ -111,15 +111,15 @@ public class CheesyVisionServer implements Runnable {
       try {
         InputStream is = connection.openInputStream();
 
-        int ch = 0;
+//        int ch = 0;
         byte[] b = new byte[1024];
         double timeout = 10.0;
         double lastHeartbeat = Timer.getFPGATimestamp();
         CheesyVisionServer.this.lastHeartbeatTime_ = lastHeartbeat;
         while (Timer.getFPGATimestamp() < lastHeartbeat + timeout) {
-          boolean gotData = false;
+//          boolean gotData = false;
           while (is.available() > 0) {
-            gotData = true;
+//            gotData = true;
             int read = is.read(b);
             for (int i = 0; i < read; ++i) {
               byte reading = b[i];
