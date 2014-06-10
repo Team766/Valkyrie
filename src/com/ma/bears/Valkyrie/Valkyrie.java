@@ -141,7 +141,7 @@ public class Valkyrie extends IterativeRobot {
         while(isAutonomous() && isEnabled()){
             if(jBox.getRawButton(Buttons.AutonSwitch)){
             	new AutonSelector().start();
-            	/*
+            	
             	if(server.getLeftCount() > 5){
             		System.out.println("Left Hand Auton");
             	}
@@ -150,6 +150,7 @@ public class Valkyrie extends IterativeRobot {
             	}
             	//new OneBallStay(0.0);
             	//Goalie Pole Stuff
+                /*
             	if(server.getLeftStatus()){
                 	//Move Backwards
             	} 
