@@ -115,6 +115,7 @@ public class Valkyrie extends IterativeRobot {
     public void robotInit(){
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
+        SmartDashboard.putBoolean("Cheesy Drive", true);
     	DriverStationLCD lcd = DriverStationLCD.getInstance();
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "test");
         server.setPort(listenPort);
@@ -248,8 +249,13 @@ public class Valkyrie extends IterativeRobot {
         Compr.set(Pressure.get()? Relay.Value.kOff : Relay.Value.kForward);*/
     	
     	//Command stuff here:
-    	
-        new CheesyDriveCommand().start(); //from Team 254
+    	if(SmartDashboard.getBoolean("Cheesy Drive")){
+            new CheesyDriveCommand().start(); //from Team 254
+        }
+        else if(SmartDashboard.getBoolean("Cheesy Drive")){
+            Valkyrie.Drive.setRightSpeed(-jRight.getY());
+            Valkyrie.Drive.setLeftSpeed(jLeft.getY());
+        }
         buttonShoot.whenPressed(new ShootCommand());
         //buttonCancel.cancelWhenPressed(new ShootCommand());  //not really sure how this works?
 
