@@ -14,13 +14,13 @@ public abstract class CommandBase extends Command{
     public static Pickup Pickup = new Pickup();
     //public static Compressor Compressor = new Compressor();
     public static Drive Drive = new Drive();
-    public static Shooter Shooter = new Shooter(); 
+    public static Shooter Shooter = new Shooter();
     public static OI OI = new OI();
 
-    //public static Compressor Compr = new Compressor(Ports.DIO_Pressure, Ports.Relay_Compr);
+    public static Compressor Compr = new Compressor(Ports.DIO_Pressure, Ports.Relay_Compr);
     
     public static void init(){
-    	//Compr.start();    	
+    	Compr.start();
     }
 
 }
