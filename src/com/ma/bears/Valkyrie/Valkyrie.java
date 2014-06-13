@@ -8,31 +8,12 @@
 package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
-import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
-import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
-import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
-import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
-import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
-import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
-import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
-import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
-import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Relay;
-/*
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Solenoid;
-*/
 import edu.wpi.first.wpilibj.Watchdog;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 
@@ -41,16 +22,10 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * and proof of concept to see how well Java
  * works for programming the robot.
  * 
- * Currently drives with a tank system.
- * CheesyDrive may be implemented later.
- * 
- * Command-based things are commented out
- * for now. This means the shooter is
- * manually pulled back by a button.
+ * Currently drives with a CheesyDrive system.
  * 
  * TODO:
- * Subsystems - full implementation
- * Auton stuff - including CheesyVision
+ * Testing with robot on floor.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -67,8 +42,6 @@ public class Valkyrie extends IterativeRobot {
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
         SmartDashboard.putBoolean("Cheesy Drive", true);
-    	DriverStationLCD lcd = DriverStationLCD.getInstance();
-    	lcd.println(DriverStationLCD.Line.kUser1, 1, "test");
     	SmartDashboard.putString("test", "testing");
     	//DriverStationLCD lcd = DriverStationLCD.getInstance();
     	//lcd.println(DriverStationLCD.Line.kUser2, 1, "test");

@@ -25,7 +25,6 @@ public class OI {
     buttonDriverPickup = new JoystickButton(jRight, Buttons.DriverPickup),
     buttonDriverShoot = new JoystickButton(jRight, Buttons.DriverShoot),
     buttonShoot = new JoystickButton(jBox, Buttons.Shoot),
-    buttonWinchOn = new JoystickButton(jBox, Buttons.WinchOn),
     buttonRollerIn = new JoystickButton(jBox, Buttons.RollerIn),
     buttonRollerOut = new JoystickButton(jBox, Buttons.RollerOut),
     buttonPickup = new JoystickButton(jBox, Buttons.Pickup),
@@ -39,7 +38,7 @@ public class OI {
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);
-        buttonCancel.cancelWhenPressed(shoot);  //not really sure how this works?
+        buttonCancel.cancelWhenPressed(shoot);
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
