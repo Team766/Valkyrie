@@ -2,6 +2,7 @@ package com.ma.bears.Valkyrie.commands.Drive;
 
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,16 +10,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Controls the robot drive train using the standard Team 254 scheme.
  *
+ *(modified a bit for use of Team 766)
  * @author richard@team254.com (Richard Lin)
+ * 
  */
-public class CheesyDriveCommand extends Command {
+public class CheesyDriveCommand extends CommandBase {
   private double oldWheel = 0.0;
   private double quickStopAccumulator;
   private double throttleDeadband = 0.02;
   private double wheelDeadband = 0.02;
 
   public CheesyDriveCommand() {
-	  requires(Valkyrie.Drive);
+	  requires(Drive);
   }
 
   protected void initialize() {
@@ -29,13 +32,13 @@ public class CheesyDriveCommand extends Command {
     if (DriverStation.getInstance().isAutonomous()) {
       return;
     }
-    boolean isQuickTurn = Valkyrie.buttonQuickTurn.get();
-    boolean isHighGear = Valkyrie.buttonShifter.get();
+    boolean isQuickTurn = OI.buttonQuickTurn.get();
+    boolean isHighGear = OI.buttonShifter.get();
 
     double wheelNonLinearity;
 
-    double wheel = handleDeadband(Valkyrie.jRight.getX(), wheelDeadband);
-    double throttle = -handleDeadband(Valkyrie.jLeft.getY(), throttleDeadband);
+    double wheel = handleDeadband(OI.jRight.getX(), wheelDeadband);
+    double throttle = -handleDeadband(OI.jLeft.getY(), throttleDeadband);
 
     double negInertia = wheel - oldWheel;
     oldWheel = wheel;
@@ -144,9 +147,9 @@ public class CheesyDriveCommand extends Command {
     }
 
     //drive.setLeftRightPower(leftPwm, rightPwm);
-    Valkyrie.Drive.setLeftSpeed(leftPwm);
-    Valkyrie.Drive.setRightSpeed(rightPwm);
-    Valkyrie.Drive.setShifter(isHighGear);
+    Drive.setLeftSpeed(leftPwm);
+    Drive.setRightSpeed(rightPwm);
+    Drive.setShifter(isHighGear);
   }
 
   protected boolean isFinished() {

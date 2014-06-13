@@ -2,7 +2,7 @@ package com.ma.bears.Valkyrie.commands.Shooter;
 
 /**
  * Releases grips and shoots, waits,
- * wniches back.
+ * winches back.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  */

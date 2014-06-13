@@ -1,4 +1,4 @@
-MIDlet-Name: RobotTemplate
+MIDlet-Name: Valkyrie
 MIDlet-Version: 1.0.0
 MIDlet-Vendor: FIRST
 MIDlet-1: Valkyrie, , com.ma.bears.Valkyrie.Valkyrie

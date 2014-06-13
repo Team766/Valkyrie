@@ -25,7 +25,6 @@ public class Shooter extends Subsystem{
 	private DigitalInput LauncherBotm = new DigitalInput(Ports.DIO_LauncherBotm);
 
 	public Shooter(){
-		super();
 	}
 	protected void initDefaultCommand() {
 	}

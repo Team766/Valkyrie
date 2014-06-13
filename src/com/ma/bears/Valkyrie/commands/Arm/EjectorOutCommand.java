@@ -9,24 +9,28 @@ import com.ma.bears.Valkyrie.Valkyrie;
  * 
  */
 
+import com.ma.bears.Valkyrie.commands.CommandBase;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class EjectorOutCommand extends Command{
+public class EjectorOutCommand extends CommandBase{
 	
 	public EjectorOutCommand(){
 	}
 	
 	protected void end() {
-		Valkyrie.Pickup.setEjector(false);
+		Pickup.setEjector(false);
 	}
 
 	protected void execute() {
-		Valkyrie.Pickup.setEjector(true);
+		Pickup.setEjector(true);
 	}
 
 	protected void initialize() {}
 
-	protected void interrupted() {}
+	protected void interrupted() {
+		end();
+	}
 
 	protected boolean isFinished() {
 		return false;

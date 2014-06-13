@@ -9,13 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 /**
  * Command to move forward a preset distance.
  *
  * @author Blevenson
  */
-public class DriveForwardCommand extends Command {
+public class DriveForwardCommand extends CommandBase {
     private boolean done = false; 
     private double kDriveDistance;
 	double last_error = 0.0;
@@ -33,7 +34,7 @@ public class DriveForwardCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         //Resetting everything
-    	Valkyrie.Drive.resetEncoders();
+    	Drive.resetEncoders();
     	done = false;
     	last_error = 0.0;
     }
@@ -46,12 +47,12 @@ public class DriveForwardCommand extends Command {
 	//const double Kd = 0.8;  //derivative constant    Real Number in robotvalues
 	// Kp, Kd from RobotValues.h
 	if(!done) {
-            final double error = kDriveDistance - (Valkyrie.Drive.getLeftDistance() + Valkyrie.Drive.getRightDistance()) / 2.0;
+            final double error = kDriveDistance - (Drive.getLeftDistance() + Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
-            Valkyrie.Drive.setLeftSpeed(-drive_power);
-            Valkyrie.Drive.setRightSpeed(drive_power);
+            Drive.setLeftSpeed(-drive_power);
+            Drive.setRightSpeed(drive_power);
             new WaitCommand(0.02).start();
-            System.out.println("error " + error + " drive_power " + drive_power + " ld " + Valkyrie.Drive.getLeftDistance() + " rd " + Valkyrie.Drive.getRightDistance() + "\n");
+            System.out.println("error " + error + " drive_power " + drive_power + " ld " + Drive.getLeftDistance() + " rd " + Drive.getRightDistance() + "\n");
             last_error = error;
             // If at 0 +- tolerance, stop driving
             if (Math.abs(error) <= (0 + RobotValues.driveTolerance)){
@@ -69,8 +70,8 @@ public class DriveForwardCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Valkyrie.Drive.setLeftSpeed(0.0);  //use function in drive subsystem
-        Valkyrie.Drive.setRightSpeed(0.0);
+        Drive.setLeftSpeed(0.0);  //use function in drive subsystem
+        Drive.setRightSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

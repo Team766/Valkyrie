@@ -4,6 +4,7 @@ package com.ma.bears.Valkyrie.commands.Shooter;
 //import com.ma.bears.Valkyrie.Buttons;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,19 +18,19 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Blevenson
 */
 
-public class WinchBackCommand extends Command{
+public class WinchBackCommand extends CommandBase{
 	
 	public WinchBackCommand(){
-		requires(Valkyrie.Shooter);
+		requires(Shooter);
 	}
 
 	protected void end() {
-		Valkyrie.Shooter.setWinch(0);
+		Shooter.setWinch(0);
 	}
 
 	protected void execute() {
-		Valkyrie.Shooter.setWinchPist(false);
-		Valkyrie.Shooter.setWinch(RobotValues.WinchSpeed);
+		Shooter.setWinchPist(false);
+		Shooter.setWinch(RobotValues.WinchSpeed);
 	}
 
 	protected void initialize() {
@@ -37,11 +38,11 @@ public class WinchBackCommand extends Command{
 	}
 
 	protected void interrupted() {
-		
+		end();
 	}
 
 	protected boolean isFinished() {
-		return Valkyrie.Shooter.getShooterDown() || Valkyrie.buttonCancel.get();
+		return Shooter.getShooterDown()/* || Valkyrie.buttonCancel.get()*/;
 		//  Not inverting the limit switch here because it is already done when the
 		//  getShooterDown function is initialize
 	}
