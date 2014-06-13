@@ -5,13 +5,16 @@
  */
 package com.ma.bears.Valkyrie.subsystems;
 
+import com.ma.bears.Valkyrie.OI;
 import com.ma.bears.Valkyrie.Ports;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
+import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Drive subsystem.
@@ -32,12 +35,11 @@ public class Drive extends Subsystem{
     private final Solenoid Shifter = new Solenoid(Ports.Sol_Shifter);
     
 	protected void initDefaultCommand() {
-		setDefaultCommand(new CheesyDriveCommand());
 	}
 	
 	public void drive(double speed){
-		leftDrive.set(-speed);
-		rightDrive.set(speed);
+		setLeftSpeed(speed);
+		setRightSpeed(speed);
 	}
 	public void setLeftSpeed(double speed){
 		leftDrive.set(-speed);

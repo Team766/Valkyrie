@@ -9,6 +9,8 @@ package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
+import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
+import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -41,7 +43,7 @@ public class Valkyrie extends IterativeRobot {
     public void robotInit(){
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
-        SmartDashboard.putBoolean("Cheesy Drive", true);
+        SmartDashboard.putBoolean("Tank Drive", false);
     	SmartDashboard.putString("test", "testing");
     	//DriverStationLCD lcd = DriverStationLCD.getInstance();
     	//lcd.println(DriverStationLCD.Line.kUser2, 1, "test");
@@ -77,26 +79,16 @@ public class Valkyrie extends IterativeRobot {
     	}
     }
     
-    public void autonomous() {
-    }
-
-    /**
-     * This function is called once each time the robot enters operator control.
-     */
-    public void operatorControl() {
+    public void teleopInit(){
+    	OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
+		if(!OI.getTankDrive()){
+			new CheesyDriveCommand().start();			
+		}else{
+			new TankDriveCommand().start();
+		}
     }
     
     public void teleopPeriodic(){
-    	
-    	//Command stuff here:
-		//commented out on merge because of restructuring
-    	/*if(SmartDashboard.getBoolean("Cheesy Drive")){
-            new CheesyDriveCommand().start(); //from Team 254
-        }
-        else if(SmartDashboard.getBoolean("Cheesy Drive")){
-            Drive.setRightSpeed(-jRight.getY());
-            Drive.setLeftSpeed(jLeft.getY());
-        } */
         Scheduler.getInstance().run(); //update commands
 
         Watchdog.getInstance().feed(); //very hungry

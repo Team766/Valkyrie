@@ -35,6 +35,8 @@ public class OI {
     buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch);
     
     public static int AutonMode = 0;
+    
+    public static boolean TankDrive = false;
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);
@@ -48,5 +50,38 @@ public class OI {
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
         buttonInbound.whileHeld(new InboundCommand());
+	}
+	
+	//interface for possible gamepad support
+	
+	public boolean getShifter(){
+		return buttonShifter.get();
+	}
+	public boolean getQuickTurn(){
+		return buttonQuickTurn.get();
+	}
+	public boolean getReverse(){
+		return buttonReverse.get();
+	}
+	
+	//cheesydrive here
+	public double getThrottle(){
+		return jLeft.getY();
+	}
+	public double getSteer(){
+		return jRight.getX();
+	}
+	//tank drive here
+	public double getLeft(){
+		return jLeft.getRawAxis(2);
+	}
+	public double getRight(){
+		return jRight.getRawAxis(2);
+	}
+	public static void setTankDrive(boolean in){
+		TankDrive = in;
+	}
+	public static boolean getTankDrive(){
+		return TankDrive;
 	}
 }

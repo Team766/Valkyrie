@@ -32,13 +32,13 @@ public class CheesyDriveCommand extends CommandBase {
     if (DriverStation.getInstance().isAutonomous()) {
       return;
     }
-    boolean isQuickTurn = OI.buttonQuickTurn.get();
-    boolean isHighGear = OI.buttonShifter.get();
+    boolean isQuickTurn = OI.getQuickTurn();
+    boolean isHighGear = OI.getShifter();
 
     double wheelNonLinearity;
 
-    double wheel = handleDeadband(OI.jRight.getX(), wheelDeadband);
-    double throttle = -handleDeadband(OI.jLeft.getY(), throttleDeadband);
+    double wheel = handleDeadband(OI.getSteer(), wheelDeadband);
+    double throttle = -handleDeadband(OI.getThrottle(), throttleDeadband);
 
     double negInertia = wheel - oldWheel;
     oldWheel = wheel;
