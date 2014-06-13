@@ -37,8 +37,9 @@ public class OI {
     
     public static int AutonMode = 0;
 	public OI(){
-    	buttonShoot.whenPressed(new ShootCommand());
-        buttonCancel.cancelWhenPressed(new ShootCommand());  //not really sure how this works?
+		ShootCommand shoot = new ShootCommand();
+    	buttonShoot.whenPressed(shoot);
+        buttonCancel.cancelWhenPressed(shoot);  //not really sure how this works?
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());

@@ -63,7 +63,7 @@ public class Buttons {
     public static int Arm = 12;
     
     public static int AutoShoot = 8;
-    public static int ShootCancel = 9;
+    public static int ShootCancel = 2;
     
     public static int AutonSwitch = 7;    
     public static int Axis_Horizontal = 5;
