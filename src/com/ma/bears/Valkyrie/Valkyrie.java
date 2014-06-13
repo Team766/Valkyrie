@@ -43,8 +43,9 @@ public class Valkyrie extends IterativeRobot {
     public void robotInit(){
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
-        SmartDashboard.putBoolean("Tank Drive", false);
     	SmartDashboard.putString("test", "testing");
+        SmartDashboard.putBoolean("Tank Drive", false);
+        SmartDashboard.putBoolean("UseGamePad", false);
     	//DriverStationLCD lcd = DriverStationLCD.getInstance();
     	//lcd.println(DriverStationLCD.Line.kUser2, 1, "test");
         server.setPort(listenPort);
@@ -81,6 +82,7 @@ public class Valkyrie extends IterativeRobot {
     
     public void teleopInit(){
     	OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
+    	OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));
 		if(!OI.getTankDrive()){
 			new CheesyDriveCommand().start();			
 		}else{
