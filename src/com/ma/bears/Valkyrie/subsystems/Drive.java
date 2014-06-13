@@ -32,7 +32,7 @@ public class Drive extends Subsystem{
     private final Solenoid Shifter = new Solenoid(Ports.Sol_Shifter);
     
 	protected void initDefaultCommand() {
-		//setDefaultCommand(new CheesyDriveCommand());
+		setDefaultCommand(new CheesyDriveCommand());
 	}
 	
 	public void drive(double speed){
@@ -41,7 +41,7 @@ public class Drive extends Subsystem{
 	}
 	
 	public void setLeftSpeed(double speed){
-		leftDrive.set(speed);
+		leftDrive.set(-speed);
 	}
 	public void setRightSpeed(double speed){
 		rightDrive.set(speed);
@@ -65,5 +65,5 @@ public class Drive extends Subsystem{
 		LDriveEnc.reset();
 		RDriveEnc.reset();
 	}
-	
+
 }

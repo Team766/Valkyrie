@@ -2,6 +2,7 @@ package com.ma.bears.Valkyrie.commands.Arm;
 
 
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,24 +12,26 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brett Levenson
  */
 
-public class GripsCommand extends Command{
+public class GripsCommand extends CommandBase{
 	private boolean whileRunning;
 	private boolean afterRun;
 	public GripsCommand(boolean during, boolean after){
 		whileRunning = during;
 		afterRun = after;
-	}	
+	}
 	protected void end() {
-		Valkyrie.Pickup.setArmDown(afterRun);
+		Pickup.setGrippers(afterRun);
 	}
 
 	protected void execute() {
-		Valkyrie.Pickup.setGrippers(whileRunning);
+		Pickup.setGrippers(whileRunning);
 	}
 
 	protected void initialize() {}
 
-	protected void interrupted() {}
+	protected void interrupted() {
+		end();
+	}
 
 	protected boolean isFinished() {
 		return false;

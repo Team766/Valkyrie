@@ -2,6 +2,7 @@ package com.ma.bears.Valkyrie.commands.Shooter;
 
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Nicky Ivy nickivyca@gmail.com
  */
 
-public class ReleaseShooterCommand extends Command{
+public class ReleaseShooterCommand extends CommandBase{
 	Timer t = new Timer();
         
 	protected void initialize() {
@@ -23,17 +24,17 @@ public class ReleaseShooterCommand extends Command{
 	}
 
 	protected void end() {
-		Valkyrie.Shooter.setWinchPist(false);
-		Valkyrie.Pickup.setGrippers(true);
+		Shooter.setWinchPist(false);
+		Pickup.setGrippers(true);
 	}
 
 	protected void execute() {
-		Valkyrie.Shooter.setWinchPist(true);		
-		Valkyrie.Pickup.setGrippers(false);
+		Shooter.setWinchPist(true);		
+		Pickup.setGrippers(false);
 	}
 	
 	protected void interrupted() {
-		
+		end();
 	}
 
 	protected boolean isFinished() {

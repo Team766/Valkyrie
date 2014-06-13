@@ -1,6 +1,7 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,13 +13,14 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brett Levenson
  */
 
-public class GripsTimedOffCommand extends Command{
+public class GripsTimedOffCommand extends CommandBase{
 
 	private double timeout = 0.0;
 	private boolean timed = false;
 	private Timer t;
 	
 	public GripsTimedOffCommand(){
+		t = new Timer();
 	}
 	
 	public GripsTimedOffCommand(double time){
@@ -27,11 +29,11 @@ public class GripsTimedOffCommand extends Command{
 	}	
 
 	protected void end() {
-		Valkyrie.Pickup.setGrippers(true);
+		Pickup.setGrippers(true);
 	}
 
 	protected void execute() {
-		Valkyrie.Pickup.setGrippers(false);
+		Pickup.setGrippers(false);
 	}
 	
 	protected void initialize() {
@@ -39,7 +41,9 @@ public class GripsTimedOffCommand extends Command{
 		t.start();
 	}
 
-	protected void interrupted() {}
+	protected void interrupted() {
+		end();
+	}
 
 	protected boolean isFinished() {
 		//if the command is timed and time is satisfied, done

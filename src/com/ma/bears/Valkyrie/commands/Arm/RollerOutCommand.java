@@ -8,23 +8,25 @@ package com.ma.bears.Valkyrie.commands.Arm;
 
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RollerOutCommand extends Command{
+public class RollerOutCommand extends CommandBase{
 
 	protected void end() {
-		Valkyrie.Pickup.setRollers(0);
+		Pickup.setRollers(0);
 	}
 
 	protected void execute() {
-		Valkyrie.Pickup.setRollers(RobotValues.ArmWheels_Out);
+		Pickup.setRollers(RobotValues.ArmWheels_Out);
 	}
 
 	protected void initialize() {
 	}
 
 	protected void interrupted() {
+		end();
 	}
 
 	protected boolean isFinished() {

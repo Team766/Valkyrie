@@ -1,6 +1,7 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
 import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,13 +12,14 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Nicky Ivy nickivyca@gmail.com
  */
 
-public class ArmDownCommand extends Command{
+public class ArmDownCommand extends CommandBase{
 	
 	private double timeout = 0.0;
 	private boolean timed = false;
 	private Timer t;
 	
 	public ArmDownCommand(){
+		t = new Timer();
 	}
 	
 	public ArmDownCommand(double time){
@@ -26,11 +28,11 @@ public class ArmDownCommand extends Command{
 	}	
 
 	protected void end() {
-		Valkyrie.Pickup.setArmDown(false);
+		Pickup.setArmDown(false);
 	}
 	
 	protected void execute() {
-		Valkyrie.Pickup.setArmDown(true);
+		Pickup.setArmDown(true);
 	}
 
 	protected void initialize() {
@@ -38,7 +40,9 @@ public class ArmDownCommand extends Command{
 		t.start();
 	}
 
-	protected void interrupted() {}
+	protected void interrupted() {
+		end();
+	}
 
 	protected boolean isFinished() {
 		//if the command is timed and time is satisfied, done

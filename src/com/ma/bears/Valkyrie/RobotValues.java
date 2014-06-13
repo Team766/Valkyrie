@@ -21,4 +21,10 @@ public class RobotValues {
     public static final double Kp = 10.0;
     public static final double Kd = 0.8;
     public static final double driveTolerance = .01;
+    
+    //auton
+    public static final int Auton_OneBallStay = 1;
+    public static final int Auton_TwoBall = 2;
+    public static final int Auton_Move = 3;
+    public static final int Auton_OneBallMove = 4;
 }
