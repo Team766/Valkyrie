@@ -8,6 +8,7 @@
 package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
+import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
@@ -41,6 +42,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void robotInit(){
+    	System.out.println("2014");
     	//just testing out some SmartDash, DriverLCD stuff
     	SmartDashboard.putString("test", "test");
     	SmartDashboard.putString("test", "testing");
@@ -56,8 +58,6 @@ public class Valkyrie extends IterativeRobot {
     
     public void disabledInit() {
         server.stopSamplingCounts();
-    }
-    public void disabledPeriodic(){
     }
     
     /**
@@ -88,6 +88,7 @@ public class Valkyrie extends IterativeRobot {
 		}else{
 			new TankDriveCommand().start();
 		}
+		new GripsTimedOffCommand(0).start(); //set grippers out on enable
     }
     
     public void teleopPeriodic(){

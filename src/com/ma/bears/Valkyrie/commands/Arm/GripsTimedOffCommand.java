@@ -17,10 +17,10 @@ public class GripsTimedOffCommand extends CommandBase{
 
 	private double timeout = 0.0;
 	private boolean timed = false;
-	private Timer t;
+	private Timer t = new Timer();
 	
 	public GripsTimedOffCommand(){
-		t = new Timer();
+		timed = false;
 	}
 	
 	public GripsTimedOffCommand(double time){
