@@ -10,6 +10,7 @@ package com.ma.bears.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
+import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSelector;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
@@ -38,6 +39,8 @@ public class Valkyrie extends IterativeRobot {
     CheesyVisionServer server = CheesyVisionServer.getInstance();
     public final int listenPort = 1180;
     
+	private DriverStationLCD lcd = DriverStationLCD.getInstance();
+    
     public Valkyrie(){
     }
     
@@ -48,16 +51,54 @@ public class Valkyrie extends IterativeRobot {
     	SmartDashboard.putString("test", "testing");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
-    	//DriverStationLCD lcd = DriverStationLCD.getInstance();
-    	//lcd.println(DriverStationLCD.Line.kUser2, 1, "test");
         server.setPort(listenPort);
         server.start();
-        System.out.println("robot booted");
         CommandBase.init();
     }
     
     public void disabledInit() {
         server.stopSamplingCounts();
+    }
+    public void disabledPeriodic(){
+    	/* Update Autonomous display
+    	 * 
+    	 * Why all the spaces?
+    	 * You need to flush the display
+    	 * or else it will display
+    	 * old text.
+    	 */
+    	new UpdateAutonSelector().start();
+    	String mode = "";
+    	switch (OI.AutonMode){
+    	case RobotValues.Auton_Disabled:{
+    		mode = "Disabled             ";
+    		break;
+    	}
+    	case RobotValues.Auton_Empty:{
+    		mode = "None Selected        ";
+    		break;
+    	}
+    	case RobotValues.Auton_Move:{
+    		mode = "Move Forward         ";
+    		break;
+    	}
+    	case RobotValues.Auton_OneBallMove:{
+    		mode = "One Ball, Move Foward";
+    		break;
+    	}
+    	case RobotValues.Auton_OneBallStay:{
+    		mode = "One Ball, Stay       ";
+    		break;
+    	}
+    	case RobotValues.Auton_TwoBall:{
+    		mode = "Two Ball             ";
+    		break;
+    	}
+    	default: mode = "";
+    	}
+    	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
+    	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
+    	lcd.updateLCD();
     }
     
     /**

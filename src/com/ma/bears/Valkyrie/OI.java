@@ -52,6 +52,7 @@ public class OI {
     
     public static boolean TankDrive = false;
     public static boolean UseGamepad = false;
+    
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);

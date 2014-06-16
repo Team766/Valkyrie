@@ -18,13 +18,11 @@ import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
  */
 
 public class AutonSelector extends CommandGroup{
-	
-	public static int AutonMode = 0;
 
 	public AutonSelector(){
 		addSequential(new UpdateAutonSelector());
 		
-		switch(AutonMode){
+		switch(OI.AutonMode){
 		case RobotValues.Auton_OneBallStay:{
 			System.out.println("One Ball Stay Auton");
             addSequential(new OneBallStay(0.0, true));
