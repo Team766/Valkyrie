@@ -25,7 +25,7 @@ public class AutonPeriodic extends CommandBase {
     	}
     }
     protected boolean isFinished() {
-        return true;
+        return false;
     }
     protected void end() {}
     protected void interrupted() {}
