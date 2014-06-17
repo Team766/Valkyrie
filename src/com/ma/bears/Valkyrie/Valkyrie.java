@@ -3,7 +3,7 @@ package com.ma.bears.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
-import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSelector;
+import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 import com.ma.bears.Valkyrie.CheesyVisionServer;
@@ -64,7 +64,8 @@ public class Valkyrie extends IterativeRobot {
     	 * old text.
     	 */
     	 
-        //new UpdateAutonSelector().start();        
+        //Uncomment when using the Auton Switch thats on the OI
+        //new UpdateAutonSwitch().start();        
                 
         String mode = "";
     	switch (OI.AutonMode){
@@ -123,6 +124,7 @@ public class Valkyrie extends IterativeRobot {
     	else if(server.getRightCount() > 5){
     		System.out.println("Right Hand Auton");
     	}
+        //Cheesy Vision stuff used in auton
         if(server.getLeftStatus()){
             OI.CheesyVisionLeft = 1;
         }
