@@ -23,6 +23,8 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * 
  * TODO:
  * Testing with robot on floor.
+ * Test new auton slector, and cheesy vision.
+ * Remove timings from commands and replace them with built in timeouts.
  *
  * 
  * @author Nicky Ivy nickivyca@gmail.com
@@ -122,16 +124,16 @@ public class Valkyrie extends IterativeRobot {
     		System.out.println("Right Hand Auton");
     	}
         if(server.getLeftStatus()){
-            RobotValues.CheesyVisionLeft = 1;
+            OI.CheesyVisionLeft = 1;
         }
         else{
-            RobotValues.CheesyVisionLeft = 0;
+            OI.CheesyVisionLeft = 0;
         }
         if(server.getRightStatus()){
-            RobotValues.CheesyVisionRight = 1;
+            OI.CheesyVisionRight = 1;
         }
         else{
-            RobotValues.CheesyVisionRight = 0;
+            OI.CheesyVisionRight = 0;
         }
     }
     

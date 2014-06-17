@@ -38,6 +38,4 @@ public class RobotValues {
     public static final int Auton_CheesyVision = 5;
         
     public static final int Auton_Max = 5;
-    public static int CheesyVisionLeft = 0;
-    public static int CheesyVisionRight = 0;
 }

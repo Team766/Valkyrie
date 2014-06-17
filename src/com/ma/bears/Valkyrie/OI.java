@@ -48,7 +48,11 @@ public class OI {
     GPbuttonArmDown = new JoystickButton(jGpad, Buttons.GPArm),
     GPbuttonCancel = new JoystickButton(jGpad, Buttons.GPShootCancel);
     
+    
+    //Auton Stuff
     public static int AutonMode = 0;
+    public static int CheesyVisionLeft = 0;
+    public static int CheesyVisionRight = 0;
     
     public static boolean TankDrive = false;
     public static boolean UseGamepad = false;

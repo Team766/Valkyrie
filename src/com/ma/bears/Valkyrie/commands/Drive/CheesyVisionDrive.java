@@ -19,8 +19,8 @@ public class CheesyVisionDrive extends CommandBase {
     
     protected void initialize() {}
     protected void execute() {
-        Drive.setLeftSpeed(RobotValues.CheesyVisionLeft);
-        Drive.setRightSpeed(RobotValues.CheesyVisionRight);
+        Drive.setLeftSpeed(OI.CheesyVisionLeft);
+        Drive.setRightSpeed(OI.CheesyVisionRight);
     }
     protected boolean isFinished() {
         return false;
