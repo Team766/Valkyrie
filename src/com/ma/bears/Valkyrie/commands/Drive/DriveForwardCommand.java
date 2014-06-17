@@ -13,6 +13,11 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 /**
  * Command to move forward a preset distance.
+ * 
+ * <p>Note that the front of the robot
+ * is the pickup side. That's why all the auton distances
+ * are negative; it needs to drive 'backwards'
+ * to achieve its distances. 
  *
  * @author Blevenson
  */

@@ -20,30 +20,30 @@ import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 
 public class AutonSelector extends CommandGroup{
 
-    public AutonSelector(){
-        //addSequential(new UpdateAutonSelector());
-        
-        switch(OI.AutonMode){
+    public AutonSelector(int mode){        
+        switch(mode){
             case RobotValues.Auton_OneBallStay:{
                 System.out.println("One Ball Stay Auton");
-                addSequential(new OneBallStay(0.0, true));
+                addSequential(new OneBall(RobotValues.OneBallStay_shootDistance,
+                						  RobotValues.OneBallStay_crossDistance));
                 break;
             }
             case RobotValues.Auton_TwoBall:{
                 System.out.println("Two Ball Auton");
-                addSequential(new TwoBall(RobotValues.TwoBall_PickupTime, 
-                                          RobotValues.TwoBall_Distance, 
+                addSequential(new TwoBall(RobotValues.TwoBall_Shot1Distance, 
+                						  RobotValues.TwoBall_PickupTime, 
+                                          RobotValues.TwoBall_Shot2Distance, 
                                           RobotValues.TwoBall_WaitforShoot));
                 break;
             }
             case RobotValues.Auton_Move:{
                 System.out.println("Drive Forward Auton");
-                addSequential(new DriveForwardCommand(RobotValues.crossDistance));
+                addSequential(new DriveForwardCommand(RobotValues.OneBallStay_crossDistance));
                 break;
             }
             case RobotValues.Auton_OneBallMove:{
                 System.out.println("One Ball Move Auton");
-                addSequential(new OneBallStay(RobotValues.OneBallMove_Distance, false));
+                addSequential(new OneBall(RobotValues.OneBallMove_Distance));
                 break;
             }
             case RobotValues.Auton_CheesyVision:{

@@ -52,7 +52,7 @@ public class OI {
     
     
     //Auton Stuff
-    public static int AutonMode = 0;
+    public int AutonMode = 0;
     
     public static boolean TankDrive = false;
     public static boolean UseGamepad = false;

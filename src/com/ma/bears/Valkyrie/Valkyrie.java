@@ -67,10 +67,16 @@ public class Valkyrie extends IterativeRobot {
     	 */
     	 
         //Uncomment when using the Auton Switch thats on the OI
-        //new UpdateAutonSwitch().start();        
+        //new UpdateAutonSwitch().start();
                 
-        String mode = "";
-    	switch (OI.AutonMode){
+        String mode = "                           ";
+        String line3 = "                           ";
+        String line4 = "                           ";
+    	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
+        lcd.println(DriverStationLCD.Line.kUser3, 1, line3);
+        lcd.println(DriverStationLCD.Line.kUser4, 1, line4);
+        lcd.updateLCD(); //during teleop updating twice might lag but we're disabled
+    	switch (CommandBase.OI.AutonMode){
             case RobotValues.Auton_Disabled:{
     		mode = "Disabled             ";
     		break;
@@ -81,30 +87,37 @@ public class Valkyrie extends IterativeRobot {
             }
             case RobotValues.Auton_Move:{
     		mode = "Move Forward         ";
+    		line3 = "Distance: " + RobotValues.Move_Distance;
     		break;
         	}
             case RobotValues.Auton_OneBallMove:{
     		mode = "One Ball, Move Foward";
+    		line3 = "Distance: " + RobotValues.OneBallMove_Distance;
     		break;
             }
             case RobotValues.Auton_OneBallStay:{
     		mode = "One Ball, Stay       ";
+    		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
+    		line4 = "Move Distance: " + RobotValues.OneBallStay_crossDistance;
     		break;
             }
             case RobotValues.Auton_TwoBall:{
     		mode = "Two Ball             ";
+    		line3 = "Shot1 Distance: " + RobotValues.TwoBall_Shot1Distance;
+    		line4 = "Shot2 Distance: " + RobotValues.TwoBall_Shot2Distance;
     		break;
             }
             case RobotValues.Auton_CheesyVision:{
-                mode = "Cheesy Vision Drive  ";
-                break;
+            mode = "Cheesy Vision Drive  ";
+            break;
             }
-            default: mode = "";
+            default:{} //initialized as spaces so nothing needed here
     	}
 
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
     	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
-        lcd.println(DriverStationLCD.Line.kUser3, 1, "Good Luck with the Game!");
+        lcd.println(DriverStationLCD.Line.kUser3, 1, line3);
+        lcd.println(DriverStationLCD.Line.kUser4, 1, line4);
     	lcd.updateLCD();
     }
     
@@ -114,7 +127,7 @@ public class Valkyrie extends IterativeRobot {
     public void autonomousInit() {
         OI.server.reset();
         OI.server.startSamplingCounts();
-        new AutonSelector().start();
+        new AutonSelector(CommandBase.OI.AutonMode).start();
     }
     
     public void autonomousPeriodic() {

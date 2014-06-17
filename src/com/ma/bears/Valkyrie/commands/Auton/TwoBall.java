@@ -19,10 +19,12 @@ import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
  */
 public class TwoBall extends CommandGroup {
     
-    public TwoBall(double pickuptime, double drivedistance, double waitforshoot) {
+    public TwoBall(double shot1distance, double pickuptime, double drivedistance, double waitforshoot) {
         addSequential(new WinchBackCommand());
+        addSequential(new DriveForwardCommand(shot1distance));
         addSequential(new ShootCommand());
         addSequential(new WaitCommand(0.05));
+        addParallel(new DriveForwardCommand(-shot1distance));
         addSequential(new PickupCommand(pickuptime));
         addSequential(new DriveForwardCommand(-drivedistance));
         addSequential(new WaitCommand(waitforshoot));
