@@ -6,7 +6,6 @@ import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
-import com.ma.bears.Valkyrie.commands.Auton.AutonPeriodic;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -119,8 +118,14 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void autonomousPeriodic() {
-        //prints tests for cheesy vision now
-        new AutonPeriodic().start();
+        System.out.println("Current left: " + OI.server.getLeftStatus() + ", current right: " + OI.server.getRightStatus());
+        System.out.println("Left count: " + OI.server.getLeftCount() + ", right count: " + OI.server.getRightCount() + ", total: " + OI.server.getTotalCount() + "\n");
+    	if(OI.server.getLeftCount() > 5){
+    		System.out.println("Left Hand Auton");
+    	}
+    	else if(OI.server.getRightCount() > 5){
+    		System.out.println("Right Hand Auton");
+    	}
     }
     
     public void teleopInit(){
