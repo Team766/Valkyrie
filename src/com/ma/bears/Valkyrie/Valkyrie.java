@@ -64,7 +64,7 @@ public class Valkyrie extends IterativeRobot {
     	 * old text.
     	 */
     	 
-        new UpdateAutonSelector().start();        
+        //new UpdateAutonSelector().start();        
                 
         String mode = "";
     	switch (OI.AutonMode){

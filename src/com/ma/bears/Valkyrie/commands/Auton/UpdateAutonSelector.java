@@ -5,7 +5,7 @@ import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
 /**
- * 	Command that interprets auton mode from the joystick
+ * 	Command that adds one and resets the count for the selected auton
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -13,10 +13,16 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
  */
 
 public class UpdateAutonSelector extends CommandBase{
-        boolean done = false; 
+        //boolean done = false; 
 	public UpdateAutonSelector(){
 		//It doens't do anything unless put in constructor,
 		//because isFinished is set to true
+            
+                OI.AutonMode++;
+                
+                if (OI.AutonMode > RobotValues.Auton_Max){
+                    OI.AutonMode = -1;
+                }
                 /*
 		if (OI.buttonAutonSwitch.get()) {
 			OI.AutonMode = RobotValues.Auton_Empty; 
@@ -36,10 +42,10 @@ public class UpdateAutonSelector extends CommandBase{
 	}
 	
 	protected void end() {
-            done = false;
+            //done = false;
         }
 	protected void execute() {
-            
+           /* 
             if (OI.buttonAutonSwitch.get()) {
                 OI.AutonMode++;
                 done = true;
@@ -47,14 +53,15 @@ public class UpdateAutonSelector extends CommandBase{
             if (OI.AutonMode > RobotValues.Auton_Max){
                 OI.AutonMode = -1;
             }
-            
+            */
         }
 	protected void initialize() {}
 	protected void interrupted() {
 		end();
 	}
 	protected boolean isFinished() {
-		return done;
+		//return done;
+                return true;
 	}
 
 }

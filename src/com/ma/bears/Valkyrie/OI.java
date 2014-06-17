@@ -7,6 +7,7 @@ import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
+import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSelector;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -59,8 +60,11 @@ public class OI {
     
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
+                UpdateAutonSelector selector = new UpdateAutonSelector();
     	buttonShoot.whenPressed(shoot);
         buttonCancel.cancelWhenPressed(shoot);
+        
+        buttonAutonSwitch.whenPressed(selector);
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
