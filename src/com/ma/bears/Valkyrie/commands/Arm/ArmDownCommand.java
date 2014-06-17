@@ -1,10 +1,8 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
-import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Puts arm down.

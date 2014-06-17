@@ -11,7 +11,6 @@ import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
-import com.ma.bears.Valkyrie.RobotValues;
 
 /**
  * OneBall autons.

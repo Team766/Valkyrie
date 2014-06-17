@@ -1,12 +1,7 @@
 package com.ma.bears.Valkyrie.commands.Shooter;
 
-
-//import com.ma.bears.Valkyrie.Buttons;
 import com.ma.bears.Valkyrie.RobotValues;
-import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 
 /**
@@ -42,9 +37,7 @@ public class WinchBackCommand extends CommandBase{
 	}
 
 	protected boolean isFinished() {
-		return Shooter.getShooterDown()/* || Valkyrie.buttonCancel.get()*/;
-		//  Not inverting the limit switch here because it is already done when the
-		//  getShooterDown function is initialize
+		return Shooter.getShooterDown();
 	}
 
 }

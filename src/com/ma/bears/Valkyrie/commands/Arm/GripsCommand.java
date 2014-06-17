@@ -1,10 +1,6 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
-
-import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Turns grips on/off.

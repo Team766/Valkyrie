@@ -1,16 +1,13 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
+import com.ma.bears.Valkyrie.RobotValues;
+import com.ma.bears.Valkyrie.commands.CommandBase;
+
 /**
  * Roller out.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  */
-
-import com.ma.bears.Valkyrie.RobotValues;
-import com.ma.bears.Valkyrie.Valkyrie;
-import com.ma.bears.Valkyrie.commands.CommandBase;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 public class RollerOutCommand extends CommandBase{
 

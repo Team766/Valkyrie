@@ -1,17 +1,12 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
-import com.ma.bears.Valkyrie.Valkyrie;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 /**
  * Put ejector piston out.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
- * 
  */
-
-import com.ma.bears.Valkyrie.commands.CommandBase;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 public class EjectorOutCommand extends CommandBase{
 	

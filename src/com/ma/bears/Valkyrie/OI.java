@@ -14,6 +14,18 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+/**
+ * Operator interface class.
+ * 
+ * <p>All OI-related things should be declared here,
+ * except for things that can be called statically
+ * system-wide, like DriverStationLCD and SmartDashboard.
+ * Declared here they can be accessed throughout the whole code
+ * through CommandBase.
+ * 
+ * @author Nicky Ivy nickivyca@gmail.com
+ */
+
 public class OI {
 	public Joystick
     jLeft = new Joystick(1),
@@ -48,22 +60,23 @@ public class OI {
     GPbuttonInbound = new JoystickButton(jGpad, Buttons.GPInbound),
     GPbuttonEjector = new JoystickButton(jGpad, Buttons.GPEjector),
     GPbuttonArmDown = new JoystickButton(jGpad, Buttons.GPArm),
-    GPbuttonCancel = new JoystickButton(jGpad, Buttons.GPShootCancel);
+    GPbuttonCancel = new JoystickButton(jGpad, Buttons.GPShootCancel),
+    GPbuttonAuton = new JoystickButton(jGpad, Buttons.GPAuton);
     
+    public CheesyVisionServer server = CheesyVisionServer.getInstance();    
     
     //Auton Stuff
     public int AutonMode = 0;
     
-    public static boolean TankDrive = false;
-    public static boolean UseGamepad = false;
+    public boolean TankDrive = false;
+    public boolean UseGamepad = false;
     
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
-                UpdateAutonSelector selector = new UpdateAutonSelector();
     	buttonShoot.whenPressed(shoot);
         buttonCancel.cancelWhenPressed(shoot);
         
-        buttonAutonSwitch.whenPressed(selector);
+        buttonAutonSwitch.whenPressed(new UpdateAutonSelector());
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
@@ -85,10 +98,12 @@ public class OI {
         
         GPbuttonPickup.whileHeld(new PickupCommand());
         GPbuttonInbound.whileHeld(new InboundCommand());
+        
+        GPbuttonAuton.whenPressed(new UpdateAutonSelector());
 	}
 	
-	//interface for possible gamepad support
-	
+	//interface for gamepad support
+	//we can map commands to multiple buttons, but not for drive inputs
 	public boolean getShifter(){
 		return !UseGamepad? buttonShifter.get() : GPbuttonShifter.get();
 	}
@@ -113,18 +128,16 @@ public class OI {
 	public double getRight(){
 		return !UseGamepad? jRight.getRawAxis(2) : jGpad.getRawAxis(4);
 	}
-	public static void setTankDrive(boolean in){
+	public void setTankDrive(boolean in){
 		TankDrive = in;
 	}
-	public static boolean getTankDrive(){
+	public boolean getTankDrive(){
 		return TankDrive;
 	}
-	public static void setUseGamepad(boolean in){
+	public void setUseGamepad(boolean in){
 		UseGamepad = in;
 	}
-	public static boolean getUseGamepad(){
+	public boolean getUseGamepad(){
 		return UseGamepad;
 	}
-        
-        public static CheesyVisionServer server = CheesyVisionServer.getInstance();
 }

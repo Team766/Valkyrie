@@ -3,7 +3,7 @@ package com.ma.bears.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
-import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
+//import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 
@@ -32,7 +32,6 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  */
 public class Valkyrie extends IterativeRobot {
     
-    //public static CheesyVisionServer server = CheesyVisionServer.getInstance();
     public final int listenPort = 1180;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
@@ -42,18 +41,15 @@ public class Valkyrie extends IterativeRobot {
     
     public void robotInit(){
     	System.out.println("2014");
-    	//just testing out some SmartDash, DriverLCD stuff
-    	SmartDashboard.putString("test", "test");
-    	SmartDashboard.putString("test", "testing");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
-        OI.server.setPort(listenPort);
-        OI.server.start();
         CommandBase.init();
+        CommandBase.OI.server.setPort(listenPort);
+        CommandBase.OI.server.start();
     }
     
     public void disabledInit() {
-        OI.server.stopSamplingCounts();
+        CommandBase.OI.server.stopSamplingCounts();
     }
     public void disabledPeriodic(){
     	/* Update Autonomous display
@@ -121,30 +117,28 @@ public class Valkyrie extends IterativeRobot {
     	lcd.updateLCD();
     }
     
-    /**
-     * This function is called once each time the robot enters autonomous mode.
-     */
     public void autonomousInit() {
-        OI.server.reset();
-        OI.server.startSamplingCounts();
+        CommandBase.OI.server.reset();
+        CommandBase.OI.server.startSamplingCounts();
         new AutonSelector(CommandBase.OI.AutonMode).start();
     }
     
     public void autonomousPeriodic() {
-        System.out.println("Current left: " + OI.server.getLeftStatus() + ", current right: " + OI.server.getRightStatus());
-        System.out.println("Left count: " + OI.server.getLeftCount() + ", right count: " + OI.server.getRightCount() + ", total: " + OI.server.getTotalCount() + "\n");
-    	if(OI.server.getLeftCount() > 5){
+        System.out.println("Current left: " + CommandBase.OI.server.getLeftStatus() + ", current right: " + CommandBase.OI.server.getRightStatus());
+        System.out.println("Left count: " + CommandBase.OI.server.getLeftCount() + ", right count: " + CommandBase.OI.server.getRightCount());
+        System.out.println("Total: " + CommandBase.OI.server.getTotalCount());
+    	if(CommandBase.OI.server.getLeftCount() > 5){
     		System.out.println("Left Hand Auton");
     	}
-    	else if(OI.server.getRightCount() > 5){
+    	else if(CommandBase.OI.server.getRightCount() > 5){
     		System.out.println("Right Hand Auton");
     	}
     }
     
     public void teleopInit(){
-    	OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
-    	OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));
-		if(!OI.getTankDrive()){
+    	CommandBase.OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
+    	CommandBase.OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));
+		if(!CommandBase.OI.getTankDrive()){
 			new CheesyDriveCommand().start();			
 		}else{
 			new TankDriveCommand().start();

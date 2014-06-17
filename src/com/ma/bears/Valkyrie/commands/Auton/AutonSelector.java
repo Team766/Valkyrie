@@ -1,15 +1,10 @@
 package com.ma.bears.Valkyrie.commands.Auton;
 
-import com.ma.bears.Valkyrie.OI;
 import com.ma.bears.Valkyrie.RobotValues;
-import com.ma.bears.Valkyrie.Valkyrie;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
-import com.ma.bears.Valkyrie.Buttons;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  * Choose which auton command to run
@@ -20,7 +15,7 @@ import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 
 public class AutonSelector extends CommandGroup{
 
-    public AutonSelector(int mode){        
+    public AutonSelector(int mode){
         switch(mode){
             case RobotValues.Auton_OneBallStay:{
                 System.out.println("One Ball Stay Auton");

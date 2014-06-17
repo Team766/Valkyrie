@@ -1,11 +1,9 @@
 package com.ma.bears.Valkyrie.commands.Drive;
 
 import com.ma.bears.Valkyrie.RobotValues;
-import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Controls the robot drive train using the standard Team 254 scheme.

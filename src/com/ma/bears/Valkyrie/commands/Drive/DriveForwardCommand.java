@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ma.bears.Valkyrie.commands.Drive;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import com.ma.bears.Valkyrie.RobotValues;
-import com.ma.bears.Valkyrie.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 /**
@@ -24,33 +16,25 @@ import com.ma.bears.Valkyrie.commands.Auton.WaitCommand;
 public class DriveForwardCommand extends CommandBase {
     private boolean done = false; 
     private double kDriveDistance;
-	double last_error = 0.0;
+	private double last_error = 0.0;
     
     public DriveForwardCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	kDriveDistance = 0;
     }
     
     public DriveForwardCommand(double distance){
     	kDriveDistance = distance;
     }
-
-    // Called just before this Command runs the first time
+    
     protected void initialize() {
         //Resetting everything
     	Drive.resetEncoders();
     	done = false;
     	last_error = 0.0;
     }
-
-    // Called repeatedly when this Command is scheduled to run
+    
     public void execute() {
-	//Move forward 24 inches
-	//const double kDriveDistance = dash->GetNumber("DriveDistance1Ball");
-	//const double Kp = 10.0; //proportional constant  Real Number in robotvalues
-	//const double Kd = 0.8;  //derivative constant    Real Number in robotvalues
-	// Kp, Kd from RobotValues.h
+	// Kp, Kd from RobotValues
 	if(!done) {
             final double error = kDriveDistance - (Drive.getLeftDistance() + Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
