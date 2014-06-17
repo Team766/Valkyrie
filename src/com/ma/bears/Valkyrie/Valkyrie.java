@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST 2008. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
@@ -30,6 +23,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * 
  * TODO:
  * Testing with robot on floor.
+ *
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -67,6 +61,8 @@ public class Valkyrie extends IterativeRobot {
     	 * or else it will display
     	 * old text.
     	 */
+    	 
+        new UpdateAutonSelector().start();        
                 
         String mode = "";
     	switch (OI.AutonMode){
@@ -100,7 +96,6 @@ public class Valkyrie extends IterativeRobot {
             }
             default: mode = "";
     	}
-            	new UpdateAutonSelector().start();
 
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
     	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
