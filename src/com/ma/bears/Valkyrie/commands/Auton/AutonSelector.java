@@ -31,17 +31,19 @@ public class AutonSelector extends CommandGroup{
             }
             case RobotValues.Auton_TwoBall:{
                 System.out.println("Two Ball Auton");
-                addSequential(new TwoBall(1.0, 1.2, 2.0));
+                addSequential(new TwoBall(RobotValues.TwoBall_PickupTime, 
+                                          RobotValues.TwoBall_Distance, 
+                                          RobotValues.TwoBall_WaitforShoot));
                 break;
             }
             case RobotValues.Auton_Move:{
                 System.out.println("Drive Forward Auton");
-                addSequential(new DriveForwardCommand(-2.0));
+                addSequential(new DriveForwardCommand(RobotValues.crossDistance));
                 break;
             }
             case RobotValues.Auton_OneBallMove:{
                 System.out.println("One Ball Move Auton");
-                addSequential(new OneBallStay(-2.6, false));
+                addSequential(new OneBallStay(RobotValues.OneBallMove_Distance, false));
                 break;
             }
             case RobotValues.Auton_CheesyVision:{

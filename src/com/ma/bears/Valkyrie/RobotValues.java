@@ -38,4 +38,9 @@ public class RobotValues {
     public static final int Auton_CheesyVision = 5;
         
     public static final int Auton_Max = 5;
+    
+    public static final double TwoBall_PickupTime = 1.0;
+    public static final double TwoBall_Distance = 1.2;
+    public static final double TwoBall_WaitforShoot = 2.0;
+    public static final double OneBallMove_Distance = -2.6;
 }
