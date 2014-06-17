@@ -1,5 +1,6 @@
 package com.ma.bears.Valkyrie;
 
+import com.ma.bears.Valkyrie.CheesyVisionServer;
 import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
 import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
 import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
@@ -52,8 +53,6 @@ public class OI {
     
     //Auton Stuff
     public static int AutonMode = 0;
-    public static int CheesyVisionLeft = 0;
-    public static int CheesyVisionRight = 0;
     
     public static boolean TankDrive = false;
     public static boolean UseGamepad = false;
@@ -126,4 +125,6 @@ public class OI {
 	public static boolean getUseGamepad(){
 		return UseGamepad;
 	}
+        
+        public static CheesyVisionServer server = CheesyVisionServer.getInstance();
 }

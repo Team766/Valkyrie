@@ -3,10 +3,10 @@ package com.ma.bears.Valkyrie;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
-import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;
+import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
-import com.ma.bears.Valkyrie.CheesyVisionServer;
+import com.ma.bears.Valkyrie.commands.Auton.AutonPeriodic;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,8 +23,9 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * 
  * TODO:
  * Testing with robot on floor.
- * Test new auton slector, and cheesy vision.
+ * Test new auton selector, and cheesy vision.
  * Remove timings from commands and replace them with built in timeouts.
+ * Test lcd.clear();
  *
  * 
  * @author Nicky Ivy nickivyca@gmail.com
@@ -32,7 +33,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  */
 public class Valkyrie extends IterativeRobot {
     
-    public CheesyVisionServer server = CheesyVisionServer.getInstance();
+    //public static CheesyVisionServer server = CheesyVisionServer.getInstance();
     public final int listenPort = 1180;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
@@ -47,13 +48,13 @@ public class Valkyrie extends IterativeRobot {
     	SmartDashboard.putString("test", "testing");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
-        server.setPort(listenPort);
-        server.start();
+        OI.server.setPort(listenPort);
+        OI.server.start();
         CommandBase.init();
     }
     
     public void disabledInit() {
-        server.stopSamplingCounts();
+        OI.server.stopSamplingCounts();
     }
     public void disabledPeriodic(){
     	/* Update Autonomous display
@@ -62,6 +63,8 @@ public class Valkyrie extends IterativeRobot {
     	 * You need to flush the display
     	 * or else it will display
     	 * old text.
+         * 
+         * We Need to try lcd.clear();
     	 */
     	 
         //Uncomment when using the Auton Switch thats on the OI
@@ -110,33 +113,14 @@ public class Valkyrie extends IterativeRobot {
      * This function is called once each time the robot enters autonomous mode.
      */
     public void autonomousInit() {
-        server.reset();
-        server.startSamplingCounts();
+        OI.server.reset();
+        OI.server.startSamplingCounts();
         new AutonSelector().start();
     }
     
     public void autonomousPeriodic() {
-        System.out.println("Current left: " + server.getLeftStatus() + ", current right: " + server.getRightStatus());
-        System.out.println("Left count: " + server.getLeftCount() + ", right count: " + server.getRightCount() + ", total: " + server.getTotalCount() + "\n");
-    	if(server.getLeftCount() > 5){
-    		System.out.println("Left Hand Auton");
-    	}
-    	else if(server.getRightCount() > 5){
-    		System.out.println("Right Hand Auton");
-    	}
-        //Cheesy Vision stuff used in auton
-        if(server.getLeftStatus()){
-            OI.CheesyVisionLeft = 1;
-        }
-        else{
-            OI.CheesyVisionLeft = 0;
-        }
-        if(server.getRightStatus()){
-            OI.CheesyVisionRight = 1;
-        }
-        else{
-            OI.CheesyVisionRight = 0;
-        }
+        //prints tests for cheesy vision now
+        new AutonPeriodic().start();
     }
     
     public void teleopInit(){
