@@ -13,9 +13,11 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
  */
 
 public class UpdateAutonSelector extends CommandBase{
+        boolean done = false; 
 	public UpdateAutonSelector(){
 		//It doens't do anything unless put in constructor,
 		//because isFinished is set to true
+                /*
 		if (OI.buttonAutonSwitch.get()) {
 			OI.AutonMode = RobotValues.Auton_Empty; 
 			if (OI.jBox.getRawAxis(Buttons.Axis_Horizontal) < 0) {
@@ -30,16 +32,29 @@ public class UpdateAutonSelector extends CommandBase{
 		}else{
 			OI.AutonMode = RobotValues.Auton_Disabled;
 		}
+                */
 	}
 	
-	protected void end() {}
-	protected void execute() {}
+	protected void end() {
+            done = false;
+        }
+	protected void execute() {
+            
+            if (OI.buttonAutonSwitch.get()) {
+                OI.AutonMode++;
+                done = true;
+            }
+            if (OI.AutonMode > RobotValues.Auton_Max){
+                OI.AutonMode = -1;
+            }
+            
+        }
 	protected void initialize() {}
 	protected void interrupted() {
 		end();
 	}
 	protected boolean isFinished() {
-		return true;
+		return done;
 	}
 
 }

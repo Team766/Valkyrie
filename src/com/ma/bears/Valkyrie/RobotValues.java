@@ -28,11 +28,16 @@ public class RobotValues {
     
     //Auton    
     public static final double crossDistance = -2.0;
-    
+            
     public static final int Auton_Disabled = -1;
     public static final int Auton_Empty = 0;
     public static final int Auton_OneBallStay = 1;
     public static final int Auton_TwoBall = 2;
     public static final int Auton_Move = 3;
     public static final int Auton_OneBallMove = 4;
+    public static final int Auton_CheesyVision = 5;
+        
+    public static final int Auton_Max = 5;
+    public static int CheesyVisionLeft = 0;
+    public static int CheesyVisionRight = 0;
 }

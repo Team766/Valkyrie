@@ -36,7 +36,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  */
 public class Valkyrie extends IterativeRobot {
     
-    CheesyVisionServer server = CheesyVisionServer.getInstance();
+    public CheesyVisionServer server = CheesyVisionServer.getInstance();
     public final int listenPort = 1180;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
@@ -67,37 +67,44 @@ public class Valkyrie extends IterativeRobot {
     	 * or else it will display
     	 * old text.
     	 */
-    	new UpdateAutonSelector().start();
-    	String mode = "";
+                
+        String mode = "";
     	switch (OI.AutonMode){
-    	case RobotValues.Auton_Disabled:{
+            case RobotValues.Auton_Disabled:{
     		mode = "Disabled             ";
     		break;
-    	}
-    	case RobotValues.Auton_Empty:{
+            }
+            case RobotValues.Auton_Empty:{
     		mode = "None Selected        ";
     		break;
-    	}
-    	case RobotValues.Auton_Move:{
+            }
+            case RobotValues.Auton_Move:{
     		mode = "Move Forward         ";
     		break;
-    	}
-    	case RobotValues.Auton_OneBallMove:{
+        	}
+            case RobotValues.Auton_OneBallMove:{
     		mode = "One Ball, Move Foward";
     		break;
-    	}
-    	case RobotValues.Auton_OneBallStay:{
+            }
+            case RobotValues.Auton_OneBallStay:{
     		mode = "One Ball, Stay       ";
     		break;
-    	}
-    	case RobotValues.Auton_TwoBall:{
+            }
+            case RobotValues.Auton_TwoBall:{
     		mode = "Two Ball             ";
     		break;
+            }
+            case RobotValues.Auton_CheesyVision:{
+                mode = "Cheesy Vision Drive  ";
+                break;
+            }
+            default: mode = "";
     	}
-    	default: mode = "";
-    	}
+            	new UpdateAutonSelector().start();
+
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
     	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
+        lcd.println(DriverStationLCD.Line.kUser3, 1, "Good Luck with the Game!");
     	lcd.updateLCD();
     }
     
@@ -119,6 +126,18 @@ public class Valkyrie extends IterativeRobot {
     	else if(server.getRightCount() > 5){
     		System.out.println("Right Hand Auton");
     	}
+        if(server.getLeftStatus()){
+            RobotValues.CheesyVisionLeft = 1;
+        }
+        else{
+            RobotValues.CheesyVisionLeft = 0;
+        }
+        if(server.getRightStatus()){
+            RobotValues.CheesyVisionRight = 1;
+        }
+        else{
+            RobotValues.CheesyVisionRight = 0;
+        }
     }
     
     public void teleopInit(){
