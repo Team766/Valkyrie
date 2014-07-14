@@ -6,7 +6,7 @@ package com.ma.bears.Valkyrie;
  * quickly without sorting through code.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
- * @author Blevenson
+ * @author Brett Levenson
  */
 public class RobotValues {
 	
@@ -34,7 +34,8 @@ public class RobotValues {
     public static final int Auton_TwoBall = 2;
     public static final int Auton_Move = 3;
     public static final int Auton_OneBallMove = 4;
-    public static final int Auton_CheesyVision = 5;
+    public static final int Auton_CheesyVision = 5;  
+    //if you increment the values above you must also increment the Auton_Max
         
     public static final int Auton_Max = 5;
     
@@ -46,7 +47,7 @@ public class RobotValues {
     public static final double Move_Distance = -2.0;
     
     public static final double TwoBall_PickupTime = 1.0;
-    public static final double TwoBall_Shot1Distance = 0;
+    public static final double TwoBall_Shot1Distance = 0.0;
     public static final double TwoBall_WaitforShoot = 2.0;
     public static final double TwoBall_Shot2Distance = -1.2;
     

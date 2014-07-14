@@ -5,6 +5,7 @@ package com.ma.bears.Valkyrie;
  * quickly without sorting through code.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
  * 
  */
 public class Ports {

@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * through CommandBase.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
  */
 
 public class OI {

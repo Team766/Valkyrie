@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
  * Java code for 2014 robot. Mainly a test
- * and proof of concept to see how well Java
+ * and Poof of concept to see how well Java
  * works for programming the robot.
  * 
  * Currently drives with a CheesyDrive system.
@@ -40,7 +40,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void robotInit(){
-    	System.out.println("2014");
+    	System.out.println("Java Code 2014 V: 1.0.2");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
         CommandBase.init();
@@ -64,7 +64,7 @@ public class Valkyrie extends IterativeRobot {
     	 
         //Uncomment when using the Auton Switch thats on the OI
         //new UpdateAutonSwitch().start();
-                
+    	
         String mode = "                           ";
         String line3 = "                           ";
         String line4 = "                           ";

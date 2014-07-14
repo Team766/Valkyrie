@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
  * Puts arm down.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
  */
 
 public class ArmDownCommand extends CommandBase{
@@ -17,28 +18,34 @@ public class ArmDownCommand extends CommandBase{
 	private Timer t;
 	
 	public ArmDownCommand(){
+		//Default constructor without a timed run
 		t = new Timer();
 	}
 	
 	public ArmDownCommand(double time){
+		//used to keep arm down for given time
 		timeout = time;
 		timed = true;
 	}	
 
 	protected void end() {
+		//bring arm up after running
 		Pickup.setArmDown(false);
 	}
 	
 	protected void execute() {
+		//put arm down
 		Pickup.setArmDown(true);
 	}
 
 	protected void initialize() {
+		//start the timer for the arm
 		t.reset();
 		t.start();
 	}
 
 	protected void interrupted() {
+		//if command is canceled, end it
 		end();
 	}
 

@@ -9,10 +9,11 @@ import edu.wpi.first.wpilibj.Timer;
  * Roller in.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
+ * @author Brett Levenson
  */
 
 public class RollerInCommand extends CommandBase{
-	
+	//default values for the timer stuff
 	private double timeout = 0.0;
 	private boolean timed = false;
 	private Timer t;
@@ -23,19 +24,23 @@ public class RollerInCommand extends CommandBase{
 	}
 	
 	public RollerInCommand(double time){
+		//runs roller in for set time
 		timeout = time;
 		timed = true;
 	}	
 	
 	protected void end() {
+		//stops rollers after running
 		Pickup.setRollers(0);
 	}
 
 	protected void execute() {
+		//sets rollers to roll in
 		Pickup.setRollers(RobotValues.ArmWheels_In);
 	}
 
 	protected void initialize() {
+		//reset the timer
 		t.reset();
 		t.start();
 	}

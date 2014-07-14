@@ -13,8 +13,11 @@ import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 public class EjectCommand extends CommandGroup{
 	
 	public EjectCommand(){
+		//Run the rollers backwards
 		addParallel(new RollerOutCommand());
+		//turn on ejector piston
 		addParallel(new EjectorOutCommand());
+		//turn grips off while running, but when end, turn back on
 		addParallel(new GripsCommand(false, true));
 	}
 }

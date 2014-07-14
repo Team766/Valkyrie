@@ -3,6 +3,7 @@ package com.ma.bears.Valkyrie;
 /**
  * @author Brett Levenson
  * Team 766, The Not-So Cheesy Poofs
+ * while colaboration from the very Chessy Poofs
  */
 
 import edu.wpi.first.wpilibj.Timer;
