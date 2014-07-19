@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
  * Java code for 2014 robot. Mainly a test
- * and Poof of concept to see how well Java
+ * and proof of concept to see how well Java
  * works for programming the robot.
  * 
  * Currently drives with a CheesyDrive system.
