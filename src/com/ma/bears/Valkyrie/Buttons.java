@@ -95,6 +95,6 @@ public class Buttons {
     public static int GPEjector = 8;
     public static int GPArm = 6;
     public static int GPShootCancel = 7;
-    public static int GPAuton = 7; 
+    public static int GPAuton = 7;
     
 }

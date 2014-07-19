@@ -12,8 +12,7 @@ public class Ports {
     public static final int PWM_Left_Drive = 9;
     public static final int PWM_Right_Drive = 2;
     public static final int PWM_Winch = 8;
-    public static final int PWM_ArmWheels = 5;
-    public static final int PWM_Rollers = 1;
+    public static final int PWM_ArmWheels = 1;
     
     public static final int Relay_Compr = 1;
     

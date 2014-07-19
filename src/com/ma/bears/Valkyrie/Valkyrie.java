@@ -33,6 +33,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 public class Valkyrie extends IterativeRobot {
     
     public final int listenPort = 1180;
+    boolean AutonCyclePrev;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
     
@@ -52,6 +53,7 @@ public class Valkyrie extends IterativeRobot {
         CommandBase.OI.server.stopSamplingCounts();
     }
     public void disabledPeriodic(){
+    	Scheduler.getInstance().run();
     	/* Update Autonomous display
     	 * 
     	 * Why all the spaces?
@@ -115,6 +117,11 @@ public class Valkyrie extends IterativeRobot {
         lcd.println(DriverStationLCD.Line.kUser3, 1, line3);
         lcd.println(DriverStationLCD.Line.kUser4, 1, line4);
     	lcd.updateLCD();
+    	
+    	//Auton selector
+    	if(!AutonCyclePrev && (CommandBase.OI.buttonAutonSwitch.get() || CommandBase.OI.GPbuttonAuton.get()))
+    		CommandBase.OI.incrementAutonMode();
+    	AutonCyclePrev = (CommandBase.OI.buttonAutonSwitch.get() || CommandBase.OI.GPbuttonAuton.get());
     }
     
     public void autonomousInit() {

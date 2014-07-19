@@ -8,7 +8,6 @@ import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
-import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSelector;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -64,7 +63,7 @@ public class OI {
     GPbuttonCancel = new JoystickButton(jGpad, Buttons.GPShootCancel),
     GPbuttonAuton = new JoystickButton(jGpad, Buttons.GPAuton);
     
-    public CheesyVisionServer server = CheesyVisionServer.getInstance();    
+    public CheesyVisionServer server = CheesyVisionServer.getInstance();
     
     //Auton Stuff
     public int AutonMode = 0;
@@ -76,8 +75,6 @@ public class OI {
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);
         buttonCancel.cancelWhenPressed(shoot);
-        
-        buttonAutonSwitch.whenPressed(new UpdateAutonSelector());
 
         buttonRollerIn.whileHeld(new RollerInCommand());
         buttonRollerOut.whileHeld(new RollerOutCommand());
@@ -99,8 +96,6 @@ public class OI {
         
         GPbuttonPickup.whileHeld(new PickupCommand());
         GPbuttonInbound.whileHeld(new InboundCommand());
-        
-        GPbuttonAuton.whenPressed(new UpdateAutonSelector());
 	}
 	
 	//interface for gamepad support
@@ -140,5 +135,13 @@ public class OI {
 	}
 	public boolean getUseGamepad(){
 		return UseGamepad;
+	}
+	
+	public void incrementAutonMode(){
+		AutonMode++;
+        
+        if (AutonMode > RobotValues.Auton_Max){
+            AutonMode = -1;
+        }
 	}
 }
