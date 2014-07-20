@@ -11,7 +11,8 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 
 public class EjectorOutCommand extends CommandBase{
 	
-	public EjectorOutCommand(){
+	public EjectorOutCommand(/*double timeout*/){
+		//setTimeout(timeout);
 	}
 	
 	protected void end() {

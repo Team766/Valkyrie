@@ -2,8 +2,6 @@ package com.ma.bears.Valkyrie.commands.Arm;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
-import edu.wpi.first.wpilibj.Timer;
-
 /**
  * Puts arm down.
  * 
@@ -13,19 +11,15 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class ArmDownCommand extends CommandBase{
 	
-	private double timeout = 0.0;
-	private boolean timed = false;
-	private Timer t;
-	
+	private double timeOut = 0.0d;
 	public ArmDownCommand(){
 		//Default constructor without a timed run
-		t = new Timer();
+		timeOut = 0.0d;
 	}
 	
 	public ArmDownCommand(double time){
 		//used to keep arm down for given time
-		timeout = time;
-		timed = true;
+		timeOut = time;
 	}	
 
 	protected void end() {
@@ -40,8 +34,7 @@ public class ArmDownCommand extends CommandBase{
 
 	protected void initialize() {
 		//start the timer for the arm
-		t.reset();
-		t.start();
+		setTimeout(timeOut);
 	}
 
 	protected void interrupted() {
@@ -53,7 +46,7 @@ public class ArmDownCommand extends CommandBase{
 		//if the command is timed and time is satisfied, done
 		//if command is not timed it will never be done
 		//and is instead terminated by command system
-		return (t.get() > timeout) && timed;
+		return isTimedOut();
 	}
 
 }

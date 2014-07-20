@@ -3,8 +3,6 @@ package com.ma.bears.Valkyrie.commands.Arm;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
-import edu.wpi.first.wpilibj.Timer;
-
 /**
  * Roller in.
  * 
@@ -14,19 +12,15 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class RollerInCommand extends CommandBase{
 	//default values for the timer stuff
-	private double timeout = 0.0;
-	private boolean timed = false;
-	private Timer t;
+	private double timeOut = 0.0d;
 
 	public RollerInCommand(){
-		t = new Timer();
-		timed = false;
+		timeOut = 0.0d;
 	}
 	
 	public RollerInCommand(double time){
 		//runs roller in for set time
-		timeout = time;
-		timed = true;
+		timeOut = time;
 	}	
 	
 	protected void end() {
@@ -41,8 +35,7 @@ public class RollerInCommand extends CommandBase{
 
 	protected void initialize() {
 		//reset the timer
-		t.reset();
-		t.start();
+		setTimeout(timeOut);
 	}
 
 	protected void interrupted() {
@@ -53,7 +46,7 @@ public class RollerInCommand extends CommandBase{
 		//if the command is timed and time is satisfied, done
 		//if command is not timed it will never be done
 		//and is instead terminated by command system
-		return (t.get() > timeout) && timed;
+		return isTimedOut();
 	}
 
 }

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Drive subsystem.
- * Includes all parts of the robot used to drive.
+ * Includes all parts of the robot uses to drive.
  * 
  * @author Brett Levenson
  * @author Nicky Ivy nickivyca@gmail.com

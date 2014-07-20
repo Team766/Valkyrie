@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 
 /**
- * ejector piston out, roller out, and grips off
+ * Ejector piston out, roller out, and grips off
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson
