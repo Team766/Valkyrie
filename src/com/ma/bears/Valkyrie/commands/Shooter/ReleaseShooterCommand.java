@@ -3,8 +3,6 @@ package com.ma.bears.Valkyrie.commands.Shooter;
 import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.commands.CommandBase;
 
-import edu.wpi.first.wpilibj.Timer;
-
 /**
  * Subcommand of the shoot command. 
  * This part releases the winch
@@ -15,11 +13,9 @@ import edu.wpi.first.wpilibj.Timer;
  */
 
 public class ReleaseShooterCommand extends CommandBase{
-	Timer t = new Timer();
         
 	protected void initialize() {
-		t.reset();
-		t.start();
+		setTimeout(RobotValues.ShooterWait);
 	}
 
 	protected void end() {
@@ -37,7 +33,7 @@ public class ReleaseShooterCommand extends CommandBase{
 	}
 
 	protected boolean isFinished() {
-		return t.get() > RobotValues.ShooterWait;
+		return isTimedOut();
 	}
 
 }
