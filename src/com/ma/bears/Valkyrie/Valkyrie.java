@@ -23,9 +23,6 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * TODO:
  * Testing with robot on floor.
  * Test new auton selector, and cheesy vision.
- * Remove timings from commands and replace them with built in timeouts.
- * Test lcd.clear();
- *
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
