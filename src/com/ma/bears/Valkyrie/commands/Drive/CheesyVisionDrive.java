@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ma.bears.Valkyrie.commands.Drive;
 /**
  *  Drives the robot in the direction of the hands
@@ -12,17 +7,17 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 
 public class CheesyVisionDrive extends CommandBase {
     public CheesyVisionDrive() {
-        
+        System.out.println("I driving with Cheesy vision!");
     }
-    protected void initialize() {}
+    protected void initialize() {
+    	Drive.drive(0.0);
+    }
     protected void execute() {
-        if(OI.server.getLeftStatus()){
-            Drive.drive(1.0);
-        }else if (OI.server.getRightStatus()){
-            Drive.drive(-1.0);
-        }else{
-            Drive.drive(0.0);
-        }
+        if(OI.server.getLeftStatus()) Drive.drive(1.0);
+        else if (OI.server.getRightStatus()) Drive.drive(-1.0);
+        else Drive.drive(0.0);
+        
+        System.out.println("Looping through Cheesy Vision Auton");
     }
     protected boolean isFinished() {
         return false;

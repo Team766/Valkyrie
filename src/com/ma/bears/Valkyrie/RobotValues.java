@@ -42,14 +42,14 @@ public class RobotValues {
     //Auton distances negative because we are driving backwards
     
     public static final double OneBallStay_shootDistance = 0.0;
-    public static final double OneBallStay_crossDistance = -1.0;
+    public static final double OneBallStay_crossDistance = 1.0;
     
-    public static final double Move_Distance = -2.0;
+    public static final double Move_Distance = 2.0;
     
     public static final double TwoBall_PickupTime = 1.0;
     public static final double TwoBall_Shot1Distance = 0.0;
     public static final double TwoBall_WaitforShoot = 2.0;
-    public static final double TwoBall_Shot2Distance = -1.2;
+    public static final double TwoBall_Shot2Distance = 1.2;
     
-    public static final double OneBallMove_Distance = -2.6;
+    public static final double OneBallMove_Distance = 2.6;
 }

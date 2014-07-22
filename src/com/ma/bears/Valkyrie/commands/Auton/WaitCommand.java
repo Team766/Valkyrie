@@ -17,16 +17,15 @@ public class WaitCommand extends Command {
     setTimeout(timeout);
   }
 
-  protected void execute() {
-  }
+  protected void execute() {}
 
   protected boolean isFinished() {
     return isTimedOut();
   }
 
-  protected void end() {
-  }
+  protected void end() {}
 
   protected void interrupted() {
+	  end();
   }
 }

@@ -23,7 +23,7 @@ public class DriveForwardCommand extends CommandBase {
     }
     
     public DriveForwardCommand(double distance){
-    	kDriveDistance = distance;
+    	kDriveDistance = -distance;
     }
     
     protected void initialize() {
