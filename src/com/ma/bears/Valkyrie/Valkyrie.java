@@ -38,7 +38,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void robotInit(){
-    	System.out.println("Java Code 2014 V: 1.0.2");
+    	System.out.println("Java Code 2014 V: 1.0.3");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
         CommandBase.init();

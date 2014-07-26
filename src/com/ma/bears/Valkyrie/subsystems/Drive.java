@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Gyro;
 
 /**
  * Drive subsystem.
@@ -26,7 +27,10 @@ public class Drive extends Subsystem{
     
     private Solenoid Shifter = new Solenoid(Ports.Sol_Shifter);
     
+    private Gyro gyro;
+    
 	protected void initDefaultCommand() {
+		gyro = new Gyro(Ports.PORT_GYRO);
 	}
 	
 	public void drive(double speed){
@@ -57,6 +61,14 @@ public class Drive extends Subsystem{
 	public void resetEncoders(){
 		LDriveEnc.reset();
 		RDriveEnc.reset();
+	}
+	
+	//Gyro stuff
+	public double getAngle(){
+		return gyro.getAngle();
+	}
+	public void resetGyro(){
+		gyro.reset();
 	}
 
 }
