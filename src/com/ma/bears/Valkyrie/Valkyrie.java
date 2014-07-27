@@ -6,6 +6,7 @@ import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 //import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
+import com.ma.bears.Valkyrie.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -106,9 +107,14 @@ public class Valkyrie extends IterativeRobot {
             mode = "Cheesy Vision Drive  ";
             break;
             }
+            case RobotValues.Auton_GyroDriveTurn:{
+            mode = "Auton Gyro Drive Turn";
+            line3 = "	Stand Back!      ";
+            line4 = "	Not Tested		 ";
+            break;
+            }
             default:{} //initialized as spaces so nothing needed here
     	}
-
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
     	lcd.println(DriverStationLCD.Line.kUser2, 1, mode);
         lcd.println(DriverStationLCD.Line.kUser3, 1, line3);
@@ -125,6 +131,8 @@ public class Valkyrie extends IterativeRobot {
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
         new AutonSelector(CommandBase.OI.AutonMode).start();
+        CommandBase.Drive.resetGyro();
+        
     }
     
     public void autonomousPeriodic() {

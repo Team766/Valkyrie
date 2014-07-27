@@ -55,6 +55,11 @@ public class AutonSelector extends CommandGroup{
                 System.out.println("Cheesy Drive Auton");
                 addSequential(new CheesyVisionDrive());
             }
+            //runs the Gyro Drive Turn Command
+            case RobotValues.Auton_GyroDriveTurn:{
+                System.out.println("Gyro Drive and Turn auton");
+                addSequential(new TestGyroDrive(2d, 45d, 2d));
+            }
             default:{
                 System.out.println("Auton selection failed");
                 break;

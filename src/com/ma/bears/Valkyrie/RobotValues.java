@@ -35,9 +35,10 @@ public class RobotValues {
     public static final int Auton_Move = 3;
     public static final int Auton_OneBallMove = 4;
     public static final int Auton_CheesyVision = 5;  
+    public static final int Auton_GyroDriveTurn = 6;
     //if you increment the values above you must also increment the Auton_Max
         
-    public static final int Auton_Max = 5;
+    public static final int Auton_Max = 6;
     
     //Auton distances negative because we are driving backwards
     
