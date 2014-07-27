@@ -147,7 +147,8 @@ public class Valkyrie extends IterativeRobot {
 		}else{
 			new TankDriveCommand().start();
 		}
-		new GripsTimedOffCommand(0).start(); //set grippers out on enable
+		//set grippers out on enable
+		CommandBase.Pickup.setGrippers(true);
     }
     
     public void teleopPeriodic(){

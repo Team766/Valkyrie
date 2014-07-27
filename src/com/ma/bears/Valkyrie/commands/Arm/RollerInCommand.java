@@ -11,16 +11,13 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
  */
 
 public class RollerInCommand extends CommandBase{
-	//default values for the timer stuff
-	private double timeOut = 0.0d;
 
 	public RollerInCommand(){
-		timeOut = 0.0d;
 	}
 	
 	public RollerInCommand(double time){
 		//runs roller in for set time
-		timeOut = time;
+		setTimeout(time);
 	}	
 	
 	protected void end() {
@@ -34,8 +31,6 @@ public class RollerInCommand extends CommandBase{
 	}
 
 	protected void initialize() {
-		//reset the timer
-		setTimeout(timeOut);
 	}
 
 	protected void interrupted() {

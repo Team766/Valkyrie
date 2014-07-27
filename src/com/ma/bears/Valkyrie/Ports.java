@@ -31,6 +31,5 @@ public class Ports {
     public static int Sol_Grippers = 4;
     public static int Sol_Ejector = 5;
     
-    //Gyro
-    public static final int PORT_GYRO = 3; 
+    public static final int Analog_Gyro = 1; 
 }

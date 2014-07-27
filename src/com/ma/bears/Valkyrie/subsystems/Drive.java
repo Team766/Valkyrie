@@ -30,7 +30,7 @@ public class Drive extends Subsystem{
     private Gyro gyro;
     
 	protected void initDefaultCommand() {
-		gyro = new Gyro(Ports.PORT_GYRO);
+		gyro = new Gyro(Ports.Analog_Gyro);
 	}
 	
 	public void drive(double speed){

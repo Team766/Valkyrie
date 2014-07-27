@@ -11,15 +11,13 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 
 public class ArmDownCommand extends CommandBase{
 	
-	private double timeOut = 0.0d;
 	public ArmDownCommand(){
 		//Default constructor without a timed run
-		timeOut = 0.0d;
 	}
 	
 	public ArmDownCommand(double time){
 		//used to keep arm down for given time
-		timeOut = time;
+		setTimeout(time);
 	}	
 
 	protected void end() {
@@ -33,8 +31,6 @@ public class ArmDownCommand extends CommandBase{
 	}
 
 	protected void initialize() {
-		//start the timer for the arm
-		setTimeout(timeOut);
 	}
 
 	protected void interrupted() {

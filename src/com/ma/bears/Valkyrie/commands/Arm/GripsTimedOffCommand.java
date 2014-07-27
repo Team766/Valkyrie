@@ -11,15 +11,13 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 
 public class GripsTimedOffCommand extends CommandBase{
 	
-	private double timeOut = 0.0d;
 	public GripsTimedOffCommand(){
 		//default constructor that justs turns off the grippers
-		timeOut = 0.0d;
 	}
 	
 	public GripsTimedOffCommand(double time){
 		//turns grips off after given time
-		timeOut = time;
+		setTimeout(time);
 	}	
 
 	protected void end() {
@@ -33,7 +31,6 @@ public class GripsTimedOffCommand extends CommandBase{
 	}
 	
 	protected void initialize() {
-		setTimeout(timeOut);
 	}
 
 	protected void interrupted() {
