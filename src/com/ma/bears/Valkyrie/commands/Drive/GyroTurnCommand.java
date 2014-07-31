@@ -26,7 +26,6 @@ public class GyroTurnCommand extends CommandBase {
     }
     
     protected void initialize() {
-    	Drive.resetGyro();
     	AnglePID.reset();
     }
     
@@ -39,8 +38,7 @@ public class GyroTurnCommand extends CommandBase {
         return AnglePID.isDone();
     }
     protected void end() {
-        Drive.setLeftPower(0.0);  //use function in drive subsystem
-        Drive.setRightPower(0.0);
+        Drive.drive(0.0);
     }
     protected void interrupted() {
     	end();
