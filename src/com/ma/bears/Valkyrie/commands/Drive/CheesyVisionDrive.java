@@ -1,10 +1,10 @@
 package com.ma.bears.Valkyrie.commands.Drive;
+import com.ma.bears.Valkyrie.commands.CommandBase;
+
 /**
  *  Drives the robot in the direction of the hands
  * @author Blevenson
  */
-import com.ma.bears.Valkyrie.commands.CommandBase;
-
 public class CheesyVisionDrive extends CommandBase {
     public CheesyVisionDrive() {
         System.out.println("I driving with Cheesy vision!");

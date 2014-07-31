@@ -10,7 +10,10 @@ package com.ma.bears.Valkyrie;
  */
 public class RobotValues {
 	
-	//Make all distances forward negative and backwards positive
+	/*
+	 * The 'front' of the robot is pickup. Keep that in
+	 * mind for distances.
+	 */
 	
     public static final double ArmWheels_In = 1;
     public static final double ArmWheels_Out = -1;

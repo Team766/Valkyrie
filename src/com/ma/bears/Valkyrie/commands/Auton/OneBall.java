@@ -16,7 +16,10 @@ import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
  */
 public class OneBall extends CommandGroup {
     
-	//One Ball Move
+	/**
+	 * One Ball Move
+	 * @param distance distance moved to shoot
+	 */
     public OneBall(double distance) {
     	addParallel(new GripsTimedOffCommand(0)); //to switch on the grips at the beginning of auton
     	addSequential(new WinchBackCommand());
@@ -24,7 +27,12 @@ public class OneBall extends CommandGroup {
     	addSequential(new ShootCommand());
     }
     
-    //One Ball Stay
+    /**
+     * One Ball Stay
+     * 
+     * @param shootdistance Distance moved to proper shooting position
+     * @param crossdistance Distance moved to cross line
+     */
     public OneBall(double shootdistance, double crossdistance){
     	addParallel(new GripsTimedOffCommand(0)); //to switch on the grips at the beginning of auton
     	addSequential(new WinchBackCommand());

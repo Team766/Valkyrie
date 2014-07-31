@@ -1,5 +1,7 @@
 package com.ma.bears.Valkyrie.commands.Shooter;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
 /**
  * Releases grips and shoots, waits,
  * winches back.
@@ -7,13 +9,7 @@ package com.ma.bears.Valkyrie.commands.Shooter;
  * @author Nicky Ivy nickivyca@gmail.com
  */
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
 public class ShootCommand extends CommandGroup {
-
-	//releases grips and shoots
-	//waits
-	//winches back
 	
 	public ShootCommand(){
 		addSequential(new ReleaseShooterCommand());

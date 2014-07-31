@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * 
  * Currently drives with a CheesyDrive system.
  * 
- * TODO:
- * Testing with robot on floor.
- * Test new auton selector, and cheesy vision.
+ * <p>TODO:
+ * <p>Testing with robot on floor.
+ * <p>Test new auton selector, and cheesy vision.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -47,20 +47,19 @@ public class Valkyrie extends IterativeRobot {
     public void disabledInit() {
         CommandBase.OI.server.stopSamplingCounts();
     }
+    
+    /** Update Autonomous display
+	 * 
+	 * <p>Why all the spaces?
+	 * You need to flush the display
+	 * or else it will display
+	 * old text.
+     * 
+     * <p>We need to try lcd.clear();
+	 */
     public void disabledPeriodic(){
     	Scheduler.getInstance().run();
-    	/* Update Autonomous display
-    	 * 
-    	 * Why all the spaces?
-    	 * You need to flush the display
-    	 * or else it will display
-    	 * old text.
-         * 
-         * We Need to try lcd.clear();
-    	 */
-    	 
-        //Uncomment when using the Auton Switch thats on the OI
-        //new UpdateAutonSwitch().start();
+
     	
         String mode = "                           ";
         String line3 = "                           ";

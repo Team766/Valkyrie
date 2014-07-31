@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Later in commands import this class to
  * gain access to the systems presets
  *
+ * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson
  */
 public abstract class CommandBase extends Command{
