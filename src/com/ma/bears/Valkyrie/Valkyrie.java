@@ -1,12 +1,9 @@
 package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.commands.CommandBase;
-import com.ma.bears.Valkyrie.commands.Arm.GripsTimedOffCommand;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
-//import com.ma.bears.Valkyrie.commands.Auton.UpdateAutonSwitch;  //commented out
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
-import com.ma.bears.Valkyrie.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

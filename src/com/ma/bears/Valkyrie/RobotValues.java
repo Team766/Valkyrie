@@ -26,6 +26,15 @@ public class RobotValues {
     public static final double Kd = 0.8;
     public static final double driveTolerance = .01;
     
+    //gyro turning
+    
+    public static final double AngleKp = 0;
+    public static final double AngleKi = 0;
+    public static final double AngleKd = 0;
+    public static final double Angleoutputmax_low = -0.3;
+    public static final double Angleoutputmax_high = 0.3;
+    public static final double AngleThreshold = 1;
+    
     //Auton    
             
     public static final int Auton_Disabled = -1;

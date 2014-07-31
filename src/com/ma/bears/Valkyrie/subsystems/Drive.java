@@ -27,10 +27,9 @@ public class Drive extends Subsystem{
     
     private Solenoid Shifter = new Solenoid(Ports.Sol_Shifter);
     
-    private Gyro gyro;
+    private Gyro gyro = new Gyro(Ports.Analog_Gyro);
     
 	protected void initDefaultCommand() {
-		gyro = new Gyro(Ports.Analog_Gyro);
 	}
 	
 	public void drive(double speed){
