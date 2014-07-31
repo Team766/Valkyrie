@@ -1,9 +1,9 @@
 package com.ma.bears.Valkyrie;
 
 /**
- * @author Brett Levenson
+ * @author Tom Bot
  * Team 766, The Not-So Cheesy Poofs
- * while colaboration from the very Chessy Poofs
+ * with colaboration from the very Chessy Poofs
  */
 
 import edu.wpi.first.wpilibj.Timer;
