@@ -38,8 +38,8 @@ public class DriveForwardCommand extends CommandBase {
 	if(!done) {
             final double error = kDriveDistance - (Drive.getLeftDistance() + Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
-            Drive.setLeftSpeed(-drive_power);
-            Drive.setRightSpeed(drive_power);
+            Drive.setLeftPower(-drive_power);
+            Drive.setRightPower(drive_power);
             new WaitCommand(0.02).start();
             System.out.println("error " + error + " drive_power " + drive_power + " ld " + Drive.getLeftDistance() + " rd " + Drive.getRightDistance() + "\n");
             last_error = error;
@@ -59,8 +59,8 @@ public class DriveForwardCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        Drive.setLeftSpeed(0.0);  //use function in drive subsystem
-        Drive.setRightSpeed(0.0);
+        Drive.setLeftPower(0.0);  //use function in drive subsystem
+        Drive.setRightPower(0.0);
     }
 
     // Called when another command which requires one or more of the same

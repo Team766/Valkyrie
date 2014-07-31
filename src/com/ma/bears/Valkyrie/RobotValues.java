@@ -38,6 +38,22 @@ public class RobotValues {
     public static final double Angleoutputmax_high = 0.3;
     public static final double AngleThreshold = 1;
     
+    //drive straight
+    
+    public static final double DriveKp = 0;
+    public static final double DriveKi = 0;
+    public static final double DriveKd = 0;
+    public static final double Driveoutputmax_low = -0.5;
+    public static final double Driveoutputmax_high = 0.5;
+    public static final double DriveThreshold = .01;
+    
+    public static final double StraightKp = 0;
+    public static final double StraightKi = 0;
+    public static final double StraightKd = 0;
+    public static final double Straightoutputmax_low = -0.1;
+    public static final double Straightoutputmax_high = 0.1;
+    public static final double StraightThreshold = .000001; //so it never stops trying
+    
     //Auton    
             
     public static final int Auton_Disabled = -1;

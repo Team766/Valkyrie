@@ -145,8 +145,8 @@ public class CheesyDriveCommand extends CommandBase {
     }
 
     //drive.setLeftRightPower(leftPwm, rightPwm);
-    Drive.setLeftSpeed(leftPwm);
-    Drive.setRightSpeed(rightPwm);
+    Drive.setLeftPower(leftPwm);
+    Drive.setRightPower(rightPwm);
     Drive.setShifter(isHighGear);
   }
 

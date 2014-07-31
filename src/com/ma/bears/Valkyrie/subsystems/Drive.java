@@ -33,14 +33,14 @@ public class Drive extends Subsystem{
 	}
 	
 	public void drive(double speed){
-		setLeftSpeed(speed);
-		setRightSpeed(speed);
+		setLeftPower(speed);
+		setRightPower(speed);
 	}
-	public void setLeftSpeed(double speed){
-		leftDrive.set(-speed);
+	public void setLeftPower(double power){
+		leftDrive.set(-power);
 	}
-	public void setRightSpeed(double speed){
-		rightDrive.set(speed);
+	public void setRightPower(double power){
+		rightDrive.set(power);
 	}
 	public void setShifter(boolean highGear){
 		Shifter.set(!highGear);
@@ -56,6 +56,12 @@ public class Drive extends Subsystem{
 	}
 	public float getRightDistance() {
 		return translateDrive(RDriveEnc.getRaw());
+	}
+	public double getLeftSpeed(){
+		return LDriveEnc.getRate();
+	}
+	public double getRightSpeed(){
+		return RDriveEnc.getRate();
 	}
 	public void resetEncoders(){
 		LDriveEnc.reset();

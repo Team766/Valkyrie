@@ -32,15 +32,15 @@ public class GyroTurnCommand extends CommandBase {
     
     public void execute() {
     	AnglePID.calculate(Drive.getAngle());
-    	Drive.setLeftSpeed(AnglePID.getOutput());
-    	Drive.setRightSpeed(-AnglePID.getOutput());    
+    	Drive.setLeftPower(AnglePID.getOutput());
+    	Drive.setRightPower(-AnglePID.getOutput());    
     }
     protected boolean isFinished() {
         return AnglePID.isDone();
     }
     protected void end() {
-        Drive.setLeftSpeed(0.0);  //use function in drive subsystem
-        Drive.setRightSpeed(0.0);
+        Drive.setLeftPower(0.0);  //use function in drive subsystem
+        Drive.setRightPower(0.0);
     }
     protected void interrupted() {
     	end();
