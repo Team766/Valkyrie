@@ -58,8 +58,7 @@ public class GyroDriveCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        Drive.setLeftPower(0.0);  //use function in drive subsystem
-        Drive.setRightPower(0.0);
+        Drive.drive(0.0);
     }
 
     // Called when another command which requires one or more of the same

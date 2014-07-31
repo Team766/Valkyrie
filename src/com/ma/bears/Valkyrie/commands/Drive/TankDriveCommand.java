@@ -14,8 +14,7 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 
 public class TankDriveCommand extends CommandBase{
 	protected void end() {
-		Drive.setLeftPower(0);
-		Drive.setRightPower(0);
+		Drive.drive(0.0);
 		Drive.setShifter(false);
 	}
 	protected void execute() {
