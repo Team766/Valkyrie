@@ -63,6 +63,9 @@ public class Drive extends Subsystem{
 	public double getRightSpeed(){
 		return RDriveEnc.getRate();
 	}
+	public double getSpeed(){
+		return (RDriveEnc.getRate() * LDriveEnc.getRate()) / 2;
+	}
 	public void resetEncoders(){
 		LDriveEnc.reset();
 		RDriveEnc.reset();
