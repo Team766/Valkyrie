@@ -10,12 +10,12 @@ public class CheesyVisionDrive extends CommandBase {
         System.out.println("I driving with Cheesy vision!");
     }
     protected void initialize() {
-    	Drive.drive(0.0);
+    	Drive.setPower(0.0);
     }
     protected void execute() {
-        if(OI.server.getLeftStatus()) Drive.drive(1.0);
-        else if (OI.server.getRightStatus()) Drive.drive(-1.0);
-        else Drive.drive(0.0);
+        if(OI.server.getLeftStatus()) Drive.setPower(1.0);
+        else if (OI.server.getRightStatus()) Drive.setPower(-1.0);
+        else Drive.setPower(0.0);
         
         System.out.println("Looping through Cheesy Vision Auton");
     }
@@ -23,7 +23,7 @@ public class CheesyVisionDrive extends CommandBase {
         return false;
     }
     protected void end() {
-        Drive.drive(0.0);
+        Drive.setPower(0.0);
     }
     protected void interrupted() {}
 }

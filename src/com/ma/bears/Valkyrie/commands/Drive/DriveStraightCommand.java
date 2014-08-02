@@ -50,7 +50,7 @@ public class DriveStraightCommand extends CommandBase {
     }
     
     protected void end() {
-        Drive.drive(0.0);
+        Drive.setPower(0.0);
     }
     
     protected void interrupted() {

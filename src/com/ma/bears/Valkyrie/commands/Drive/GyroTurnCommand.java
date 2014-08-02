@@ -38,7 +38,7 @@ public class GyroTurnCommand extends CommandBase {
         return AnglePID.isDone();
     }
     protected void end() {
-        Drive.drive(0.0);
+        Drive.setPower(0.0);
     }
     protected void interrupted() {
     	end();

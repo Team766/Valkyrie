@@ -32,8 +32,13 @@ public class Drive extends Subsystem{
 	protected void initDefaultCommand() {
 	}
 	
-	public void drive(double speed){
-		setLeftPower(speed);
+	/**
+	 * Set power to both motors, 
+	 * useful for shutting them off
+	 * @param speed power value
+	 */
+	public void setPower(double speed){
+		setLeftPower(-speed);
 		setRightPower(speed);
 	}
 	public void setLeftPower(double power){
@@ -64,7 +69,7 @@ public class Drive extends Subsystem{
 		return RDriveEnc.getRate();
 	}
 	public double getSpeed(){
-		return (RDriveEnc.getRate() * LDriveEnc.getRate()) / 2;
+		return (RDriveEnc.getRate() + LDriveEnc.getRate()) / 2;
 	}
 	public void resetEncoders(){
 		LDriveEnc.reset();
