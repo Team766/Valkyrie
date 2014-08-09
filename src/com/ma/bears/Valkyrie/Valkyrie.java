@@ -39,6 +39,9 @@ public class Valkyrie extends IterativeRobot {
     	System.out.println("Java Code 2014 V: 1.0.3");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
+        SmartDashboard.putNumber("GyroP",RobotValues.AngleKp);
+        SmartDashboard.putNumber("GyroI", RobotValues.AngleKi);
+        SmartDashboard.putNumber("GyroD", RobotValues.AngleKd);
         CommandBase.init();
         CommandBase.OI.server.setPort(listenPort);
         CommandBase.OI.server.start();
@@ -126,13 +129,12 @@ public class Valkyrie extends IterativeRobot {
     public void autonomousInit() {
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
-        new AutonSelector(CommandBase.OI.AutonMode).start();
         CommandBase.Drive.resetGyro();
         
     }
     
     public void autonomousPeriodic() {
-        System.out.println("Current left: " + CommandBase.OI.server.getLeftStatus() + ", current right: " + CommandBase.OI.server.getRightStatus());
+        /*System.out.println("Current left: " + CommandBase.OI.server.getLeftStatus() + ", current right: " + CommandBase.OI.server.getRightStatus());
         System.out.println("Left count: " + CommandBase.OI.server.getLeftCount() + ", right count: " + CommandBase.OI.server.getRightCount());
         System.out.println("Total: " + CommandBase.OI.server.getTotalCount());
     	if(CommandBase.OI.server.getLeftCount() > 5){
@@ -140,7 +142,8 @@ public class Valkyrie extends IterativeRobot {
     	}
     	else if(CommandBase.OI.server.getRightCount() > 5){
     		System.out.println("Right Hand Auton");
-    	}
+    	}*/
+        new AutonSelector(CommandBase.OI.AutonMode).start();
     }
     
     public void teleopInit(){

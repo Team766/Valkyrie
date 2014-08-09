@@ -64,6 +64,17 @@ public class PIDController {
 	public void setSetpoint(double set){
 		setpoint = set;
 	}
+	/**
+	 * If we want to set values, such as with SmartDash
+	 * @param P
+	 * @param I
+	 * @param D
+	 */
+	public void setConstants(double P, double I, double D){
+		Kp = P;
+		Ki = I;
+		Kd = D;
+	}
 	
 	/**
 	 * Calculate PID value. Run only once per loop. Use 

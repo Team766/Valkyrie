@@ -22,7 +22,7 @@ public class AutonSelector extends CommandGroup{
     	//pass in the auton mode
     	
     	//check which auton mode is selected
-        switch(mode){
+        /*switch(mode){
         	//runs the OneBallStay Command
             case RobotValues.Auton_OneBallStay:{
                 System.out.println("One Ball Stay Auton");
@@ -55,17 +55,21 @@ public class AutonSelector extends CommandGroup{
             case RobotValues.Auton_CheesyVision:{
                 System.out.println("Cheesy Drive Auton");
                 addSequential(new CheesyVisionDrive());
+                break;
             }
             //runs the Gyro Drive Turn Command
             case RobotValues.Auton_GyroDriveTurn:{
                 System.out.println("Gyro Drive and Turn auton");
                 addSequential(new TestGyroDrive(2d, 45d, 2d));
+                break;
             }
             default:{
                 System.out.println("Auton selection failed");
                 break;
             }
 			
-        }
+        }*/
+        System.out.println("Cheesy Drive Auton");
+        addSequential(new CheesyVisionDrive());
     }
 }
