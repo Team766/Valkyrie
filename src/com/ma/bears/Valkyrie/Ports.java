@@ -9,8 +9,8 @@ package com.ma.bears.Valkyrie;
  * 
  */
 public class Ports {
-    public static final int PWM_Left_Drive = 9;
-    public static final int PWM_Right_Drive = 2;
+    public static final int PWM_Left_Drive = 2;
+    public static final int PWM_Right_Drive = 9;
     public static final int PWM_Winch = 8;
     public static final int PWM_ArmWheels = 1;
     
