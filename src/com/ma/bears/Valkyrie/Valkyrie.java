@@ -130,7 +130,7 @@ public class Valkyrie extends IterativeRobot {
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
         CommandBase.Drive.resetGyro();
-        
+        new AutonSelector(CommandBase.OI.AutonMode).start();
     }
     
     public void autonomousPeriodic() {
@@ -143,7 +143,6 @@ public class Valkyrie extends IterativeRobot {
     	else if(CommandBase.OI.server.getRightCount() > 5){
     		System.out.println("Right Hand Auton");
     	}*/
-        new AutonSelector(CommandBase.OI.AutonMode).start();
     }
     
     public void teleopInit(){
