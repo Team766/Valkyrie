@@ -213,7 +213,6 @@ public class Valkyrie extends IterativeRobot {
     
     public void teleopPeriodic(){
         Scheduler.getInstance().run(); //update commands
-        
         SmartDashboard.putNumber("Speed", CommandBase.Drive.getSpeed());
         Watchdog.getInstance().feed(); //very hungry
     }

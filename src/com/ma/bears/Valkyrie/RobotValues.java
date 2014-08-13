@@ -19,6 +19,7 @@ public class RobotValues {
     public static final double ArmWheels_Out = -1;
     public static final double WinchSpeed = -0.9;
     public static final double ShooterWait = 0.75;
+    public static final double ShooterGripWait = 0.1;
     
     //cheesy drive
     public static final double sensitivityHigh = .85;

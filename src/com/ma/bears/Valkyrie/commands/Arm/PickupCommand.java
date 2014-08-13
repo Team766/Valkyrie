@@ -1,6 +1,7 @@
 package com.ma.bears.Valkyrie.commands.Arm;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 
 /**
  * Arm down, grips off, roller in.

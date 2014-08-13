@@ -2,6 +2,7 @@ package com.ma.bears.Valkyrie;
 
 import com.ma.bears.Valkyrie.CheesyVisionServer;
 import com.ma.bears.Valkyrie.commands.Arm.ArmDownCommand;
+import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 import com.ma.bears.Valkyrie.commands.Arm.EjectCommand;
 import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
 import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
@@ -47,7 +48,7 @@ public class OI {
     buttonEjector = new JoystickButton(jBox, Buttons.Ejector),
     buttonArmDown = new JoystickButton(jBox, Buttons.Arm),
     buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel),
-    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),
+    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),       
     
     //gamepad buttons
     GPbuttonShifter = new JoystickButton(jGpad, Buttons.GPShifter),
@@ -68,6 +69,7 @@ public class OI {
     //Auton Stuff
     public int AutonMode = 0;
     
+    public double buttonGrippers = jBox.getRawAxis(Buttons.BallGuard);
     public boolean TankDrive = false;
     public boolean UseGamepad = false;
     
@@ -85,6 +87,9 @@ public class OI {
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
         buttonInbound.whileHeld(new InboundCommand());
         
+        if(buttonGrippers < 0){
+            new GripsCommand(true, false).start();
+        }
         //gamepad buttons
     	GPbuttonShoot.whenPressed(shoot);
         GPbuttonCancel.cancelWhenPressed(shoot);

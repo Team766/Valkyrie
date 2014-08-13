@@ -75,6 +75,7 @@ public class Buttons {
     public static int Inbound = 6;
     public static int Ejector = 11;
     public static int Arm = 12;
+    public static int BallGuard = 4;
     
     public static int AutoShoot = 8;
     public static int ShootCancel = 2;
