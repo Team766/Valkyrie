@@ -4,6 +4,7 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Auton.OneBall;
 import com.ma.bears.Valkyrie.commands.Auton.TwoBall;
+import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;

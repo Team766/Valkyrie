@@ -86,10 +86,7 @@ public class OI {
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
         buttonInbound.whileHeld(new InboundCommand());
-        
-        if(buttonGrippers < 0){
-            new GripsCommand(true, false).start();
-        }
+    
         //gamepad buttons
     	GPbuttonShoot.whenPressed(shoot);
         GPbuttonCancel.cancelWhenPressed(shoot);
@@ -129,6 +126,9 @@ public class OI {
 	public double getRight(){
 		return !UseGamepad? jRight.getRawAxis(2) : jGpad.getRawAxis(4);
 	}
+        public double getGrippers(){
+                return jBox.getRawAxis(Buttons.BallGuard);
+        }
 	public void setTankDrive(boolean in){
 		TankDrive = in;
 	}

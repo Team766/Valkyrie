@@ -11,8 +11,8 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
  */
 
 public class GripsCommand extends CommandBase{
-	private boolean whileRunning;
-	private boolean afterRun;
+	final private boolean whileRunning;
+	final private boolean afterRun;
 	public GripsCommand(boolean during, boolean after){
 		whileRunning = during;
 		afterRun = after;
