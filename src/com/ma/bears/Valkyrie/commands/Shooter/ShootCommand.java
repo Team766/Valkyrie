@@ -9,18 +9,19 @@ import com.ma.bears.Valkyrie.RobotValues;
  * Releases grips and shoots, waits,
  * winches back.
  * 
+ * <p>The shoot command uses a delay of .1 seconds
+ * to allow for the grip pistons to retract.
+ * 
  * @author Nicky Ivy nickivyca@gmail.com
  */
 
 public class ShootCommand extends CommandGroup {
 	
 	public ShootCommand(){
-                //addParallel(new GripsCommand(false, false));
-            addParallel(new GripsTimedOffCommand(RobotValues.ShooterGripWait +
-                    RobotValues.ShooterWait));
-            addSequential(new WaitCommand(.10));
+		addParallel(new GripsTimedOffCommand(RobotValues.ShooterGripWait
+				+ RobotValues.ShooterWait));
+		addSequential(new WaitCommand(.10));
 		addSequential(new ReleaseShooterCommand());
 		addSequential(new WinchBackCommand());
-                //addSequential(new GripsCommand(false, true));
 	}
 }

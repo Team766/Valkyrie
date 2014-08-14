@@ -12,6 +12,7 @@ import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.InternalButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -48,7 +49,7 @@ public class OI {
     buttonEjector = new JoystickButton(jBox, Buttons.Ejector),
     buttonArmDown = new JoystickButton(jBox, Buttons.Arm),
     buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel),
-    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),       
+    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),
     
     //gamepad buttons
     GPbuttonShifter = new JoystickButton(jGpad, Buttons.GPShifter),
@@ -64,12 +65,18 @@ public class OI {
     GPbuttonCancel = new JoystickButton(jGpad, Buttons.GPShootCancel),
     GPbuttonAuton = new JoystickButton(jGpad, Buttons.GPAuton);
     
+    /**
+     * Since grippers run off an axis, we have to
+     * manually keep track of it as if it is 
+     * 'pressed.'
+     */
+    public InternalButton buttonGrips = new InternalButton();
+    			
+    
     public CheesyVisionServer server = CheesyVisionServer.getInstance();
     
     //Auton Stuff
     public int AutonMode = 0;
-    
-    public double buttonGrippers = jBox.getRawAxis(Buttons.BallGuard);
     public boolean TankDrive = false;
     public boolean UseGamepad = false;
     
@@ -86,6 +93,8 @@ public class OI {
         buttonPickup.whileHeld(new PickupCommand());
         buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
         buttonInbound.whileHeld(new InboundCommand());
+        
+        buttonGrips.whileHeld(new GripsCommand(false,true));
     
         //gamepad buttons
     	GPbuttonShoot.whenPressed(shoot);
@@ -126,9 +135,22 @@ public class OI {
 	public double getRight(){
 		return !UseGamepad? jRight.getRawAxis(2) : jGpad.getRawAxis(4);
 	}
-        public double getGrippers(){
-                return jBox.getRawAxis(Buttons.BallGuard);
-        }
+	/**
+	 * Originally the gripper switch would be in the off
+	 * position by default. Then, we removed manual control
+	 * of the grippers. Now the grippers switch will by default be in the
+	 * 'on' positition on the OI, but in code, 'on' will be
+	 * its off position. This makes it easier to deal with commands, as
+	 * we only want it to be running its command when it is not in its
+	 * relaxed state.
+	 * 
+	 * <p>Previously the button would be 'on'
+	 * if it was less than 0. Now, it'll be 
+	 * true when greater than 0.
+	 */
+	public void updateGripSwitch() {
+		buttonGrips.setPressed(jBox.getRawAxis(Buttons.Axis_BallGuard) > 0);
+	}
 	public void setTankDrive(boolean in){
 		TankDrive = in;
 	}

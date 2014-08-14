@@ -14,10 +14,6 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 */
 
 public class WinchBackCommand extends CommandBase{
-	
-	public WinchBackCommand(){
-		requires(Shooter);
-	}
 
 	protected void end() {
 		Shooter.setWinch(0);

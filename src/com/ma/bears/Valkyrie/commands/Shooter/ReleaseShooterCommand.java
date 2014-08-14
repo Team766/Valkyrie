@@ -13,7 +13,7 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
  */
 
 public class ReleaseShooterCommand extends CommandBase{
-        
+	
 	protected void initialize() {
 		setTimeout(RobotValues.ShooterWait);
 	}

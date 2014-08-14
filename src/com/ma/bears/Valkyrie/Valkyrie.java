@@ -4,7 +4,6 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Auton.OneBall;
 import com.ma.bears.Valkyrie.commands.Auton.TwoBall;
-import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
@@ -22,11 +21,17 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * and proof of concept to see how well Java
  * works for programming the robot.
  * 
- * Currently drives with a CheesyDrive system.
+ * Currently drives with either a CheesyDrive system or
+ * tank drive. Selectable in SmartDash.
+ * 
+ * A DirectInput Gamepad can also be used to control the robot.
+ * It needs to be in joystick slot 4. 
  * 
  * <p>TODO:
- * <p>Testing with robot on floor.
- * <p>Test new auton selector, and cheesy vision.
+ * <p>Auton still funky. We may have found a solution.
+ * <p>Encoders need to be fixed up.
+ * <p>PIDs need to be 
+ * tuned.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -42,7 +47,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void robotInit(){
-    	System.out.println("Java Code 2014 V: 1.0.3");
+    	System.out.println("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
         SmartDashboard.putNumber("GyroP",RobotValues.AngleKp);
@@ -215,6 +220,7 @@ public class Valkyrie extends IterativeRobot {
     public void teleopPeriodic(){
         Scheduler.getInstance().run(); //update commands
         SmartDashboard.putNumber("Speed", CommandBase.Drive.getSpeed());
+        CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry
     }
 }

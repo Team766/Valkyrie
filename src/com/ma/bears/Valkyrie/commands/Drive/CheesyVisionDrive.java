@@ -29,8 +29,9 @@ public class CheesyVisionDrive extends CommandBase {
         return false;
     }
     protected void end() {
-    	
         Drive.setPower(0.0);
     }
-    protected void interrupted() {}
+    protected void interrupted() {
+    	end();
+    }
 }
