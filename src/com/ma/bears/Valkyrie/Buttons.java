@@ -60,10 +60,10 @@ package com.ma.bears.Valkyrie;
  *  </pre>
  */ 
 public class Buttons {
-    public static int Shifter = 7;
-    public static int Reverse = 7;
-    public static int QuickTurn = 7;
-    public static int DriverPickup = 2;
+    public static int Shifter = 1;
+    public static int Reverse = 2;
+    public static int QuickTurn = 2;
+    public static int DriverPickup = 7;
     public static int DriverShoot = 1;
     
     
