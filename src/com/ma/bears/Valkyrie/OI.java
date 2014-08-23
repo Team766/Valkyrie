@@ -83,6 +83,7 @@ public class OI {
 	public OI(){
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);
+        buttonDriverShoot.whenPressed(shoot);
         buttonCancel.cancelWhenPressed(shoot);
 
         buttonRollerIn.whileHeld(new RollerInCommand());
