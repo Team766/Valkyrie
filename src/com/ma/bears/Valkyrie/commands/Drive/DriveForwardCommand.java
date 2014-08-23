@@ -17,6 +17,8 @@ public class DriveForwardCommand extends CommandBase {
     private boolean done = false; 
     private double kDriveDistance;
 	private double last_error = 0.0;
+	private double maxoutput_high = 0.5;
+	private double maxoutput_low = -0.5;
     
     public DriveForwardCommand() {
     	kDriveDistance = 0;
@@ -38,8 +40,8 @@ public class DriveForwardCommand extends CommandBase {
 	if(!done) {
             final double error = kDriveDistance - (Drive.getLeftDistance() + Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
-            Drive.setLeftPower(-drive_power/2);
-            Drive.setRightPower(-drive_power/2);
+            Drive.setLeftPower(clip(-drive_power));
+            Drive.setRightPower(clip(-drive_power));
             new WaitCommand(0.02).start();
             System.out.println("error " + error + " drive_power " + drive_power + " ld " + Drive.getLeftDistance() + " rd " + Drive.getRightDistance() + "\n");
             last_error = error;
@@ -67,4 +69,13 @@ public class DriveForwardCommand extends CommandBase {
     protected void interrupted() {
     	end();
     }
+    
+    private double clip(double clipped){
+		double out = clipped;
+		if (out > maxoutput_high)
+			out = maxoutput_high;
+		if(out < maxoutput_low)
+			out = maxoutput_low;
+		return out;
+	}
 }

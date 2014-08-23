@@ -96,7 +96,7 @@ public class Valkyrie extends IterativeRobot {
             }
             case RobotValues.Auton_Move:{
     		mode = "Move Forward         ";
-    		line3 = "Distance: " + RobotValues.OneBallStay_crossDistance;
+    		line3 = "Distance: " + RobotValues.Move_Distance;
     		break;
         	}
             case RobotValues.Auton_OneBallMove:{
@@ -165,7 +165,7 @@ public class Valkyrie extends IterativeRobot {
             //runs the Move Command
             case RobotValues.Auton_Move:{
                 System.out.println("Drive Forward Auton");
-                new DriveForwardCommand(RobotValues.OneBallStay_crossDistance).start();
+                new DriveForwardCommand(RobotValues.Move_Distance).start();
                 break;
             }
             //runs the OneBallMove Command
