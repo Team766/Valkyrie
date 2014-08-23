@@ -107,7 +107,7 @@ public class Valkyrie extends IterativeRobot {
             case RobotValues.Auton_OneBallStay:{
     		mode = "One Ball, Stay       ";
     		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
-    		line4 = "Move Distance: " + RobotValues.OneBallStay_crossDistance;
+    		line4 = "Cross Distance: " + RobotValues.OneBallStay_crossDistance;
     		break;
             }
             case RobotValues.Auton_TwoBall:{

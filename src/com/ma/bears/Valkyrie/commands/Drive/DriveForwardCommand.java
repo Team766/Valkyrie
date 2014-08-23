@@ -40,8 +40,8 @@ public class DriveForwardCommand extends CommandBase {
 	if(!done) {
             final double error = kDriveDistance - (Drive.getLeftDistance() + Drive.getRightDistance()) / 2.0;
             final double drive_power = RobotValues.Kp * error + RobotValues.Kd * (error - last_error) * 100.0;
-            Drive.setLeftPower(clip(-drive_power));
-            Drive.setRightPower(clip(-drive_power));
+            Drive.setLeftPower(-drive_power);
+            Drive.setRightPower(-drive_power);
             new WaitCommand(0.02).start();
             System.out.println("error " + error + " drive_power " + drive_power + " ld " + Drive.getLeftDistance() + " rd " + Drive.getRightDistance() + "\n");
             last_error = error;

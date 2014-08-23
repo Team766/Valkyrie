@@ -67,13 +67,13 @@ public class AutonSelector extends CommandGroup{
             //runs the OneBallMove Command
             case RobotValues.Auton_HotOneBallMove:{
                 System.out.println("Hot One Ball Move Auton");
-                addSequential(new OneBall(RobotValues.OneBallMove_Distance));
+                addSequential(new HotGoalAuton(RobotValues.OneBallMove_Distance));
                 break;
             }
         	//runs the OneBallStay Command
             case RobotValues.Auton_HotOneBallStay:{
                 System.out.println("Hot One Ball Stay Auton");
-                addSequential(new OneBall(RobotValues.OneBallStay_shootDistance,
+                addSequential(new HotGoalAuton(RobotValues.OneBallStay_shootDistance,
                 						  RobotValues.OneBallStay_crossDistance));
                 break;
             }
