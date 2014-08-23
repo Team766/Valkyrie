@@ -55,7 +55,7 @@ public class AutonSelector extends CommandGroup{
             case RobotValues.Auton_CheesyVision:{
                 System.out.println("Cheesy Drive Auton");
                 //addSequential(new CheesyVisionDrive());
-                new CheesyVisionDrive().start();;
+                addSequential(new CheesyVisionDrive());
                 break;
             }
             //runs the Gyro Drive Turn Command
@@ -64,11 +64,23 @@ public class AutonSelector extends CommandGroup{
                 addSequential(new TestGyroDrive(2d, 45d, 2d));
                 break;
             }
+            //runs the OneBallMove Command
+            case RobotValues.Auton_HotOneBallMove:{
+                System.out.println("Hot One Ball Move Auton");
+                addSequential(new OneBall(RobotValues.OneBallMove_Distance));
+                break;
+            }
+        	//runs the OneBallStay Command
+            case RobotValues.Auton_HotOneBallStay:{
+                System.out.println("Hot One Ball Stay Auton");
+                addSequential(new OneBall(RobotValues.OneBallStay_shootDistance,
+                						  RobotValues.OneBallStay_crossDistance));
+                break;
+            }
             default:{
                 System.out.println("Auton selection failed");
                 break;
             }
-			
         }
     }
 }

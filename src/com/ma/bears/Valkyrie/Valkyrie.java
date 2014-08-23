@@ -126,6 +126,17 @@ public class Valkyrie extends IterativeRobot {
             line4 = "	Not Tested		 ";
             break;
             }
+            case RobotValues.Auton_HotOneBallMove:{
+    		mode = "Hot One Ball, Move   ";
+    		line3 = "Distance: " + RobotValues.OneBallMove_Distance;
+    		break;
+            }
+            case RobotValues.Auton_HotOneBallStay:{
+    		mode = "Hot One Ball, Stay   ";
+    		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
+    		line4 = "Move Distance: " + RobotValues.OneBallStay_crossDistance;
+    		break;
+            }
             default:{} //initialized as spaces so nothing needed here
     	}
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
@@ -144,8 +155,8 @@ public class Valkyrie extends IterativeRobot {
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
         CommandBase.Drive.resetGyro();
-        //new AutonSelector(CommandBase.OI.AutonMode).start();
-        switch(CommandBase.OI.AutonMode){
+        new AutonSelector(CommandBase.OI.AutonMode).start();
+        /*switch(CommandBase.OI.AutonMode){
         	//runs the OneBallStay Command
             case RobotValues.Auton_OneBallStay:{
                 System.out.println("One Ball Stay Auton");
@@ -191,8 +202,7 @@ public class Valkyrie extends IterativeRobot {
                 System.out.println("Auton selection failed");
                 break;
             }
-			
-        }
+        }*/
     }
     
     public void autonomousPeriodic() {
