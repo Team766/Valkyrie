@@ -53,9 +53,12 @@ public class Valkyrie extends IterativeRobot {
         SmartDashboard.putNumber("GyroP",RobotValues.AngleKp);
         SmartDashboard.putNumber("GyroI", RobotValues.AngleKi);
         SmartDashboard.putNumber("GyroD", RobotValues.AngleKd);
+        SmartDashboard.putNumber("P",RobotValues.Kp);
+        SmartDashboard.putNumber("D", RobotValues.Kd);
         CommandBase.init();
         CommandBase.OI.server.setPort(listenPort);
         CommandBase.OI.server.start();
+        CommandBase.Drive.startEncoders();
     }
     
     public void disabledInit() {
@@ -93,7 +96,7 @@ public class Valkyrie extends IterativeRobot {
             }
             case RobotValues.Auton_Move:{
     		mode = "Move Forward         ";
-    		line3 = "Distance: " + RobotValues.Move_Distance;
+    		line3 = "Distance: " + RobotValues.OneBallStay_crossDistance;
     		break;
         	}
             case RobotValues.Auton_OneBallMove:{
@@ -214,12 +217,14 @@ public class Valkyrie extends IterativeRobot {
 			new TankDriveCommand().start();
 		}
 		//set grippers out on enable
-		CommandBase.Pickup.setGrippers(true);
+		//CommandBase.Pickup.setGrippers(true);
     }
     
     public void teleopPeriodic(){
         Scheduler.getInstance().run(); //update commands
         SmartDashboard.putNumber("Speed", CommandBase.Drive.getSpeed());
+        System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
+        System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
         CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry
     }

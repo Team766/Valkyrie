@@ -31,7 +31,6 @@ public class Drive extends Subsystem{
     
 	protected void initDefaultCommand() {
 	}
-	
 	/**
 	 * Set power to both motors, 
 	 * useful for shutting them off
@@ -48,7 +47,7 @@ public class Drive extends Subsystem{
 		rightDrive.set(power);
 	}
 	public void setShifter(boolean highGear){
-		Shifter.set(!highGear);
+		Shifter.set(highGear);
 	}
 	
     public float translateDrive(float trans){
@@ -74,6 +73,10 @@ public class Drive extends Subsystem{
 	public void resetEncoders(){
 		LDriveEnc.reset();
 		RDriveEnc.reset();
+	}
+        public void startEncoders(){
+		LDriveEnc.start();
+		RDriveEnc.start();
 	}
 	
 	//Gyro stuff

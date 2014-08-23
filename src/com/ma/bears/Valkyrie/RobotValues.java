@@ -26,8 +26,8 @@ public class RobotValues {
     public static final double sensitivityLow = .75;
     
     //drive
-    public static final double Kp = 10.0;
-    public static final double Kd = 0.8;
+    public static final double Kp = 0.4;
+    public static final double Kd = 0.2;
     public static final double driveTolerance = .01;
     
     //gyro turning
@@ -72,7 +72,7 @@ public class RobotValues {
     //Auton distances negative because we are driving backwards
     
     public static final double OneBallStay_shootDistance = 0.0;
-    public static final double OneBallStay_crossDistance = 1.0;
+    public static final double OneBallStay_crossDistance = 2.0;
     
     public static final double Move_Distance = 2.0;
     
