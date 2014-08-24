@@ -91,8 +91,11 @@ public class OI {
         buttonArmDown.whileHeld(new ArmDownCommand());
         buttonEjector.whileHeld(new EjectCommand());
         
+        PickupCommand pickup = new PickupCommand();
+        
+        buttonDriverPickup.toggleWhenPressed(pickup);   //driver is toggle while human is held
+        buttonPickup.cancelWhenPressed(pickup);			//box op button cancels driver command
         buttonPickup.whileHeld(new PickupCommand());
-        buttonDriverPickup.toggleWhenPressed(new PickupCommand());   //driver is toggle while human is held
         buttonInbound.whileHeld(new InboundCommand());
         
         buttonGrips.whileHeld(new GripsCommand(false,true));
