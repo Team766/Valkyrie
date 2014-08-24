@@ -39,6 +39,7 @@ public class HotGoalAuton extends CommandGroup{
     	addSequential(new WinchBackCommand());
     	addSequential(new DriveForwardCommand(shootdistance));
     	addSequential(new WaitforHotGoalCommand());
+        System.out.println("Fireing!");
     	addSequential(new ShootCommand());
         addSequential(new DriveForwardCommand(crossdistance));
     }

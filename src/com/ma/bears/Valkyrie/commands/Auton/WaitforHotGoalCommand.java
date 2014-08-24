@@ -16,6 +16,7 @@ public class WaitforHotGoalCommand extends CommandBase{
 	protected void initialize() {
 	}
 	protected boolean isFinished() {
+                System.out.println("is Cheesy Vision done?");
 		return (OI.server.getLeftStatus() && OI.server.getRightStatus());
 	}
 	protected void interrupted() {
