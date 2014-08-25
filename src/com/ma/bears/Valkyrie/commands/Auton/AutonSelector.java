@@ -4,6 +4,7 @@ import com.ma.bears.Valkyrie.RobotValues;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 import com.ma.bears.Valkyrie.commands.Drive.TestGyroDrive;
+import com.ma.bears.Valkyrie.commands.Shooter.WinchBackCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -20,6 +21,9 @@ public class AutonSelector extends CommandGroup{
 
     public AutonSelector(int mode){
     	//pass in the auton mode
+    	
+    	//Bring the winch down
+    	addSequential(new WinchBackCommand());
     	
     	//check which auton mode is selected
         switch(mode){
