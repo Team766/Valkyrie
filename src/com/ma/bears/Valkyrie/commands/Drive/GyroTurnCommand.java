@@ -15,8 +15,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Nicky Ivy nickivyca@gmail.com
  */
 public class GyroTurnCommand extends CommandBase {
-	private PIDController AnglePID = new PIDController(RobotValues.AngleKp, RobotValues.AngleKi,
-			RobotValues.AngleKd, RobotValues.Angleoutputmax_low, RobotValues.Angleoutputmax_high, 
+	//private PIDController AnglePID = new PIDController(RobotValues.AngleKp, RobotValues.AngleKi,
+	//		RobotValues.AngleKd, RobotValues.Angleoutputmax_low, RobotValues.Angleoutputmax_high, 
+	//		RobotValues.AngleThreshold); //see PID class or hover for definition of all
+        private PIDController AnglePID = new PIDController(SmartDashboard.getNumber("AngleKp"),
+                SmartDashboard.getNumber("AngleKi"),
+                        SmartDashboard.getNumber("AngleKd"),RobotValues.Angleoutputmax_low, RobotValues.Angleoutputmax_high, 
 			RobotValues.AngleThreshold); //see PID class or hover for definition of all
     
     public GyroTurnCommand() {
@@ -25,16 +29,18 @@ public class GyroTurnCommand extends CommandBase {
     
     public GyroTurnCommand(double angle){
     	AnglePID.setSetpoint(angle);
+        System.out.println("Gyro command initialized" + angle);
     }
     
     protected void initialize() {
     	AnglePID.reset();
-        AnglePID.setConstants(SmartDashboard.getNumber("GyroP"),
-        		SmartDashboard.getNumber("GyroI"), SmartDashboard.getNumber("GyroD"));
+        AnglePID.setConstants(SmartDashboard.getNumber("AngleKp"),
+        		SmartDashboard.getNumber("AngleKi"), SmartDashboard.getNumber("AngleKd"));
     }
     
     public void execute() {
     	AnglePID.calculate(Drive.getAngle());
+        System.out.println("output" + AnglePID.getOutput());
     	Drive.setLeftPower(AnglePID.getOutput());
     	Drive.setRightPower(-AnglePID.getOutput());
     }

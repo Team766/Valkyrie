@@ -54,6 +54,16 @@ public class PIDController {
 		maxoutput_high = outputmax_high;
 		endthreshold = threshold;
 	}
+        
+        public PIDController (double P, double I, double D, 
+			double threshold){
+		Kp = P;
+		Ki = I;
+		Kd = D;
+		maxoutput_low = -1;
+		maxoutput_high = 1;
+		endthreshold = threshold;
+	}
 	
 	/**
 	 * We may want to use same PID object,
@@ -82,15 +92,19 @@ public class PIDController {
 	 * @param cur_input Input from sensor
 	 */
 	public void calculate(double cur_input){
+		double cur_error = (setpoint - cur_input);
+                System.out.println("curerror:" + cur_error);
+                System.out.println("input: " + cur_input);
 		if(isDone()){
 			output_value = 0;
+                        System.out.println("pid done");
 			return;
 		}
-		double cur_error = (setpoint - cur_input);
 		double out = Kp * cur_error + Ki * total_error + Kd * (cur_error - prev_error);
 		prev_error = cur_error;
 		total_error += cur_error;
 		output_value = clip(out);
+                System.out.println("out: " + out);
 	}
 	
 	public double getOutput(){
@@ -98,7 +112,7 @@ public class PIDController {
 	}
 	
 	public boolean isDone(){
-		if (cur_error < endthreshold)
+		if (Math.abs(cur_error) < endthreshold)
 			return true;
 		return false;
 	}

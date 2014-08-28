@@ -9,6 +9,7 @@ import com.ma.bears.Valkyrie.commands.Drive.CheesyVisionDrive;
 import com.ma.bears.Valkyrie.commands.Drive.DriveForwardCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TestGyroDrive;
+import com.ma.bears.Valkyrie.commands.Drive.GyroTurnCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -50,11 +51,12 @@ public class Valkyrie extends IterativeRobot {
     	System.out.println("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
-        SmartDashboard.putNumber("GyroP",RobotValues.AngleKp);
-        SmartDashboard.putNumber("GyroI", RobotValues.AngleKi);
-        SmartDashboard.putNumber("GyroD", RobotValues.AngleKd);
+        SmartDashboard.putNumber("AngleKp",RobotValues.AngleKp);
+        SmartDashboard.putNumber("AngleKi", RobotValues.AngleKi);
+        SmartDashboard.putNumber("AngleKd", RobotValues.AngleKd);
         SmartDashboard.putNumber("P",RobotValues.Kp);
         SmartDashboard.putNumber("D", RobotValues.Kd);
+        SmartDashboard.putNumber("TargetAngle", 0);
         CommandBase.init();
         CommandBase.OI.server.setPort(listenPort);
         CommandBase.OI.server.start();
@@ -181,13 +183,16 @@ public class Valkyrie extends IterativeRobot {
 		}
 		//set grippers out on enable
 		//CommandBase.Pickup.setGrippers(true);
+        CommandBase.Drive.resetGyro();
+        new GyroTurnCommand(SmartDashboard.getNumber("TargetAngle")).start();
     }
     
     public void teleopPeriodic(){
         Scheduler.getInstance().run(); //update commands
         SmartDashboard.putNumber("Speed", CommandBase.Drive.getSpeed());
-        System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
-        System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
+        SmartDashboard.putNumber("GyroAngle", CommandBase.Drive.getAngle());
+        //System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
+        //System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
         CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry
     }

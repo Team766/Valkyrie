@@ -22,9 +22,8 @@ public class AutonSelector extends CommandGroup{
     public AutonSelector(int mode){
     	//pass in the auton mode
     	
-    	//Bring the winch down
-    	addSequential(new WinchBackCommand());
-    	
+        //Winchback
+        if(mode > 0)addSequential(new WinchBackCommand());
     	//check which auton mode is selected
         switch(mode){
         	//runs the OneBallStay Command

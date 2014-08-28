@@ -69,8 +69,8 @@ public class Buttons {
     
     public static int Shoot = 1;
     public static int WinchOn = 2;
-    public static int RollerIn = 3;
-    public static int RollerOut = 5;
+    public static int RollerIn = 5;
+    public static int RollerOut = 3;
     public static int Pickup = 4;
     public static int Inbound = 6;
     public static int Ejector = 11;
