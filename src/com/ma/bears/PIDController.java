@@ -92,7 +92,7 @@ public class PIDController {
 	 * @param cur_input Input from sensor
 	 */
 	public void calculate(double cur_input){
-		double cur_error = (setpoint - cur_input);
+		cur_error = (setpoint - cur_input);
                 System.out.println("curerror:" + cur_error);
                 System.out.println("input: " + cur_input);
 		if(isDone()){
@@ -112,7 +112,9 @@ public class PIDController {
 	}
 	
 	public boolean isDone(){
-		if (Math.abs(cur_error) < endthreshold)
+		System.out.println("endthresh" + endthreshold);
+		System.out.println("calc: " + (endthreshold - cur_error));
+		if(Math.abs(cur_error) < endthreshold)
 			return true;
 		return false;
 	}

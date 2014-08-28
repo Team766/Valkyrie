@@ -56,7 +56,7 @@ public class Valkyrie extends IterativeRobot {
         SmartDashboard.putNumber("AngleKd", RobotValues.AngleKd);
         SmartDashboard.putNumber("P",RobotValues.Kp);
         SmartDashboard.putNumber("D", RobotValues.Kd);
-        SmartDashboard.putNumber("TargetAngle", 0);
+        SmartDashboard.putNumber("TargetAngle", 10);
         CommandBase.init();
         CommandBase.OI.server.setPort(listenPort);
         CommandBase.OI.server.start();
@@ -183,8 +183,8 @@ public class Valkyrie extends IterativeRobot {
 		}
 		//set grippers out on enable
 		//CommandBase.Pickup.setGrippers(true);
-        CommandBase.Drive.resetGyro();
-        new GyroTurnCommand(SmartDashboard.getNumber("TargetAngle")).start();
+        //CommandBase.Drive.resetGyro();
+        //new GyroTurnCommand(SmartDashboard.getNumber("TargetAngle")).start();
     }
     
     public void teleopPeriodic(){
