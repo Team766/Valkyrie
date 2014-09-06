@@ -27,59 +27,69 @@ public class AutonSelector extends CommandGroup{
     	//check which auton mode is selected
         switch(mode){
         	//runs the OneBallStay Command
-            case RobotValues.Auton_OneBallStay:{
+            case RobotValues.Auton_OneBallStay:
                 System.out.println("One Ball Stay Auton");
                 addSequential(new OneBall(RobotValues.OneBallStay_shootDistance,
                 						  RobotValues.OneBallStay_crossDistance));
                 break;
-            }
+            
             //runs the TwoBall Command
-            case RobotValues.Auton_TwoBall:{
+            case RobotValues.Auton_TwoBall:
                 System.out.println("Two Ball Auton");
                 addSequential(new TwoBall(RobotValues.TwoBall_Shot1Distance, 
                 						  RobotValues.TwoBall_PickupTime, 
                                           RobotValues.TwoBall_Shot2Distance, 
                                           RobotValues.TwoBall_WaitforShoot));
                 break;
-            }
+            
             //runs the Move Command
-            case RobotValues.Auton_Move:{
+            case RobotValues.Auton_Move:
                 System.out.println("Drive Forward Auton");
                 addSequential(new DriveForwardCommand(RobotValues.OneBallStay_crossDistance));
                 break;
-            }
+            
             //runs the OneBallMove Command
-            case RobotValues.Auton_OneBallMove:{
+            case RobotValues.Auton_OneBallMove:
                 System.out.println("One Ball Move Auton");
                 addSequential(new OneBall(RobotValues.OneBallMove_Distance));
                 break;
-            }
+            
             //runs the CheesyVision Command
-            case RobotValues.Auton_CheesyVision:{
+            case RobotValues.Auton_CheesyVision:
                 System.out.println("Cheesy Drive Auton");
                 //addSequential(new CheesyVisionDrive());
                 addSequential(new CheesyVisionDrive());
                 break;
-            }
+            
             //runs the Gyro Drive Turn Command
-            case RobotValues.Auton_GyroDriveTurn:{
+            case RobotValues.Auton_GyroDriveTurn:
                 System.out.println("Gyro Drive and Turn auton");
                 addSequential(new TestGyroDrive(2d, 45d, 2d));
                 break;
-            }
+                
             //runs the OneBallMove Command
-            case RobotValues.Auton_HotOneBallMove:{
+            case RobotValues.Auton_HotOneBallMove:
                 System.out.println("Hot One Ball Move Auton");
                 addSequential(new HotGoalAuton(RobotValues.OneBallMove_Distance));
                 break;
-            }
+                
         	//runs the OneBallStay Command
-            case RobotValues.Auton_HotOneBallStay:{
+            case RobotValues.Auton_HotOneBallStay:
                 System.out.println("Hot One Ball Stay Auton");
                 addSequential(new HotGoalAuton(RobotValues.OneBallStay_shootDistance,
                 						  RobotValues.OneBallStay_crossDistance));
                 break;
-            }
+                
+            //runs the OneBallStay Command
+            case RobotValues.Auton_THREEBALLHOT:
+                System.out.println("Three Ball Hot Auton");
+                addSequential(new ThreeBallHot(RobotValues.TwoBall_Shot1Distance, 
+                							   RobotValues.TwoBall_PickupTime, 
+                							   0.0d, 
+                							   RobotValues.TwoBall_WaitforShoot, 
+                							   2.0, 2.0));
+                break;
+            
             default:{
                 System.out.println("Auton selection failed");
                 break;

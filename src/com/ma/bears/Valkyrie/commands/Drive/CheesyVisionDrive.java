@@ -13,13 +13,13 @@ public class CheesyVisionDrive extends CommandBase {
     	Drive.setPower(0.0);
     }
     protected void execute() {
-        if(OI.server.getLeftStatus()){
-        	Drive.setPower(1.0);
+        if(!OI.server.getLeftStatus()){
+        	Drive.setLeftPower(1.0);;
         }
-        if (OI.server.getRightStatus()){
-        	Drive.setPower(1.0);
+        if (!OI.server.getRightStatus()){
+        	Drive.setRightPower(1.0);
         }
-        if (!OI.server.getLeftStatus() && !OI.server.getLeftStatus()){
+        if (OI.server.getLeftStatus() && OI.server.getRightStatus()){
         	Drive.setPower(0.0);
         }
         

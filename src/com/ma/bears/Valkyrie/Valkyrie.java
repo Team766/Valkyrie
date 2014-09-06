@@ -28,11 +28,6 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * A DirectInput Gamepad can also be used to control the robot.
  * It needs to be in joystick slot 4. 
  * 
- * <p>TODO:
- * <p>Auton still funky. We may have found a solution.
- * <p>Encoders need to be fixed up.
- * <p>PIDs need to be 
- * tuned.
  * 
  * @author Nicky Ivy nickivyca@gmail.com
  * @author Brett Levenson blevenson68@gmail.com
@@ -88,57 +83,52 @@ public class Valkyrie extends IterativeRobot {
         lcd.println(DriverStationLCD.Line.kUser4, 1, line4);
         lcd.updateLCD(); //during teleop updating twice might lag but we're disabled
     	switch (CommandBase.OI.AutonMode){
-            case RobotValues.Auton_Disabled:{
-    		mode = "Disabled             ";
-    		break;
-            }
-            case RobotValues.Auton_Empty:{
-    		mode = "None Selected        ";
-    		break;
-            }
-            case RobotValues.Auton_Move:{
-    		mode = "Move Forward         ";
-    		line3 = "Distance: " + RobotValues.Move_Distance;
-    		break;
-        	}
-            case RobotValues.Auton_OneBallMove:{
-    		mode = "One Ball, Move Foward";
-    		line3 = "Distance: " + RobotValues.OneBallMove_Distance;
-    		break;
-            }
-            case RobotValues.Auton_OneBallStay:{
-    		mode = "One Ball, Stay       ";
-    		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
-    		line4 = "Cross Distance: " + RobotValues.OneBallStay_crossDistance;
-    		break;
-            }
-            case RobotValues.Auton_TwoBall:{
-    		mode = "Two Ball             ";
-    		line3 = "Shot1 Distance: " + RobotValues.TwoBall_Shot1Distance;
-    		line4 = "Shot2 Distance: " + RobotValues.TwoBall_Shot2Distance;
-    		break;
-            }
-            case RobotValues.Auton_CheesyVision:{
-            mode = "Cheesy Vision Drive  ";
-            break;
-            }
-            case RobotValues.Auton_GyroDriveTurn:{
-            mode = "Auton Gyro Drive Turn";
-            line3 = "	Stand Back!      ";
-            line4 = "	Not Tested		 ";
-            break;
-            }
-            case RobotValues.Auton_HotOneBallMove:{
-    		mode = "Hot One Ball, Move   ";
-    		line3 = "Distance: " + RobotValues.OneBallMove_Distance;
-    		break;
-            }
-            case RobotValues.Auton_HotOneBallStay:{
-    		mode = "Hot One Ball, Stay   ";
-    		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
-    		line4 = "Move Distance: " + RobotValues.OneBallStay_crossDistance;
-    		break;
-            }
+            case RobotValues.Auton_Disabled:
+            	mode = "Disabled             ";
+            	break;
+            case RobotValues.Auton_Empty:
+            	mode = "None Selected        ";
+            	break;
+            case RobotValues.Auton_Move:
+            	mode = "Move Forward         ";
+            	line3 = "Distance: " + RobotValues.Move_Distance;
+            	break;
+            case RobotValues.Auton_OneBallMove:
+            	mode = "One Ball, Move Foward";
+            	line3 = "Distance: " + RobotValues.OneBallMove_Distance;
+            	break;
+            case RobotValues.Auton_OneBallStay:
+            	mode = "One Ball, Stay       ";
+            	line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
+            	line4 = "Cross Distance: " + RobotValues.OneBallStay_crossDistance;
+            	break;
+            case RobotValues.Auton_TwoBall:
+            	mode = "Two Ball             ";
+            	line3 = "Shot1 Distance: " + RobotValues.TwoBall_Shot1Distance;
+            	line4 = "Shot2 Distance: " + RobotValues.TwoBall_Shot2Distance;
+            	break;
+            case RobotValues.Auton_CheesyVision:
+            	mode = "Cheesy Vision Drive  ";
+            	break;
+            case RobotValues.Auton_GyroDriveTurn:
+            	mode = "Auton Gyro Drive Turn";
+            	line3 = "	Stand Back!      ";
+            	line4 = "	Not Tested		 ";
+            	break;
+            case RobotValues.Auton_HotOneBallMove:
+	    		mode = "Hot One Ball, Move   ";
+	    		line3 = "Distance: " + RobotValues.OneBallMove_Distance;
+	    		break;
+            case RobotValues.Auton_HotOneBallStay:
+	    		mode = "Hot One Ball, Stay   ";
+	    		line3 = "Shoot Distance: " + RobotValues.OneBallStay_shootDistance;
+	    		line4 = "Move Distance: " + RobotValues.OneBallStay_crossDistance;
+	    		break;
+            case RobotValues.Auton_THREEBALLHOT:
+        		mode = "Three Ball Hot       ";
+        		line3 = "#766 is bretter than";
+        		line4 = "#254, suck it Kevin ";
+        		break;
             default:{} //initialized as spaces so nothing needed here
     	}
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");
@@ -148,9 +138,13 @@ public class Valkyrie extends IterativeRobot {
     	lcd.updateLCD();
     	
     	//Auton selector
-    	if(!AutonCyclePrev && (CommandBase.OI.buttonAutonSwitch.get() || CommandBase.OI.GPbuttonAuton.get()))
-    		CommandBase.OI.incrementAutonMode();
-    	AutonCyclePrev = (CommandBase.OI.buttonAutonSwitch.get() || CommandBase.OI.GPbuttonAuton.get());
+    	
+    	if(!AutonCyclePrev && CommandBase.OI.buttonEjector.get())
+    		CommandBase.OI.incrementAutonMode(1);
+    	else if(!AutonCyclePrev && CommandBase.OI.buttonPickup.get())
+    		CommandBase.OI.incrementAutonMode(-1);
+    	AutonCyclePrev = (CommandBase.OI.buttonEjector.get() || CommandBase.OI.buttonPickup.get());
+    	
     }
     
     public void autonomousInit() {
