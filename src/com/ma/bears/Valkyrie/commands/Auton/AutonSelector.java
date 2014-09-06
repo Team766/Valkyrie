@@ -80,7 +80,7 @@ public class AutonSelector extends CommandGroup{
                 						  RobotValues.OneBallStay_crossDistance));
                 break;
                 
-            //runs the OneBallStay Command
+            //runs the Three Ball Hot Auton Command
             case RobotValues.Auton_THREEBALLHOT:
                 System.out.println("Three Ball Hot Auton");
                 addSequential(new ThreeBallHot(RobotValues.TwoBall_Shot1Distance, 
