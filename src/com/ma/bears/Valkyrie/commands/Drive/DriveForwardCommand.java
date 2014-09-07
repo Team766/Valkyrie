@@ -17,8 +17,6 @@ public class DriveForwardCommand extends CommandBase {
     private boolean done = false; 
     private double kDriveDistance;
 	private double last_error = 0.0;
-	private double maxoutput_high = 0.5;
-	private double maxoutput_low = -0.5;
     
     public DriveForwardCommand() {
     	kDriveDistance = 0;
@@ -69,13 +67,4 @@ public class DriveForwardCommand extends CommandBase {
     protected void interrupted() {
     	end();
     }
-    
-    private double clip(double clipped){
-		double out = clipped;
-		if (out > maxoutput_high)
-			out = maxoutput_high;
-		if(out < maxoutput_low)
-			out = maxoutput_low;
-		return out;
-	}
 }
