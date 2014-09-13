@@ -1,72 +1,64 @@
 package com.ma.bears;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
- 
+import java.io.*;
+import java.util.*;
+
+/*
+ * Supplies robot values to the robot values class.  Reads the values from the values.txt file 
+ * and turns the strings into ints.  First create the file, then ftp into it and change the 
+ * numbers
+ * 
+ * Created by Brett Levenson
+ */
+
 public class CsvReader {
-	
-	//instance vars
+	private Scanner scan;
 	private int forwardDist = 0;
 	private int timeDist = 0;
-
-  public void run() {
- 
-	String csvFile = "/CsvTest.csv";
-	BufferedReader br = null;
-	String line = "";
- 
-	try {
- 
-		br = new BufferedReader(new FileReader(csvFile));
-		while ((line = br.readLine()) != null) {
-			
-		    // use comma as separator
-			String[] input = line.split(",");
-			int[] values = new int[input.length];
-
-			for (int i = 1; i < input.length; i++) {
-			    try {
-			        values[i] = Integer.parseInt(input[i]);
-			    } catch (NumberFormatException nfe) {};
-			}
-			switch(values[1]){
-			case 1:
-				forwardDist = values[1];
-				timeDist = values[2];
-				System.out.println("1 Ball hot Auton");
-				break;
-			case 2:
-				forwardDist = values[1];
-				timeDist = values[2];
-				System.out.println("2 Ball hot Auton");
-				break;
-			default:
-				System.out.println("No Auton");
-			}
-			//System.out.println("Index: " + input[0] + input[1] + input[2] + input[3] + input[4]);
-			//System.out.println("Values: " + values[0] + values[1] + values[2] + values[3] + values[4]);
- 
+	private int oneBallDist = 0;
+	private int oneBallTime = 0;
+	
+	
+	public void openFile()
+	{
+		try
+		{
+			scan = new Scanner(new File("values.txt"));
 		}
- 
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
-	} catch (IOException e) {
-		e.printStackTrace();
-	} finally {
-		if (br != null) {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		catch(Exception e)
+		{
+			System.out.println("WE ARE GOING TO DIE!!!!!");
 		}
 	}
- 
-	System.out.println("CSV Reader is Done");
-  }
-  
-  public int getforwardDist(){ return forwardDist;}
-  public int gettimeDist(){ return timeDist;}
- 
+	
+	public void readFile()
+	{
+		while(scan.hasNext())
+		{
+			int name = scan.nextInt();
+			int value = scan.nextInt();
+			int valueb = scan.nextInt();
+			
+			switch(name)
+			{
+			case 1:
+				forwardDist = value;
+				timeDist = valueb;
+			case 2:
+				oneBallDist = value;
+				oneBallTime = valueb;
+			}
+			
+		}
+	}
+	
+	public void closeFile()
+	{
+		scan.close();
+	}
+	
+	public final int getforwardDist(){ return forwardDist;}
+	public final int gettimeDist(){ return timeDist;}
+	public final int getoneBallDist(){ return oneBallDist;}
+	public final int getoneBallTime(){ return oneBallTime;}
 }
+ 

@@ -1,7 +1,7 @@
 package com.ma.bears.Valkyrie.commands;
 
+import com.ma.bears.logData;
 import com.ma.bears.Valkyrie.subsystems.Drive;
-
 import com.ma.bears.Valkyrie.subsystems.Pickup;
 import com.ma.bears.Valkyrie.subsystems.Shooter; 
 import com.ma.bears.Valkyrie.OI;
@@ -25,6 +25,7 @@ public abstract class CommandBase extends Command{
     public static Drive Drive = new Drive();
     public static Shooter Shooter = new Shooter();
     public static OI OI = new OI();
+    public static logData myLog = new logData();
 
     public static Compressor Compr = new Compressor(Ports.DIO_Pressure, Ports.Relay_Compr);
     

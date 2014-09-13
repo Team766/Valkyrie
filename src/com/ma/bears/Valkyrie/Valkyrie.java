@@ -32,12 +32,16 @@ public class Valkyrie extends IterativeRobot {
     boolean AutonCyclePrev;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
+	boolean done;
     
     public Valkyrie(){
+    	done = false;
+    	CommandBase.myLog.openFile();
     }
     
     public void robotInit(){
     	System.out.println("Java Code 2014 V: 1.0.4");
+    	CommandBase.myLog.addRecords("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
         SmartDashboard.putNumber("AngleKp",RobotValues.AngleKp);
@@ -55,7 +59,9 @@ public class Valkyrie extends IterativeRobot {
     public void disabledInit() {
         CommandBase.OI.server.stopSamplingCounts();
         CsvReader obj = new CsvReader();
-		obj.run();
+		obj.openFile();
+		obj.readFile();
+		obj.closeFile();
     }
     
     /** Update Autonomous display
@@ -141,9 +147,12 @@ public class Valkyrie extends IterativeRobot {
     		CommandBase.OI.incrementAutonMode(-1);
     	AutonCyclePrev = (CommandBase.OI.buttonEjector.get() || CommandBase.OI.buttonPickup.get());
     	
+    	//Close log
+    	if(done)CommandBase.myLog.closeFile();;
     }
     
     public void autonomousInit() {
+    	done = true;
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
         CommandBase.Drive.resetGyro();
@@ -164,6 +173,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void teleopInit(){
+    	done = true;
     	CommandBase.OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
     	CommandBase.OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));
 		if(!CommandBase.OI.getTankDrive()){

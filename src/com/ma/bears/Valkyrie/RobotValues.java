@@ -1,5 +1,5 @@
 package com.ma.bears.Valkyrie;
-
+import com.ma.bears.CsvReader;
 /**
  * Declare robot values, such as default speed of a motor,
  * in a convenient place that allows us to change them
@@ -14,6 +14,7 @@ public class RobotValues {
 	 * The 'front' of the robot is pickup. Keep that in
 	 * mind for distances.
 	 */
+	CsvReader reader = new CsvReader();
 	
     public static final double ArmWheels_In = 1;
     public static final double ArmWheels_Out = -1;
@@ -86,4 +87,10 @@ public class RobotValues {
     public static final double TwoBall_Shot2Distance = 1.2;
     
     public static final double OneBallMove_Distance = 2.6;
+
+    //Test Values
+    public final int Fake_forwardDist = reader.getforwardDist();
+    public final int Fake_timeDist = reader.gettimeDist();
+    public final int Fake_oneBallDist = reader.getoneBallDist();
+    public final int Fake_oneBallTime = reader.getoneBallTime();
 }
