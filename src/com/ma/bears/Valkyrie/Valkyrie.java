@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
+import com.ma.bears.CsvReader;
 
 /**
  * Java code for 2014 robot. Mainly a test
@@ -53,6 +54,8 @@ public class Valkyrie extends IterativeRobot {
     
     public void disabledInit() {
         CommandBase.OI.server.stopSamplingCounts();
+        CsvReader obj = new CsvReader();
+		obj.run();
     }
     
     /** Update Autonomous display
