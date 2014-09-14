@@ -47,9 +47,15 @@ public class Drive extends Subsystem{
 		rightDrive.set(power);
 	}
 	public void setShifter(boolean highGear){
-		Shifter.set(highGear);
+		Shifter.set(!highGear);
 	}
 	
+	/**
+	 * Translates encoder counts for use in 
+	 * calculating distance.
+	 * @param trans
+	 * @return
+	 */
     public float translateDrive(float trans){
 		double wheel_d = 0.0899;
 		double counts = 256 * 4.0;

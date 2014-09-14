@@ -4,13 +4,14 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
+import com.ma.bears.lib.CsvReader;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.DriverStationLCD;
-import com.ma.bears.CsvReader;
-
+//
 /**
  * Java code for 2014 robot. Mainly a test
  * and proof of concept to see how well Java
@@ -59,7 +60,7 @@ public class Valkyrie extends IterativeRobot {
     public void disabledInit() {
         CommandBase.OI.server.stopSamplingCounts();
         CsvReader obj = new CsvReader();
-		obj.openFile();
+        obj.openFile();
 		obj.readFile();
 		obj.closeFile();
     }
@@ -148,7 +149,7 @@ public class Valkyrie extends IterativeRobot {
     	AutonCyclePrev = (CommandBase.OI.buttonEjector.get() || CommandBase.OI.buttonPickup.get());
     	
     	//Close log
-    	if(done)CommandBase.myLog.closeFile();;
+    	if(done)CommandBase.myLog.closeFile();
     }
     
     public void autonomousInit() {

@@ -18,8 +18,8 @@ import com.ma.bears.Valkyrie.RobotValues;
 public class ShootCommand extends CommandGroup {
 	
 	public ShootCommand(){
-		addParallel(new GripsTimedOffCommand(RobotValues.ShooterGripWait
-				+ RobotValues.ShooterWait));
+		addParallel(new GripsTimedOffCommand(RobotValues.getDouble("ShooterGripWait")
+				+ RobotValues.getDouble("ShooterWait")));
 		addSequential(new WaitCommand(.10));
 		addSequential(new ReleaseShooterCommand());
 		addSequential(new WinchBackCommand());

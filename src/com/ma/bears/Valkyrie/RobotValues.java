@@ -1,5 +1,12 @@
 package com.ma.bears.Valkyrie;
-import com.ma.bears.CsvReader;
+
+import java.util.Vector;
+
+import com.ma.bears.lib.CsvReader;
+import com.ma.bears.lib.RobotDouble;
+import com.ma.bears.lib.RobotInt;
+import com.ma.bears.lib.RobotString;
+
 /**
  * Declare robot values, such as default speed of a motor,
  * in a convenient place that allows us to change them
@@ -16,11 +23,15 @@ public class RobotValues {
 	 */
 	CsvReader reader = new CsvReader();
 	
-    public static final double ArmWheels_In = 1;
-    public static final double ArmWheels_Out = -1;
+    /*public static final double ArmWheels_In = 1.0;
+    public static final double ArmWheels_Out = -1.0;
     public static final double WinchSpeed = -0.9;
     public static final double ShooterWait = 0.75;
-    public static final double ShooterGripWait = 0.1;
+    public static final double ShooterGripWait = 0.1;*/
+	
+	public static Vector RobotDoubles = new Vector();
+	public static Vector RobotInts = new Vector();
+	public static Vector RobotStrings = new Vector();
     
     //cheesy drive
     public static final double sensitivityHigh = .85;
@@ -34,24 +45,24 @@ public class RobotValues {
     //gyro turning
     
     public static final double AngleKp = 0.3;
-    public static final double AngleKi = 0;
-    public static final double AngleKd = 0;
+    public static final double AngleKi = 0.0;
+    public static final double AngleKd = 0.0;
     public static final double Angleoutputmax_low = -0.3;
     public static final double Angleoutputmax_high = 0.3;
     public static final double AngleThreshold = 1;
     
     //drive straight
     
-    public static final double DriveKp = 0;
-    public static final double DriveKi = 0;
-    public static final double DriveKd = 0;
+    public static final double DriveKp = 0.0;
+    public static final double DriveKi = 0.0;
+    public static final double DriveKd = 0.0;
     public static final double Driveoutputmax_low = -0.5;
     public static final double Driveoutputmax_high = 0.5;
     public static final double DriveThreshold = .01;
     
-    public static final double StraightKp = 0;
-    public static final double StraightKi = 0;
-    public static final double StraightKd = 0;
+    public static final double StraightKp = 0.0;
+    public static final double StraightKi = 0.0;
+    public static final double StraightKd = 0.0;
     public static final double Straightoutputmax_low = -0.1;
     public static final double Straightoutputmax_high = 0.1;
     public static final double StraightThreshold = .000001; //so it never stops trying
@@ -93,4 +104,85 @@ public class RobotValues {
     public final int Fake_timeDist = reader.gettimeDist();
     public final int Fake_oneBallDist = reader.getoneBallDist();
     public final int Fake_oneBallTime = reader.getoneBallTime();
+    
+    public static void initRobotValues(){
+    	RobotDoubles.addElement(new RobotDouble("ArmWheels_In",1.0));
+    	RobotDoubles.addElement(new RobotDouble("ArmWheels_Out",-1.0));
+    	RobotDoubles.addElement(new RobotDouble("WinchSpeed",-0.9));
+        RobotDoubles.addElement(new RobotDouble("ShooterWait",-0.9));
+        RobotDoubles.addElement(new RobotDouble("ShooterGripWait",0.1));
+        
+        RobotInts.addElement(new RobotInt("Auton_Disabled",-1));
+        RobotInts.addElement(new RobotInt("Auton_Empty",0));
+        RobotInts.addElement(new RobotInt("Auton_OneBallStay",1));
+        RobotInts.addElement(new RobotInt("Auton_TwoBall",2));
+        RobotInts.addElement(new RobotInt("Auton_Move",3));
+        RobotInts.addElement(new RobotInt("OneBallMove",4));
+        RobotInts.addElement(new RobotInt("Auton_CheesyVision",5));
+        RobotInts.addElement(new RobotInt("Auton_GyroDriveTurn",6));
+        RobotInts.addElement(new RobotInt("Auton_HotOneBallStay",7));
+        RobotInts.addElement(new RobotInt("Auton_HotOneBallMove",8));
+        RobotInts.addElement(new RobotInt("Auton_THREEBALLHOT",9));
+        RobotInts.addElement(new RobotInt("Auton_Max",9));
+        RobotInts.addElement(new RobotInt("Auton_Min",-1));
+    }
+    
+    /**
+     * Writes values from CSVReader into RobotValues. For each value in each array, it looks
+     * for a value with a matching key in RobotValues' arrays.
+     */
+    public static void writeFromCSV(Vector ints, Vector doubles, Vector strings){
+    	System.out.println(ints.size());
+    	for(int i = 0; i <= ints.size()-1; i++){
+    		RobotInt currenttest = ((RobotInt)ints.elementAt(i));
+        	for(int x = 0; x <= RobotInts.size()-1; x++){
+        		if(((RobotInt)RobotInts.elementAt(x)).getKey().equals(currenttest.getKey())){
+        			RobotInts.setElementAt(currenttest, x);
+        		}
+        	}
+    	}
+    	for(int i = 0; i <= doubles.size()-1; i++){
+    		RobotDouble currenttest = ((RobotDouble)doubles.elementAt(i));
+        	for(int x = 0; x <= RobotDoubles.size()-1; x++){
+        		if(((RobotDouble)RobotDoubles.elementAt(x)).getKey().equals(currenttest.getKey())){
+        			RobotDoubles.setElementAt(currenttest, x);
+        		}
+        	}
+    	}
+    	for(int i = 0; i <= strings.size()-1; i++){
+    		RobotString currenttest = ((RobotString)strings.elementAt(i));
+        	for(int x = 0; x <= RobotStrings.size()-1; x++){
+        		if(((RobotString)RobotStrings.elementAt(x)).getKey().equals(currenttest.getKey())){
+        			RobotStrings.setElementAt(currenttest, x);
+        		}
+        	}
+    	}
+    }
+    
+    /**
+     * Return int from array
+     * @param key key of number
+     */
+    public static int getInt(String key){
+    	for(int i = 0; i <= RobotInts.size()-1; i++){
+    		if(((RobotInt)RobotInts.elementAt(i)).getKey().equals(key))
+    			return ((RobotInt)RobotInts.elementAt(i)).getValue();
+    	}
+    	//Log.println("Reading int + "key" + " failed");
+    	return 0;
+    }
+
+    
+    /**
+     * Return double from array
+     * @param key key of number
+     */
+    public static double getDouble(String key){
+    	for(int i = 0; i <= RobotDoubles.size()-1; i++){
+    		if(((RobotDouble)RobotDoubles.elementAt(i)).getKey().equals(key))
+    			return ((RobotDouble)RobotDoubles.elementAt(i)).getValue();
+    	}
+    	//Log.println("Reading double + "key" + " failed");
+    	return 0;
+    }
 }

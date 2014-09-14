@@ -21,7 +21,7 @@ public class WinchBackCommand extends CommandBase{
 
 	protected void execute() {
 		Shooter.setWinchPist(false);
-		Shooter.setWinch(RobotValues.WinchSpeed);
+		Shooter.setWinch(RobotValues.getDouble("WinchSpeed"));
 	}
 
 	protected void initialize() {

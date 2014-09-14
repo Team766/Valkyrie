@@ -31,7 +31,7 @@ public class CheesyDriveCommand extends CommandBase {
       return;
     }
     boolean isQuickTurn = OI.getQuickTurn();
-    boolean isHighGear = OI.getShifter();
+    boolean isHighGear = !OI.getShifter();
 
     double wheelNonLinearity;
 

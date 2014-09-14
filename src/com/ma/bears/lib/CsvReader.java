@@ -1,4 +1,4 @@
-package com.ma.bears;
+package com.ma.bears.lib;
 import java.io.*;
 import java.util.*;
 
@@ -11,7 +11,7 @@ import java.util.*;
  */
 
 public class CsvReader {
-	private Scanner scan;
+	//private Scanner scan;
 	private int forwardDist = 0;
 	private int timeDist = 0;
 	private int oneBallDist = 0;
@@ -20,19 +20,19 @@ public class CsvReader {
 	
 	public void openFile()
 	{
-		try
+		/*try
 		{
 			scan = new Scanner(new File("values.txt"));
 		}
 		catch(Exception e)
 		{
 			System.out.println("WE ARE GOING TO DIE!!!!!");
-		}
+		}*/
 	}
 	
 	public void readFile()
 	{
-		while(scan.hasNext())
+		/*while(scan.hasNext())
 		{
 			int name = scan.nextInt();
 			int value = scan.nextInt();
@@ -48,12 +48,12 @@ public class CsvReader {
 				oneBallTime = valueb;
 			}
 			
-		}
+		}*/
 	}
 	
 	public void closeFile()
 	{
-		scan.close();
+		//scan.close();
 	}
 	
 	public final int getforwardDist(){ return forwardDist;}

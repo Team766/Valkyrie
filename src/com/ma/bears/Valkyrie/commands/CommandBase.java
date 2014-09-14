@@ -1,11 +1,11 @@
 package com.ma.bears.Valkyrie.commands;
 
-import com.ma.bears.logData;
 import com.ma.bears.Valkyrie.subsystems.Drive;
 import com.ma.bears.Valkyrie.subsystems.Pickup;
 import com.ma.bears.Valkyrie.subsystems.Shooter; 
 import com.ma.bears.Valkyrie.OI;
 import com.ma.bears.Valkyrie.Ports;
+import com.ma.bears.lib.logData;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.command.Command;

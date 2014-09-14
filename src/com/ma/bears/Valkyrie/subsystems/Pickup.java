@@ -29,11 +29,11 @@ public class Pickup extends Subsystem{
 	}
 	
 	public void wheelsIn(){
-		Roller.set(RobotValues.ArmWheels_In);
+		Roller.set(RobotValues.getDouble("ArmWheels_In"));
 	}
 	
 	public void wheelsOut(){
-		Roller.set(RobotValues.ArmWheels_Out);
+		Roller.set(RobotValues.getDouble("ArmWheels_Out"));
 	}
 	
 	public void setRollers(double speed){

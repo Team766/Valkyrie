@@ -1,4 +1,4 @@
-package com.ma.bears;
+package com.ma.bears.lib;
 
 /**
  * Because FRC's PID only supports a 

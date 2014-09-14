@@ -19,7 +19,7 @@ public class RollerOutCommand extends CommandBase{
 
 	protected void execute() {
 		//runs rollers out
-		Pickup.setRollers(RobotValues.ArmWheels_Out);
+		Pickup.setRollers(RobotValues.getDouble("ArmWheels_Out"));
 	}
 
 	protected void initialize() {

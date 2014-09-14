@@ -27,7 +27,7 @@ public class RollerInCommand extends CommandBase{
 
 	protected void execute() {
 		//sets rollers to roll in
-		Pickup.setRollers(RobotValues.ArmWheels_In);
+		Pickup.setRollers(RobotValues.getDouble("ArmWheels_In"));
 	}
 
 	protected void initialize() {

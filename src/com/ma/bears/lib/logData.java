@@ -1,4 +1,4 @@
-package com.ma.bears;
+package com.ma.bears.lib;
 import java.util.*;
 
 /*
@@ -11,21 +11,21 @@ import java.util.*;
 
 public class logData 
 {
-	private Formatter x;
+	//private Formatter x;
 	
 	/**
 	 * Creates the log file.  Called once at the start of the match.
 	 */
 	public void openFile()
 	{
-		try
+		/*try
 		{
 			x = new Formatter("logData.txt");
 		}
 		catch(Exception e)
 		{
 			System.out.println("Ogh OH!!! ERROR");
-		}
+		}*/
 	}
 	/**
 	 * @param print Message
@@ -34,7 +34,7 @@ public class logData
 	public void addRecords(String message)
 	{
 		Object theMessage[] = { message };
-		x.format("%s \n", theMessage);
+		//x.format("%s \n", theMessage);
 	}
 	/**
 	 * @param print Message with data
@@ -43,7 +43,7 @@ public class logData
 	public void addRecords(String message, int value)
 	{
 		Object input[] = { message, new Integer(value) };
-		x.format("%s %d \n", input);
+		//x.format("%s %d \n", input);
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class logData
 	 */
 	public void closeFile()
 	{
-		x.close();
+		//x.close();
 	}
 
 }
