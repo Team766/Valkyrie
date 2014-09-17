@@ -132,7 +132,6 @@ public class RobotValues {
      * for a value with a matching key in RobotValues' arrays.
      */
     public static void writeFromCSV(Vector ints, Vector doubles, Vector strings){
-    	System.out.println(ints.size());
     	for(int i = 0; i <= ints.size()-1; i++){
     		RobotInt currenttest = ((RobotInt)ints.elementAt(i));
         	for(int x = 0; x <= RobotInts.size()-1; x++){

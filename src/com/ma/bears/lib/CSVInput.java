@@ -30,16 +30,17 @@ public class CSVInput {
 			reader = new BufferedReader(new InputStreamReader(C.openInputStream()));
 		} catch (IOException e) {
 			//Log.println(e.toString());
-			//Log.println("failed to open CSV file");
+			//Log.println("failed to open CSV file " + path);
 		}
-		
-		
 		doubles = new Vector();
 		ints = new Vector();
 		strings = new Vector();
 	}
 	
-	public void readValues(){	
+	public void readValues(){
+		doubles = new Vector();
+		ints = new Vector();
+		strings = new Vector();
 		
 		//This code here hopefully works with Java ME on the crio,
 		//but cannot be tested on desktop
@@ -47,11 +48,8 @@ public class CSVInput {
 		try {
 			String data = "";
 			while((data = reader.readLine()) != null){
-				System.out.println(data);
 				String key = data.substring(0, data.indexOf(","));
-				String value = data.substring(data.indexOf(",") + 1);	
-				System.out.println(key);
-				System.out.println(value);
+				String value = data.substring(data.indexOf(",") + 1);
 				addValuetoVector(key, value);
 			}
 		} catch (IOException e) {
@@ -61,7 +59,7 @@ public class CSVInput {
 		
 		//These here are testing dummy vector adds while we can't actually read from CSV.
 		
-		addValuetoVector("menlo","12");
+		/*addValuetoVector("menlo","12");
 		addValuetoVector("atherton","12.00");
 		addValuetoVector("bears","twelve");
 		
@@ -69,7 +67,7 @@ public class CSVInput {
 		addValuetoVector("ArmWheels_Out", "" + Math.PI);
 		addValuetoVector("ShooterGripWait","67.9");
 		addValuetoVector("Auton_Max","100");
-		addValuetoVector("Auton_Min","-254");		
+		addValuetoVector("Auton_Min","-254");*/
 		
 	}
 	

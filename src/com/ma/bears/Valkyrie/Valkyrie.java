@@ -5,6 +5,7 @@ import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
 import com.ma.bears.lib.CsvReader;
+import com.ma.bears.lib.CSVInput;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,11 +34,14 @@ public class Valkyrie extends IterativeRobot {
     boolean AutonCyclePrev;
     
 	private DriverStationLCD lcd = DriverStationLCD.getInstance();
+	private CSVInput CSVInput;
 	boolean done;
     
     public Valkyrie(){
     	done = false;
     	CommandBase.myLog.openFile();
+    	RobotValues.initRobotValues();
+    	CSVInput = new CSVInput("file:///RobotValues.csv");
     }
     
     public void robotInit(){
@@ -55,6 +59,9 @@ public class Valkyrie extends IterativeRobot {
         CommandBase.OI.server.setPort(listenPort);
         CommandBase.OI.server.start();
         CommandBase.Drive.startEncoders();
+    	CSVInput.readValues();
+    	RobotValues.writeFromCSV(CSVInput.getInts(), CSVInput.getDoubles(), 
+    			CSVInput.getStrings());
     }
     
     public void disabledInit() {
@@ -63,6 +70,9 @@ public class Valkyrie extends IterativeRobot {
         obj.openFile();
 		obj.readFile();
 		obj.closeFile();
+    	CSVInput.readValues();
+    	RobotValues.writeFromCSV(CSVInput.getInts(), CSVInput.getDoubles(), 
+    			CSVInput.getStrings());
     }
     
     /** Update Autonomous display
