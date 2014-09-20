@@ -167,7 +167,8 @@ public class RobotValues {
     		if(((RobotInt)RobotInts.elementAt(i)).getKey().equals(key))
     			return ((RobotInt)RobotInts.elementAt(i)).getValue();
     	}
-    	//Log.println("Reading int + "key" + " failed");
+    	//Log.println("Reading int " + key + " failed");
+    	System.out.println("Reading int " + key + " failed");
     	return 0;
     }
 
@@ -181,7 +182,8 @@ public class RobotValues {
     		if(((RobotDouble)RobotDoubles.elementAt(i)).getKey().equals(key))
     			return ((RobotDouble)RobotDoubles.elementAt(i)).getValue();
     	}
-    	//Log.println("Reading double + "key" + " failed");
+    	//Log.println("Reading double " + key + " failed");
+    	System.out.println("Reading double " + key + " failed");
     	return 0;
     }
 }
