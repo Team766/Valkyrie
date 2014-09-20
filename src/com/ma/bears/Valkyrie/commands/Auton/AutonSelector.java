@@ -58,7 +58,7 @@ public class AutonSelector extends CommandGroup{
             case RobotValues.Auton_CheesyVision:
                 System.out.println("Cheesy Drive Auton");
                 //addSequential(new CheesyVisionDrive());
-                addSequential(new CheesyVisionDrive());
+                addSequential(new CheesyVisionDrive(false));
                 break;
             
             //runs the Gyro Drive Turn Command
@@ -89,7 +89,10 @@ public class AutonSelector extends CommandGroup{
                 							   RobotValues.TwoBall_WaitforShoot, 
                 							   2.0, 2.0));
                 break;
-            
+            case RobotValues.Auton_CheesyForwardVision:
+                System.out.println("Cheesy Forward Drive Auton");
+                addSequential(new CheesyVisionDrive(true));
+                break;
             default:{
                 System.out.println("Auton selection failed");
                 break;

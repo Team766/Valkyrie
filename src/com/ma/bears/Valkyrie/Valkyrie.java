@@ -122,6 +122,7 @@ public class Valkyrie extends IterativeRobot {
             	break;
             case RobotValues.Auton_CheesyVision:
             	mode = "Cheesy Vision Drive  ";
+                line3 = "Tank Drive           ";
             	break;
             case RobotValues.Auton_GyroDriveTurn:
             	mode = "Auton Gyro Drive Turn";
@@ -142,6 +143,10 @@ public class Valkyrie extends IterativeRobot {
         		line3 = "#766 is bretter than";
         		line4 = "#254, suck it Kevin ";
         		break;
+            case RobotValues.Auton_CheesyForwardVision:
+            	mode = "Cheesy Vision Drive  ";
+                line3 = "Forward/Backwards Drive";
+            	break;
             default:{} //initialized as spaces so nothing needed here
     	}
     	lcd.println(DriverStationLCD.Line.kUser1, 1, "Selected Auton Mode: ");

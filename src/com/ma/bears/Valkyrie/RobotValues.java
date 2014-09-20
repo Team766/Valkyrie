@@ -80,9 +80,10 @@ public class RobotValues {
     public static final int Auton_HotOneBallStay = 7;
     public static final int Auton_HotOneBallMove = 8;
     public static final int Auton_THREEBALLHOT = 9;
+    public static final int Auton_CheesyForwardVision = 10;
     //if you increment the values above you must also increment the Auton_Max
         
-    public static final int Auton_Max = 9;
+    public static final int Auton_Max = 10;
     public static final int Auton_Min = -1;
     
     //Auton distances negative because we are driving backwards
@@ -125,6 +126,7 @@ public class RobotValues {
         RobotInts.addElement(new RobotInt("Auton_THREEBALLHOT",9));
         RobotInts.addElement(new RobotInt("Auton_Max",9));
         RobotInts.addElement(new RobotInt("Auton_Min",-1));
+        
     }
     
     /**
@@ -138,6 +140,10 @@ public class RobotValues {
         		if(((RobotInt)RobotInts.elementAt(x)).getKey().equals(currenttest.getKey())){
         			RobotInts.setElementAt(currenttest, x);
         		}
+                        else
+                        {
+                            RobotInts.addElement(currenttest);
+                        }
         	}
     	}
     	for(int i = 0; i <= doubles.size()-1; i++){
@@ -164,9 +170,10 @@ public class RobotValues {
      */
     public static int getInt(String key){
     	for(int i = 0; i <= RobotInts.size()-1; i++){
+                System.out.println(((RobotInt)RobotInts.elementAt(i)).getKey());
     		if(((RobotInt)RobotInts.elementAt(i)).getKey().equals(key))
     			return ((RobotInt)RobotInts.elementAt(i)).getValue();
-    	}
+        }
     	//Log.println("Reading int " + key + " failed");
     	System.out.println("Reading int " + key + " failed");
     	return 0;

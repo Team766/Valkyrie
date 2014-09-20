@@ -37,7 +37,7 @@ public class Drive extends Subsystem{
 	 * @param speed power value
 	 */
 	public void setPower(double speed){
-		setLeftPower(-speed);
+		setLeftPower(speed);
 		setRightPower(speed);
 	}
 	public void setLeftPower(double power){
