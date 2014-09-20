@@ -109,7 +109,7 @@ public class RobotValues {
     	RobotDoubles.addElement(new RobotDouble("ArmWheels_In",1.0));
     	RobotDoubles.addElement(new RobotDouble("ArmWheels_Out",-1.0));
     	RobotDoubles.addElement(new RobotDouble("WinchSpeed",-0.9));
-        RobotDoubles.addElement(new RobotDouble("ShooterWait",-0.9));
+        RobotDoubles.addElement(new RobotDouble("ShooterWait",0.9));
         RobotDoubles.addElement(new RobotDouble("ShooterGripWait",0.1));
         
         RobotInts.addElement(new RobotInt("Auton_Disabled",-1));

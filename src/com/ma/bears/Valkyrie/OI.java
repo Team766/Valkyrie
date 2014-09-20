@@ -81,6 +81,7 @@ public class OI {
     public boolean UseGamepad = false;
     
 	public OI(){
+		RobotValues.initRobotValues();
 		ShootCommand shoot = new ShootCommand();
     	buttonShoot.whenPressed(shoot);
         buttonDriverShoot.whenPressed(shoot);

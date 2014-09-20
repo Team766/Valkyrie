@@ -40,7 +40,7 @@ public class Valkyrie extends IterativeRobot {
     public Valkyrie(){
     	done = false;
     	CommandBase.myLog.openFile();
-    	RobotValues.initRobotValues();
+    	//RobotValues.initRobotValues();
     	CSVInput = new CSVInput("file:///RobotValues.csv");
     }
     
