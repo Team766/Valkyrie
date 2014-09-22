@@ -1,5 +1,13 @@
 package com.ma.bears.lib;
-import java.util.*;
+import com.sun.squawk.io.BufferedWriter;
+import com.sun.squawk.microedition.io.FileConnection;
+
+import javax.microedition.io.Connector;
+
+//import java.io.File;
+//import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 /*
  * Used to store print outs for testing.  File can then be accessed through FTP so
@@ -11,39 +19,49 @@ import java.util.*;
 
 public class logData 
 {
-	//private Formatter x;
+	private BufferedWriter writer;
 	
 	/**
 	 * Creates the log file.  Called once at the start of the match.
 	 */
-	public void openFile()
+	public logData()
 	{
-		/*try
-		{
-			x = new Formatter("logData.txt");
+		try {
+			FileConnection C = (FileConnection) Connector.open("file://log.txt");
+			writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));
+			//File file = new File("log.txt");
+		    //file.createNewFile();
+			//writer = new BufferedWriter(new FileWriter(file));
+		} catch (IOException e) {
+			System.out.println("failed to open CSV file:///log.txt");
+			System.out.println(e.toString());
 		}
-		catch(Exception e)
-		{
-			System.out.println("Ogh OH!!! ERROR");
-		}*/
 	}
 	/**
 	 * @param print Message
 	 * Puts a String message into the log.
 	 */
-	public void addRecords(String message)
+	public void print(String message)
 	{
-		Object theMessage[] = { message };
-		//x.format("%s \n", theMessage);
+		try {
+			writer.write(message + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("I 2 stupid 2 no how 2 wite");
+		}
 	}
 	/**
 	 * @param print Message with data
 	 * Puts a String message and a value into the log.
 	 */
-	public void addRecords(String message, int value)
+	public void print(String message, int value)
 	{
-		Object input[] = { message, new Integer(value) };
-		//x.format("%s %d \n", input);
+		try {
+			writer.write(message + value + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("I 2 stupid 2 no how 2 wite");
+		}
 	}
 	
 	/**
@@ -51,7 +69,14 @@ public class logData
 	 */
 	public void closeFile()
 	{
-		//x.close();
+		try {
+			writer.close();
+			
+			System.out.println("Closed");
+		} catch (IOException e) {
+			System.out.println("Whoops! Butter fingers. I dropped the file. \n Can't close log");
+			e.printStackTrace();
+		}
 	}
 
 }

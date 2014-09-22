@@ -2,10 +2,9 @@ package com.ma.bears.Valkyrie;
 
 import java.util.Vector;
 
-import com.ma.bears.lib.CsvReader;
-import com.ma.bears.lib.RobotDouble;
-import com.ma.bears.lib.RobotInt;
-import com.ma.bears.lib.RobotString;
+import com.ma.bears.lib.RobotValues.RobotDouble;
+import com.ma.bears.lib.RobotValues.RobotInt;
+import com.ma.bears.lib.RobotValues.RobotString;
 
 /**
  * Declare robot values, such as default speed of a motor,
@@ -21,7 +20,6 @@ public class RobotValues {
 	 * The 'front' of the robot is pickup. Keep that in
 	 * mind for distances.
 	 */
-	CsvReader reader = new CsvReader();
 	
     /*public static final double ArmWheels_In = 1.0;
     public static final double ArmWheels_Out = -1.0;
@@ -99,12 +97,6 @@ public class RobotValues {
     public static final double TwoBall_Shot2Distance = 1.2;
     
     public static final double OneBallMove_Distance = 2.6;
-
-    //Test Values
-    public final int Fake_forwardDist = reader.getforwardDist();
-    public final int Fake_timeDist = reader.gettimeDist();
-    public final int Fake_oneBallDist = reader.getoneBallDist();
-    public final int Fake_oneBallTime = reader.getoneBallTime();
     
     public static void initRobotValues(){
     	RobotDoubles.addElement(new RobotDouble("ArmWheels_In",1.0));
@@ -140,10 +132,6 @@ public class RobotValues {
         		if(((RobotInt)RobotInts.elementAt(x)).getKey().equals(currenttest.getKey())){
         			RobotInts.setElementAt(currenttest, x);
         		}
-                        else
-                        {
-                            RobotInts.addElement(currenttest);
-                        }
         	}
     	}
     	for(int i = 0; i <= doubles.size()-1; i++){

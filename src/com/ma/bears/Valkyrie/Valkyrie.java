@@ -4,7 +4,6 @@ import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Auton.AutonSelector;
 import com.ma.bears.Valkyrie.commands.Drive.CheesyDriveCommand;
 import com.ma.bears.Valkyrie.commands.Drive.TankDriveCommand;
-import com.ma.bears.lib.CsvReader;
 import com.ma.bears.lib.CSVInput;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -39,14 +38,13 @@ public class Valkyrie extends IterativeRobot {
     
     public Valkyrie(){
     	done = false;
-    	CommandBase.myLog.openFile();
     	//RobotValues.initRobotValues();
     	CSVInput = new CSVInput("file:///RobotValues.csv");
     }
     
     public void robotInit(){
     	System.out.println("Java Code 2014 V: 1.0.4");
-    	CommandBase.myLog.addRecords("Java Code 2014 V: 1.0.4");
+    	CommandBase.myLog.print("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
         SmartDashboard.putNumber("AngleKp",RobotValues.AngleKp);
@@ -66,10 +64,6 @@ public class Valkyrie extends IterativeRobot {
     
     public void disabledInit() {
         CommandBase.OI.server.stopSamplingCounts();
-        CsvReader obj = new CsvReader();
-        obj.openFile();
-		obj.readFile();
-		obj.closeFile();
     	CSVInput.readValues();
     	RobotValues.writeFromCSV(CSVInput.getInts(), CSVInput.getDoubles(), 
     			CSVInput.getStrings());

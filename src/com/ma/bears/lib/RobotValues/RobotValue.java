@@ -1,4 +1,4 @@
-package com.ma.bears.lib;
+package com.ma.bears.lib.RobotValues;
 
 /**
  * Class for a RobotValue such as a motor speed

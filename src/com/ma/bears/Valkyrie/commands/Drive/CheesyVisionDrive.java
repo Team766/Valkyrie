@@ -35,7 +35,7 @@ public class CheesyVisionDrive extends CommandBase {
             {
                 Drive.setPower(-0.5);
             }
-            if(!OI.server.getRightStatus())
+            else if(!OI.server.getRightStatus())
             {
                 Drive.setPower(0.5);
             }
@@ -44,8 +44,6 @@ public class CheesyVisionDrive extends CommandBase {
             Drive.setPower(0.0);
             
         }
-        
-        System.out.println("Looping through Cheesy Vision Auton");
     }
     protected boolean isFinished() {
         return false;

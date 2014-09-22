@@ -1,4 +1,4 @@
-package com.ma.bears.lib;
+package com.ma.bears.lib.RobotValues;
 
 public class RobotString extends RobotValue{
 	

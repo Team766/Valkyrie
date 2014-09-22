@@ -1,5 +1,9 @@
 package com.ma.bears.lib;
 
+import com.ma.bears.lib.RobotValues.RobotDouble;
+import com.ma.bears.lib.RobotValues.RobotInt;
+import com.ma.bears.lib.RobotValues.RobotString;
+import com.ma.bears.lib.RobotValues.RobotValue;
 import com.sun.squawk.io.BufferedReader;
 import com.sun.squawk.microedition.io.FileConnection;
 
