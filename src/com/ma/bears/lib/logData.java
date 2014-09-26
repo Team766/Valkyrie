@@ -27,7 +27,7 @@ public class logData
 	public logData()
 	{
 		try {
-			FileConnection C = (FileConnection) Connector.open("file://log.txt");
+			FileConnection C = (FileConnection) Connector.open("file:///log.txt");
 			writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));
 			//File file = new File("log.txt");
 		    //file.createNewFile();
@@ -45,6 +45,7 @@ public class logData
 	{
 		try {
 			writer.write(message + "\n");
+                        System.out.println("I be writing");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("I 2 stupid 2 no how 2 wite");
@@ -71,6 +72,7 @@ public class logData
 	{
 		try {
 			writer.close();
+                        System.out.println("CLOSING");
 			
 			System.out.println("Closed");
 		} catch (IOException e) {
