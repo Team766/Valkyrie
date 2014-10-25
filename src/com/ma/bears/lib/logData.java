@@ -1,6 +1,7 @@
 package com.ma.bears.lib;
 import com.sun.squawk.io.BufferedWriter;
 import com.sun.squawk.microedition.io.FileConnection;
+import java.util.Date;
 
 import javax.microedition.io.Connector;
 
@@ -20,6 +21,7 @@ import java.io.OutputStreamWriter;
 public class logData 
 {
 	private BufferedWriter writer;
+        private Date date;
 	
 	/**
 	 * Creates the log file.  Called once at the start of the match.
@@ -27,13 +29,16 @@ public class logData
 	public logData()
 	{
 		try {
-			FileConnection C = (FileConnection) Connector.open("file:///log.txt");
+                        date = new Date();
+			FileConnection C = (FileConnection) Connector.open("file:///" + date.getTime() + "log.txt");
+                        if (!C.exists())
+                            C.create();  // create the file if it doesn't exist
 			writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));
 			//File file = new File("log.txt");
 		    //file.createNewFile();
 			//writer = new BufferedWriter(new FileWriter(file));
 		} catch (IOException e) {
-			System.out.println("failed to open CSV file:///log.txt");
+			System.out.println("failed to open log file:///log.txt");
 			System.out.println(e.toString());
 		}
 	}
@@ -44,7 +49,7 @@ public class logData
 	public void print(String message)
 	{
 		try {
-			writer.write(message + "\n");
+			writer.write(date.getTime() + "\t" + message + "\n");
                         System.out.println("I be writing");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -58,7 +63,7 @@ public class logData
 	public void print(String message, int value)
 	{
 		try {
-			writer.write(message + value + "\n");
+			writer.write(date.getTime() + "\t" + message + value + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("I 2 stupid 2 no how 2 wite");
