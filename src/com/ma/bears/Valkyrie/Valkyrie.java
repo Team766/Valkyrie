@@ -162,6 +162,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void autonomousInit() {
+        CommandBase.myLog.print("Auton Starting:  ");
     	done = true;
         CommandBase.OI.server.reset();
         CommandBase.OI.server.startSamplingCounts();
@@ -183,6 +184,7 @@ public class Valkyrie extends IterativeRobot {
     }
     
     public void teleopInit(){
+        CommandBase.myLog.print("Teleop Starting  ");
     	done = true;
     	CommandBase.OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
     	CommandBase.OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));

@@ -9,6 +9,7 @@ import javax.microedition.io.Connector;
 //import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import edu.wpi.first.wpilibj.Timer;
 
 /*
  * Used to store print outs for testing.  File can then be accessed through FTP so
@@ -22,18 +23,22 @@ public class logData
 {
 	private BufferedWriter writer;
         private Date date;
+        private Timer time;
 	
 	/**
 	 * Creates the log file.  Called once at the start of the match.
 	 */
 	public logData()
 	{
+            time.reset();
 		try {
                         date = new Date();
+                        time.reset();
 			FileConnection C = (FileConnection) Connector.open("file:///" + date.getTime() + "log.txt");
                         if (!C.exists())
                             C.create();  // create the file if it doesn't exist
 			writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));
+                        time.start();
 			//File file = new File("log.txt");
 		    //file.createNewFile();
 			//writer = new BufferedWriter(new FileWriter(file));
@@ -49,7 +54,7 @@ public class logData
 	public void print(String message)
 	{
 		try {
-			writer.write(date.getTime() + "\t" + message + "\n");
+			writer.write(time.get() + "\t" + message + "\n");
                         System.out.println("I be writing");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -63,7 +68,7 @@ public class logData
 	public void print(String message, int value)
 	{
 		try {
-			writer.write(date.getTime() + "\t" + message + value + "\n");
+			writer.write(time.get() + "\t" + message + value + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("I 2 stupid 2 no how 2 wite");
@@ -76,6 +81,7 @@ public class logData
 	public void closeFile()
 	{
 		try {
+                        time.stop();
 			writer.close();
                         System.out.println("CLOSING");
 			
