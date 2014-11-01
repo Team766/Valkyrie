@@ -158,7 +158,11 @@ public class Valkyrie extends IterativeRobot {
     	AutonCyclePrev = (CommandBase.OI.buttonEjector.get() || CommandBase.OI.buttonPickup.get());
     	
     	//Close log
-    	if(done)CommandBase.myLog.closeFile();
+    	if(done)
+        {
+            CommandBase.myLog.closeFile();
+            done = false;
+        }
     }
     
     public void autonomousInit() {
