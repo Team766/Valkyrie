@@ -31,10 +31,11 @@ public class Valkyrie extends IterativeRobot {
     
     public final int listenPort = 1180;
     boolean AutonCyclePrev;
+    boolean previousLog = false;
     
-	private DriverStationLCD lcd = DriverStationLCD.getInstance();
-	private CSVInput CSVInput;
-	boolean done;
+    private DriverStationLCD lcd = DriverStationLCD.getInstance();
+    private CSVInput CSVInput;
+    boolean done;
     
     public Valkyrie(){
     	done = false;
@@ -47,6 +48,7 @@ public class Valkyrie extends IterativeRobot {
     	CommandBase.myLog.print("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
+        SmartDashboard.putBoolean("Print to Log Now", false);
         SmartDashboard.putNumber("AngleKp",RobotValues.AngleKp);
         SmartDashboard.putNumber("AngleKi", RobotValues.AngleKi);
         SmartDashboard.putNumber("AngleKd", RobotValues.AngleKd);
@@ -67,6 +69,8 @@ public class Valkyrie extends IterativeRobot {
     	CSVInput.readValues();
     	RobotValues.writeFromCSV(CSVInput.getInts(), CSVInput.getDoubles(), 
     			CSVInput.getStrings());
+        //Close log
+    	if(done)CommandBase.myLog.closeFile();
     }
     
     /** Update Autonomous display
@@ -157,12 +161,6 @@ public class Valkyrie extends IterativeRobot {
     		CommandBase.OI.incrementAutonMode(-1);
     	AutonCyclePrev = (CommandBase.OI.buttonEjector.get() || CommandBase.OI.buttonPickup.get());
     	
-    	//Close log
-    	if(done)
-        {
-            CommandBase.myLog.closeFile();
-            done = false;
-        }
     }
     
     public void autonomousInit() {
@@ -192,13 +190,13 @@ public class Valkyrie extends IterativeRobot {
     	done = true;
     	CommandBase.OI.setTankDrive(SmartDashboard.getBoolean("Tank Drive"));
     	CommandBase.OI.setUseGamepad(SmartDashboard.getBoolean("UseGamePad"));
-		if(!CommandBase.OI.getTankDrive()){
-			new CheesyDriveCommand().start();			
-		}else{
-			new TankDriveCommand().start();
-		}
-		//set grippers out on enable
-		//CommandBase.Pickup.setGrippers(true);
+        if(!CommandBase.OI.getTankDrive()){
+            new CheesyDriveCommand().start();			
+        }else{
+            new TankDriveCommand().start();
+        }
+	//set grippers out on enable
+	//CommandBase.Pickup.setGrippers(true);
         //CommandBase.Drive.resetGyro();
         //new GyroTurnCommand(SmartDashboard.getNumber("TargetAngle")).start();
     }
@@ -209,6 +207,13 @@ public class Valkyrie extends IterativeRobot {
         SmartDashboard.putNumber("GyroAngle", CommandBase.Drive.getAngle());
         //System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
         //System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
+        
+        if((SmartDashboard.getBoolean("Print to Log Now")) && !previousLog)
+        {
+            CommandBase.myLog.print("Teleop time check printout!");
+        }
+        previousLog = SmartDashboard.getBoolean("Print to Log Now");
+        
         CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry
     }
