@@ -34,7 +34,8 @@ public class logData
 		try {
                         theTime = "" + driverStation.getMatchTime();
                         date = new Date();
-			FileConnection C = (FileConnection) Connector.open("file:///" + date.getTime() + "log.txt");
+			//FileConnection C = (FileConnection) Connector.open("file:///" + date.getTime() + "log.txt");
+                        FileConnection C = (FileConnection) Connector.open("file:///Practicelog.txt");
                         if (!C.exists())
                             C.create();  // create the file if it doesn't exist
 			writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));

@@ -48,7 +48,6 @@ public class Valkyrie extends IterativeRobot {
     	CommandBase.myLog.print("Java Code 2014 V: 1.0.4");
         SmartDashboard.putBoolean("Tank Drive", false);
         SmartDashboard.putBoolean("UseGamePad", false);
-        SmartDashboard.putBoolean("Print to Log Now", false);
         SmartDashboard.putNumber("AngleKp",RobotValues.AngleKp);
         SmartDashboard.putNumber("AngleKi", RobotValues.AngleKi);
         SmartDashboard.putNumber("AngleKd", RobotValues.AngleKd);
@@ -207,12 +206,6 @@ public class Valkyrie extends IterativeRobot {
         SmartDashboard.putNumber("GyroAngle", CommandBase.Drive.getAngle());
         //System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
         //System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
-        
-        if((SmartDashboard.getBoolean("Print to Log Now")) && !previousLog)
-        {
-            CommandBase.myLog.print("Teleop time check printout!");
-        }
-        previousLog = SmartDashboard.getBoolean("Print to Log Now");
         
         CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry

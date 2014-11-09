@@ -18,6 +18,7 @@ public class EjectorOutCommand extends CommandBase{
 	protected void end() {
 		//bring piston in after running the class
 		Pickup.setEjector(false);
+                myLog.print("Ejector Command has eneded");
 	}
 
 	protected void execute() {

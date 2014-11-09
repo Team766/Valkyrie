@@ -8,6 +8,7 @@ import com.ma.bears.Valkyrie.commands.Arm.InboundCommand;
 import com.ma.bears.Valkyrie.commands.Arm.PickupCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerInCommand;
 import com.ma.bears.Valkyrie.commands.Arm.RollerOutCommand;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 import com.ma.bears.Valkyrie.commands.Shooter.ShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -49,7 +50,7 @@ public class OI {
     buttonEjector = new JoystickButton(jBox, Buttons.Ejector),
     buttonArmDown = new JoystickButton(jBox, Buttons.Arm),
     buttonCancel = new JoystickButton(jBox, Buttons.ShootCancel),
-    //buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),
+    buttonAutonSwitch = new JoystickButton(jBox, Buttons.AutonSwitch),
     
     //gamepad buttons
     GPbuttonShifter = new JoystickButton(jGpad, Buttons.GPShifter),
@@ -98,6 +99,11 @@ public class OI {
         buttonPickup.cancelWhenPressed(pickup);			//box op button cancels driver command
         buttonPickup.whileHeld(new PickupCommand());
         buttonInbound.whileHeld(new InboundCommand());
+        if(buttonAutonSwitch.get())
+        {
+           CommandBase.myLog.print("Get Tested");
+           System.out.println("Priting from button");
+        }
         
         buttonGrips.whileHeld(new GripsCommand(false,true));
     
