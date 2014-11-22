@@ -2,6 +2,7 @@ package com.ma.bears.Valkyrie.commands.Arm;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import com.ma.bears.Valkyrie.commands.Arm.GripsCommand;
+import com.ma.bears.Valkyrie.commands.CommandBase;
 
 /**
  * Ejector piston out, roller out, and grips off

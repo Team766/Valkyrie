@@ -206,7 +206,6 @@ public class Valkyrie extends IterativeRobot {
         SmartDashboard.putNumber("GyroAngle", CommandBase.Drive.getAngle());
         //System.out.println("Left Speed: " + CommandBase.Drive.getLeftSpeed());
         //System.out.println("Right Speed: " + CommandBase.Drive.getRightSpeed());
-        
         CommandBase.OI.updateGripSwitch();
         Watchdog.getInstance().feed(); //very hungry
     }
