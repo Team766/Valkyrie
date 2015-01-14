@@ -1,8 +1,8 @@
 package com.ma.bears.lib;
 import com.sun.squawk.io.BufferedWriter;
 import com.sun.squawk.microedition.io.FileConnection;
-import edu.wpi.first.wpilibj.DriverStation;
-import java.util.Date;
+//import edu.wpi.first.wpilibj.DriverStation;
+//import java.util.Date;
 import edu.wpi.first.wpilibj.Timer;
 
 import javax.microedition.io.Connector;
@@ -22,10 +22,10 @@ import java.io.OutputStreamWriter;
 
 public class logData 
 {
-        private DriverStation driverStation = DriverStation.getInstance();
+//        private DriverStation driverStation = DriverStation.getInstance();
 	private BufferedWriter writer;
-        private Date date;
-        private String theTime;
+//        private Date date;
+//        private String theTime;
         private Timer timer;
 	
 	/**
@@ -34,8 +34,8 @@ public class logData
 	public logData()
 	{
             try {
-                theTime = "" + driverStation.getMatchTime();
-                date = new Date();
+//                theTime = "" + driverStation.getMatchTime();
+//                date = new Date();
 		//FileConnection C = (FileConnection) Connector.open("file:///" + date.getTime() + "log.txt");
                 FileConnection C = (FileConnection) Connector.open("file:///Practicelog2.txt");
                 if (!C.exists())
@@ -46,7 +46,6 @@ public class logData
                 //writer = new BufsferedWriter(new FileWriter(file));
 				timer = new Timer();
 				
-                timer.reset();
                 timer.start();
 		} catch (IOException e) {
                     System.out.println("failed to open log file:///log.txt");
