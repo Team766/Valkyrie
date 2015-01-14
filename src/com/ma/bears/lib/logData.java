@@ -43,7 +43,9 @@ public class logData
 		writer = new BufferedWriter(new OutputStreamWriter(C.openOutputStream()));
 		//File file = new File("log.txt");
 		 //file.createNewFile();
-                //writer = new BufferedWriter(new FileWriter(file));
+                //writer = new BufsferedWriter(new FileWriter(file));
+				timer = new Timer();
+				
                 timer.reset();
                 timer.start();
 		} catch (IOException e) {
